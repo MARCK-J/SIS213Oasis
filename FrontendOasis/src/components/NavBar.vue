@@ -4,13 +4,13 @@
       <div class="container">
         <div class="navbar-brand logo"></div>
         <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,24 +24,24 @@
           <ul class="navbar-nav d-none d-md-block">
             <li v-if="!isAuthenticated && !isLoading" class="nav-item">
               <button
-                id="qsLoginBtn"
-                class="btn btn-primary btn-margin"
-                @click.prevent="login"
+                  id="qsLoginBtn"
+                  class="btn btn-primary btn-margin"
+                  @click.prevent="login"
               >Login</button>
             </li>
 
             <li class="nav-item dropdown" v-if="isAuthenticated">
               <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="profileDropDown"
-                data-toggle="dropdown"
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="profileDropDown"
+                  data-toggle="dropdown"
               >
                 <img
-                  :src="user.picture"
-                  alt="User's profile picture"
-                  class="nav-user-profile rounded-circle"
-                  width="50"
+                    :src="user.picture"
+                    alt="User's profile picture"
+                    class="nav-user-profile rounded-circle"
+                    width="50"
                 />
               </a>
               <div class="dropdown-menu dropdown-menu-right">
@@ -61,17 +61,17 @@
           </ul>
 
           <ul
-            id="mobileAuthNavBar"
-            class="navbar-nav d-md-none d-flex"
-            v-if="isAuthenticated"
+              id="mobileAuthNavBar"
+              class="navbar-nav d-md-none d-flex"
+              v-if="isAuthenticated"
           >
             <li class="nav-item">
               <span class="user-info">
                 <img
-                  :src="user.picture"
-                  alt="User's profile picture"
-                  class="nav-user-profile d-inline-block rounded-circle mr-3"
-                  width="50"
+                    :src="user.picture"
+                    alt="User's profile picture"
+                    class="nav-user-profile d-inline-block rounded-circle mr-3"
+                    width="50"
                 />
                 <h6 class="d-inline-block">{{ user.name }}</h6>
               </span>
@@ -99,7 +99,7 @@ export default {
   name: "NavBar",
   setup() {
     const auth0 = useAuth0();
-    
+
     return {
       isAuthenticated: auth0.isAuthenticated,
       isLoading: auth0.isLoading,
