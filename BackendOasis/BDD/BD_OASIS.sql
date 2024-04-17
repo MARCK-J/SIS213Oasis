@@ -1,29 +1,32 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-04-10 00:49:07.585
+-- Last modification date: 2024-04-16 15:43:53.856
 
--- tables
+-- tablesa
 -- Table: Actividad
 CREATE TABLE Actividad (
-    idActividad SERIAL NOT NULL,
+    idActividad serial  NOT NULL,
     actividad varchar(45)  NOT NULL,
     Ciudad_idCiudad int  NOT NULL,
     CategoriaActividad_idCatActi int  NOT NULL,
+    fecha date  NOT NULL,
     precio decimal(7,2)  NOT NULL,
+    Detalle varchar(255)  NOT NULL,
     CONSTRAINT Actividad_pk PRIMARY KEY (idActividad)
 );
 
 -- Table: Aerolinea
 CREATE TABLE Aerolinea (
-    idAerolinea SERIAL  NOT NULL,
+    idAerolinea serial  NOT NULL,
     aerolinea varchar(45)  NOT NULL,
     CONSTRAINT Aerolinea_pk PRIMARY KEY (idAerolinea)
 );
 
 -- Table: AlquilerAuto
 CREATE TABLE AlquilerAuto (
-    idAlquiler SERIAL  NOT NULL,
+    idAlquiler serial  NOT NULL,
     precio decimal(7,2)  NOT NULL,
     dias int  NOT NULL,
+    empresa varchar(65)  NOT NULL,
     Auto_idAuto int  NOT NULL,
     Ciudad_idCiudad int  NOT NULL,
     CONSTRAINT AlquilerAuto_pk PRIMARY KEY (idAlquiler)
@@ -31,17 +34,18 @@ CREATE TABLE AlquilerAuto (
 
 -- Table: Atraccion
 CREATE TABLE Atraccion (
-    idAtraccion SERIAL  NOT NULL,
+    idAtraccion serial  NOT NULL,
     atraccion varchar(45)  NOT NULL,
     CategoriaAtraccion_idCatAtrac int  NOT NULL,
     Ciudad_idCiudad int  NOT NULL,
     precio decimal(7,2)  NOT NULL,
+    detalle varchar(255)  NOT NULL,
     CONSTRAINT Atraccion_pk PRIMARY KEY (idAtraccion)
 );
 
 -- Table: Auto
 CREATE TABLE Auto (
-    idAuto SERIAL  NOT NULL,
+    idAuto serial  NOT NULL,
     modelo varchar(45)  NOT NULL,
     marca varchar(45)  NOT NULL,
     tipo varchar(45)  NOT NULL,
@@ -50,28 +54,28 @@ CREATE TABLE Auto (
 
 -- Table: CategoriaActividad
 CREATE TABLE CategoriaActividad (
-    idCatActi SERIAL  NOT NULL,
+    idCatActi serial  NOT NULL,
     categoria varchar(45)  NOT NULL,
     CONSTRAINT CategoriaActividad_pk PRIMARY KEY (idCatActi)
 );
 
 -- Table: CategoriaAtraccion
 CREATE TABLE CategoriaAtraccion (
-    idCatAtrac SERIAL  NOT NULL,
+    idCatAtrac serial  NOT NULL,
     categoria varchar(45)  NOT NULL,
     CONSTRAINT CategoriaAtraccion_pk PRIMARY KEY (idCatAtrac)
 );
 
 -- Table: CategoriaHotel
 CREATE TABLE CategoriaHotel (
-    idCatHot SERIAL  NOT NULL,
+    idCatHot serial  NOT NULL,
     categoria varchar(45)  NOT NULL,
     CONSTRAINT CategoriaHotel_pk PRIMARY KEY (idCatHot)
 );
 
 -- Table: Ciudad
 CREATE TABLE Ciudad (
-    idCiudad SERIAL  NOT NULL,
+    idCiudad serial  NOT NULL,
     ciudad varchar(45)  NOT NULL,
     Pais_idPais int  NOT NULL,
     CONSTRAINT Ciudad_pk PRIMARY KEY (idCiudad)
@@ -79,7 +83,7 @@ CREATE TABLE Ciudad (
 
 -- Table: Cliente
 CREATE TABLE Cliente (
-    idCliente SERIAL  NOT NULL,
+    idCliente serial  NOT NULL,
     correo varchar(45)  NOT NULL,
     password varchar(45)  NOT NULL,
     estadoCuenta varchar(45)  NOT NULL,
@@ -87,9 +91,18 @@ CREATE TABLE Cliente (
     CONSTRAINT Cliente_pk PRIMARY KEY (idCliente)
 );
 
+-- Table: Comentarios
+CREATE TABLE Comentarios (
+    idComentario serial  NOT NULL,
+    Comentario text  NOT NULL,
+    Cliente_idCliente int  NOT NULL,
+    CONSTRAINT Comentarios_pk PRIMARY KEY (idComentario)
+);
+
 -- Table: Facturacion
 CREATE TABLE Facturacion (
-    idFactura SERIAL  NOT NULL,
+    idFactura serial  NOT NULL,
+    NIT varchar(45)  NOT NULL,
     fecha date  NOT NULL,
     Cliente_idCliente int  NOT NULL,
     ReservaViaje_idReservaViaja int  NOT NULL,
@@ -99,14 +112,14 @@ CREATE TABLE Facturacion (
 
 -- Table: FormaPago
 CREATE TABLE FormaPago (
-    idFormP SERIAL  NOT NULL,
+    idFormP serial  NOT NULL,
     formapago varchar(45)  NOT NULL,
     CONSTRAINT FormaPago_pk PRIMARY KEY (idFormP)
 );
 
 -- Table: Hotel
 CREATE TABLE Hotel (
-    idHotel SERIAL  NOT NULL,
+    idHotel serial  NOT NULL,
     hotel varchar(45)  NOT NULL,
     puntuacion int  NOT NULL,
     Ciudad_idCiudad int  NOT NULL,
@@ -116,14 +129,14 @@ CREATE TABLE Hotel (
 
 -- Table: Pais
 CREATE TABLE Pais (
-    idPais SERIAL  NOT NULL,
+    idPais serial  NOT NULL,
     pais varchar(55)  NOT NULL,
     CONSTRAINT Pais_pk PRIMARY KEY (idPais)
 );
 
 -- Table: Persona
 CREATE TABLE Persona (
-    idPersona SERIAL  NOT NULL,
+    idPersona serial  NOT NULL,
     Nombre varchar(45)  NOT NULL,
     ApellidoP varchar(45)  NOT NULL,
     ApellidoM varchar(45)  NOT NULL,
@@ -133,17 +146,18 @@ CREATE TABLE Persona (
 
 -- Table: ReservaHotel
 CREATE TABLE ReservaHotel (
-    idReservaHotel SERIAL  NOT NULL,
+    idReservaHotel serial  NOT NULL,
     fechaInicio date  NOT NULL,
     fechaFin date  NOT NULL,
     precio decimal(7,2)  NOT NULL,
+    personas int  NOT NULL,
     Hotel_idHotel int  NOT NULL,
     CONSTRAINT ReservaHotel_pk PRIMARY KEY (idReservaHotel)
 );
 
 -- Table: ReservaViaje
 CREATE TABLE ReservaViaje (
-    idReservaViaja SERIAL  NOT NULL,
+    idReservaViaja serial  NOT NULL,
     fecha date  NOT NULL,
     Cliente_idCliente int  NOT NULL,
     Viaje_idViaje int  NOT NULL,
@@ -157,7 +171,7 @@ CREATE TABLE ReservaViaje (
 
 -- Table: Seguro
 CREATE TABLE Seguro (
-    idSeguro SERIAL  NOT NULL,
+    idSeguro serial  NOT NULL,
     seguro varchar(45)  NOT NULL,
     cobertura varchar(45)  NOT NULL,
     precio decimal(7,2)  NOT NULL,
@@ -166,19 +180,21 @@ CREATE TABLE Seguro (
 
 -- Table: Vuelo
 CREATE TABLE Vuelo (
-    idViaje SERIAL  NOT NULL,
+    idViaje serial  NOT NULL,
     origen int  NOT NULL,
     destino int  NOT NULL,
     Aerolinea_idAerolinea int  NOT NULL,
     fechaInicio date  NOT NULL,
     fechaFin date  NOT NULL,
     precio decimal(7,2)  NOT NULL,
+    personas int  NOT NULL,
+    nroReserva varchar(45)  NOT NULL,
     CONSTRAINT Vuelo_pk PRIMARY KEY (idViaje)
 );
 
 -- Table: admin
 CREATE TABLE admin (
-    idAdmin SERIAL  NOT NULL,
+    idAdmin serial  NOT NULL,
     correo varchar(45)  NOT NULL,
     password varchar(45)  NOT NULL,
     rol varchar(45)  NOT NULL,
@@ -247,6 +263,14 @@ ALTER TABLE Ciudad ADD CONSTRAINT Ciudad_Pais
 ALTER TABLE Cliente ADD CONSTRAINT Cliente_Persona
     FOREIGN KEY (Persona_idPersona)
     REFERENCES Persona (idPersona)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: Comentarios_Cliente (table: Comentarios)
+ALTER TABLE Comentarios ADD CONSTRAINT Comentarios_Cliente
+    FOREIGN KEY (Cliente_idCliente)
+    REFERENCES Cliente (idCliente)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
@@ -389,8 +413,3 @@ ALTER TABLE admin ADD CONSTRAINT admin_Persona
 
 -- End of file.
 
-
-
-
---insert into persona (nombre, apellidop, apellidom, telefono) values ('Max','Pasten','Landivar','68171114')
---select * from persona;

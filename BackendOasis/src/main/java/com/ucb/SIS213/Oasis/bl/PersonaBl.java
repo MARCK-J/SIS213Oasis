@@ -3,8 +3,6 @@ package com.ucb.SIS213.Oasis.bl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import ucb.edu.bo.SIS213.erPar.erPar.dao.LabelDao;
-//import ucb.edu.bo.SIS213.erPar.erPar.entity.Label;
 import com.ucb.SIS213.Oasis.dao.PersonaDao;
 import com.ucb.SIS213.Oasis.entity.Persona;
 
