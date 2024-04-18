@@ -92,6 +92,21 @@ export default {
   methods: {
     async createPersona(){
       try {
+        // Validar contraseña
+        if (this.password !== this.passwordConf) {
+
+          console.error("Las contraseñas no coinciden");
+          window.alert("Las contraseñas no coinciden");
+          return;
+        }
+
+        // Validar complejidad de la contraseña (puedes implementar tus propias reglas)
+        if (this.password.length < 8) {
+          console.error("La contraseña debe tener al menos 8 caracteres");
+          window.alert("La contraseña debe tener al menos 8 caracteres");
+          return;
+        }
+
         // Enviar solicitud para crear una persona
         const response = await axios.post('http://localhost:9999/api/v1/persona/create',{
           nombre: this.nombre,
@@ -119,7 +134,6 @@ export default {
         const nuevaCuenta = response3.data.data;
         console.log("Cuenta created");
 
-
         // Limpiar campos
         this.nombre = '';
         this.apellidoP = '';
@@ -134,12 +148,11 @@ export default {
       } catch (error){
         console.error("Error al crear la persona",error)
       }
-
     },
-
     goBack() {
       this.$router.push('/');
-    }
+    },
+
   }
 };
 </script>
