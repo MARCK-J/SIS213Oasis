@@ -1,8 +1,8 @@
 <template>
-  <div class="nav-container mb-3">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="nav-container">
+    <nav class="navbar navbar-expand-md navbar-light custom-navbar-color">
       <div class="container">
-        <div class="navbar-brand logo"></div>
+        <img id="logo" src="/src/assets/logo.png" alt="Logo de Oasis">
         <button
             class="navbar-toggler"
             type="button"
@@ -19,6 +19,26 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <router-link to="/" class="nav-link">Home</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link to="/hoteles" class="nav-link">Hoteles</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link to="/vuelos" class="nav-link">Vuelos</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link to="/quienes_somos" class="nav-link">Quienes Somos</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link to="/contactanos" class="nav-link">Contactanos</router-link>
             </li>
           </ul>
           <ul class="navbar-nav d-none d-md-block">
@@ -119,7 +139,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.custom-navbar-color {
+    background-color: #0B3D91;
+}
+.navbar-nav .nav-link {
+    color: #fff; /* Color del texto en blanco */
+}
+#logo{
+    margin: 4px 30px;
+    width: 8%;
+}
 #mobileAuthNavBar {
   min-height: 125px;
   justify-content: space-between;
