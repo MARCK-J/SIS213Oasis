@@ -20,7 +20,6 @@
   background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
   color: #fff;
   width: 100%;
-  height: 630px;
   display: flex;
   justify-content: center;
   align-items: center;

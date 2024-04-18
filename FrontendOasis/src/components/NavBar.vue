@@ -4,6 +4,7 @@
       <div class="container">
         <img id="logo" src="/src/assets/logo.png" alt="Logo de Oasis">
         <button
+            id="custom-button"
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -140,10 +141,17 @@ export default {
 
 <style scoped>
 .custom-navbar-color {
-    background-color: #0B3D91;
+    background-color: black;
 }
 .navbar-nav .nav-link {
     color: #fff; /* Color del texto en blanco */
+}
+.navbar-nav .nav-link:hover {
+    color: #939292; /* Color del texto en blanco */
+}
+#custom-button {
+  background-color: rgb(184, 178, 178); /* Cambia el color de fondo del botón */
+  color: white; /* Cambia el color del texto del botón */
 }
 #logo{
     margin: 4px 30px;
