@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-container">
+  <div class="nav-container mb-3">
     <nav class="navbar navbar-expand-md navbar-light custom-navbar-color">
       <div class="container">
         <img id="logo" src="/src/assets/logo.png" alt="Logo de Oasis">
@@ -41,15 +41,17 @@
               <router-link to="/contactanos" class="nav-link">Contactanos</router-link>
             </li>
           </ul>
-          <ul class="navbar-nav d-none d-md-block">
-            <li v-if="!isAuthenticated && !isLoading" class="nav-item">
-              <button
-                  id="qsLoginBtn"
-                  class="btn btn-primary btn-margin"
-                  @click.prevent="login"
-              >Login</button>
+          <ul class="navbar-nav mr-auto">
+            <li v-if="!isAuthenticated" class="nav-item">
+              <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
             </li>
-
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li v-if="!isAuthenticated" class="nav-item">
+              <router-link to="" class="nav-link" @click.prevent="login">Login</router-link>
+            </li>
+          </ul>
+<ul class="navbar-nav mr-auto d-none d-md-block">
             <li class="nav-item dropdown" v-if="isAuthenticated">
               <a
                   class="nav-link dropdown-toggle"
@@ -64,7 +66,7 @@
                     width="50"
                 />
               </a>
-              <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-menu dropdown-menu-right ">
                 <div class="dropdown-header">{{ user.name }}</div>
                 <router-link to="/profile" class="dropdown-item dropdown-profile">
                   <font-awesome-icon class="mr-3" icon="user" />Profile
@@ -75,10 +77,7 @@
               </div>
             </li>
           </ul>
-          <router-link to="/RegistroPersona">Ir a página sin navbar</router-link>
-          <ul class="navbar-nav d-md-none" v-if="!isAuthenticated && !isLoading">
-            <button id="qsLoginBtn" class="btn btn-primary btn-block" @click="login">Log in</button>
-          </ul>
+
 
           <ul
               id="mobileAuthNavBar"

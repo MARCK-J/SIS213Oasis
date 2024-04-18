@@ -1,5 +1,6 @@
 <template>
   <div>
+    <nav-bar/>
     <Inicio/>
     <NuestrosServicios/>
     <NuestrosViajes/>
@@ -18,10 +19,12 @@ import NuestrosViajes from "../components/NuestrosViajes.vue"
 import Team from "../components/Team.vue";
 import Contactanos from "../components/Contactanos.vue";
 import Ubicacion from "../components/Ubicacion.vue";
+import NavBar from "../components/NavBar.vue";
 
 export default {
   name: "home-view",
   components: {
+    NavBar,
     Inicio,
     NuestrosServicios,
     NuestrosViajes,

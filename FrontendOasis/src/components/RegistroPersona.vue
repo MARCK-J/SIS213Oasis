@@ -1,49 +1,81 @@
 <template>
   <div class="app">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6 left-side">
-          <img src="../assets/img.png" alt="Imagen" class="left-image">
-        </div>
-        <div class="col-md-6 right-side">
-          <h2>Registro de Datos Personales</h2>
-          <form @submit.prevent="createPersona" class="form-container">
-            <div class="form-group">
-              <input type="text" v-model="nombre" class="form-control" placeholder="Nombre" required>
-            </div>
-            <div class="form-group">
-              <input type="text" v-model="apellidoP" class="form-control" placeholder="Apellido Paterno" required>
-            </div>
-            <div class="form-group">
-              <input type="text" v-model="apellidoM" class="form-control" placeholder="Apellido Materno">
-            </div>
-            <div class="form-group">
-              <input type="tel" v-model="telefono" class="form-control" placeholder="Teléfono">
-            </div>
-            <h2>Registro de Cuenta</h2>
-            <div class="form-group">
-              <input type="text" v-model="correo" class="form-control" placeholder="Correo electronico">
-            </div>
-            <div class="form-group">
-              <input type="password" v-model="password" class="form-control" placeholder="Contraseña">
-            </div>
-            <div class="form-group">
-              <input type="password" v-model="passwordConf" class="form-control" placeholder="Confirmar contraseña">
-            </div>
-            <div class="button-group">
-              <button type="button" @click="goBack" class="btn btn-secondary">Regresar</button>
-              <input type="submit" value="Continuar" class="btn btn-primary">
-            </div>
-          </form>
-        </div>
+    <!-- Contenedor de la imagen de fondo -->
+    <div class="background-container">
+      <!-- Imagen de fondo -->
+      <img class="background-image" src="../assets/imageRegister.jpeg" alt="Background Image">
+      <!-- Contenedor del formulario -->
+      <div class="form-container">
+        <!-- Título del formulario -->
+        <h2 class="form-title">Registro</h2>
+        <!-- Formulario -->
+        <form @submit.prevent="createPersona" class="form">
+          <!-- Datos Personales -->
+          <div class="form-group">
+            <input type="text" v-model="nombre" class="form-control" placeholder="Nombre" required>
+          </div>
+          <div class="form-group">
+            <input type="text" v-model="apellidoP" class="form-control" placeholder="Apellido Paterno" required>
+          </div>
+          <div class="form-group">
+            <input type="text" v-model="apellidoM" class="form-control" placeholder="Apellido Materno">
+          </div>
+          <div class="form-group">
+            <input type="tel" v-model="telefono" class="form-control" placeholder="Teléfono">
+          </div>
+          <!-- Datos de Cuenta -->
+          <div class="form-group">
+            <input type="email" v-model="correo" class="form-control" placeholder="Correo electrónico" required>
+          </div>
+          <div class="form-group">
+            <input type="password" v-model="password" class="form-control" placeholder="Contraseña" required>
+          </div>
+          <div class="form-group">
+            <input type="password" v-model="passwordConf" class="form-control" placeholder="Confirmar contraseña" required>
+          </div>
+          <!-- Botones -->
+          <div class="button-group">
+            <button type="button" @click="goBack" class="btn btn-secondary">Regresar</button>
+            <input type="submit" value="Continuar" class="btn btn-primary">
+          </div>
+        </form>
+        <!-- Mensaje para iniciar sesión -->
+        <p class="login-message">¿Ya tienes una cuenta?
+            <router-link v-if="!isAuthenticated"
+                to=""
+                @click.prevent="login"
+                class="nav-link"
+            >Inicia sesión aquí</router-link>
+        </p>
       </div>
     </div>
   </div>
 </template>
 
+
 <script>
+import { useAuth0 } from '@auth0/auth0-vue';
 import axios from 'axios';
 export default {
+  setup() {
+    const auth0 = useAuth0();
+
+    return {
+      isAuthenticated: auth0.isAuthenticated,
+      isLoading: auth0.isLoading,
+      user: auth0.user,
+      login() {
+        auth0.loginWithRedirect();
+      },
+      logout() {
+        auth0.logout({
+          logoutParams: {
+            returnTo: window.location.origin
+          }
+        });
+      }
+    }
+  },
   data() {
     return {
       personas:[],
@@ -54,6 +86,7 @@ export default {
       correo: '',
       password: '',
       passwordConf: '',
+
     };
   },
   methods: {
@@ -111,71 +144,126 @@ export default {
 };
 </script>
 
+
 <style scoped>
-html, body {
-  height: 100%;
-  margin: 0;
-  color: white;
-  font-size: 24px;
-}
-
+/* Estilos generales */
 .app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor de la imagen de fondo */
+.background-container {
+  position: relative;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.78); /* Color de fondo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  height: 100%;
 }
 
-.left-side {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Imagen de fondo */
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.left-image {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.right-side {
-  padding: 20px; /* Ajustar el padding */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Centrar el contenido horizontalmente */
-  height: 100vh;
-}
-
+/* Contenedor del formulario */
 .form-container {
-  width: 90%; /* Ancho del formulario aumentado */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Ancho del formulario */
+  max-width: 400px; /* Ancho máximo del formulario */
 }
 
+/* Título del formulario */
+.form-title {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Estilos para los campos de entrada */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="tel"],
-input[type="password"] {
-  padding: 15px; /* Ajustar el padding */
+.form-control {
+  padding: 10px;
   border: none;
-  border-bottom: 2px solid #000; /* Aumentar el grosor de la línea inferior */
+  border-bottom: 1px solid #ccc;
   background-color: transparent;
-  margin-bottom: 20px; /* Ajustar el margen inferior */
-  color: white;
+  width: 100%;
+  font-size: 16px;
+  transition: border-color 0.3s ease; /* Transición suave para el borde */
 }
 
+/* Estilos para el borde al enfocar el campo de entrada */
+.form-control:focus {
+  border-bottom-color: #007bff;
+  outline: none;
+}
+
+/* Botones */
 .button-group {
-  margin-top: 20px; /* Espacio entre los botones */
+  margin-top: 20px;
   display: flex;
-  justify-content: space-between; /* Colocar los botones en los extremos */
-  width: 100%; /* Ajustar el ancho del contenedor de botones */
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.btn-secondary {
+  background-color: #999;
+  color: #fff;
+  border: 1px solid #999;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+/* Efecto de desplazamiento al pasar el cursor sobre los botones */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensaje para iniciar sesión */
+.login-message {
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Estilos responsivos */
+@media only screen and (max-width: 768px) {
+  .form-container {
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .form-container {
+    padding: 15px;
+    width: 90%;
+  }
 }
 </style>
-<script setup lang="ts">
-</script>
