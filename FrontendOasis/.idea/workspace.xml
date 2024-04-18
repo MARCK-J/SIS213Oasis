@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7bb494-9d16-43a3-86fb-ed85721bc49d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules/Oasis.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules/Oasis.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules/Oasis.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules/Oasis.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/PersonaAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/PersonaAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ClienteBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ClienteBl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegistroPersona.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegistroPersona.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
