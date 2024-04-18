@@ -55,7 +55,7 @@
               </div>
             </li>
           </ul>
-
+          <router-link to="/RegistroPersona">Ir a página sin navbar</router-link>
           <ul class="navbar-nav d-md-none" v-if="!isAuthenticated && !isLoading">
             <button id="qsLoginBtn" class="btn btn-primary btn-block" @click="login">Log in</button>
           </ul>

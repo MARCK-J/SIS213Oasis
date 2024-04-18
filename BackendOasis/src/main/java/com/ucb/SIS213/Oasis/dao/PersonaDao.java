@@ -13,4 +13,9 @@ public interface PersonaDao extends JpaRepository<Persona, Long> {
     @Query(value = "SELECT * FROM persona WHERE idPersona = ?1",
     nativeQuery = true)
     List<Persona> findLabelsByUserId(Long userId);
+
+    @Query(value = "SELECT MAX(idPersona) FROM Persona;", nativeQuery = true)
+    Long getLastInsertedPersonaId();
+
+
 }

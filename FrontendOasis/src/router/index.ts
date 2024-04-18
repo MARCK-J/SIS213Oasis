@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
 import { createAuthGuard } from "@auth0/auth0-vue";
 import { App } from 'vue';
+import RegistroPersona from "../components/RegistroPersona.vue";
 
 export function createRouter(app: App): Router {
   return createVueRouter({
@@ -17,7 +18,12 @@ export function createRouter(app: App): Router {
         name: "profile",
         component: Profile,
         beforeEnter: createAuthGuard(app)
-      }
+      },
+      {
+        path: "/RegistroPersona",
+        name: "registroPersona",
+        component: RegistroPersona
+      },
     ],
     history: createWebHashHistory()
   })
