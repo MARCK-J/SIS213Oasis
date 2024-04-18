@@ -64,6 +64,20 @@ public class PersonaAPI {
         return new ResponseDTO(personaCreada);
     }
 
+    // Endpoint para conseguir el id de la ultima persona
+    @GetMapping("/lastId")
+    public ResponseDTO getLastInsertedPersonaId() {
+        Long id;
+        try{
+            id = personaBl.getLastIdPersona();
+            LOGGER.info("Id de la ultima persona encontrada");
+        } catch (RuntimeException e){
+            LOGGER.error("Error al obtener el id de la ultima persona");
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO(id);
+    }
+
 
 }
 

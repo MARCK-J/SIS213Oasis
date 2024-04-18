@@ -65,7 +65,8 @@ VALUES
 	('Amaszonas'),
 	('Latam'),
 	('Iberia'),
-	('AirFrance');
+	('Avianca'),
+	('Volaris');
 	
 select * from aerolinea;
 
@@ -79,16 +80,17 @@ VALUES
     ('Mercado artesanal');
 	
 
-INSERT INTO Atraccion (atraccion, CategoriaAtraccion_idCatAtrac, Ciudad_idCiudad, precio)
+INSERT INTO Atraccion (atraccion, CategoriaAtraccion_idCatAtrac, Ciudad_idCiudad, precio, detalle)
 VALUES 
-    ('Cataratas del Yguazú', 4, 1, 25.00),  -- Ciudad: La Paz, Categoría: Cascada
-    ('Ruinas de Tiwanaku', 2, 1, 10.00),  -- Ciudad: La Paz, Categoría: Sitio Arqueológico
-    ('Cristo de la Concordia', 3, 3, 5.00),  -- Ciudad: Cochabamba, Categoría: Mirador
-    ('Salar de Uyuni', 1, 6, 30.00),  -- Ciudad: Potosí, Categoría: Parque Nacional
-    ('Fortaleza de Samaipata', 2, 2, 15.00),  -- Ciudad: Santa Cruz de la Sierra, Categoría: Sitio Arqueológico
-    ('Mercado de las Brujas', 5, 1, 5.00),  -- Ciudad: La Paz, Categoría: Mercado artesanal
-    ('Catarata de Arco Iris', 4, 7, 20.00);  -- Ciudad: Tarija, Categoría: Cascada
+    ('Cataratas del Yguazú', 4, 1, 25.00,''),  -- Ciudad: La Paz, Categoría: Cascada
+    ('Ruinas de Tiwanaku', 2, 1, 10.00,''),  -- Ciudad: La Paz, Categoría: Sitio Arqueológico
+    ('Cristo de la Concordia', 3, 3, 5.00,''),  -- Ciudad: Cochabamba, Categoría: Mirador
+    ('Salar de Uyuni', 1, 6, 30.00,''),  -- Ciudad: Potosí, Categoría: Parque Nacional
+    ('Fortaleza de Samaipata', 2, 2, 15.00,''),  -- Ciudad: Santa Cruz de la Sierra, Categoría: Sitio Arqueológico
+    ('Mercado de las Brujas', 5, 1, 5.00,''),  -- Ciudad: La Paz, Categoría: Mercado artesanal
+    ('Catarata de Arco Iris', 4, 7, 20.00,'');  -- Ciudad: Tarija, Categoría: Cascada
 
+select * from atraccion;
 
 -- Eliminar todos los datos de la tabla Categoria Actividades
 DELETE FROM CategoriaActividad;
@@ -106,16 +108,17 @@ INSERT INTO CategoriaActividad (categoria) VALUES
     ('Conciertos');
 
 -- Insertar actividades
-INSERT INTO Actividad (actividad, Ciudad_idCiudad, CategoriaActividad_idCatActi, precio)
+INSERT INTO Actividad (actividad, Ciudad_idCiudad, CategoriaActividad_idCatActi, fecha, precio, detalle)
 VALUES 
-    ('Ascenso al Huayna Potosí', 1, 1, 40.00),  -- Ciudad: La Paz
-    ('Visita al Museo de la Coca', 1, 2, 15.00),  -- Ciudad: La Paz
-    ('Avistamiento de aves en el Jardín Botánico', 3, 3, 5.00),  -- Ciudad: Cochabamba
-    ('Ciclismo de montaña en la Ruta de las Yungas', 1, 4, 20.00),  -- Ciudad: La Paz
-    ('Tour gastronómico por la calle Jaén', 1, 5, 10.00),  -- Ciudad: La Paz
-    ('Concierto en el Estadio Hernando Siles', 1, 6, 30.00),  -- Ciudad: La Paz
-    ('Recital en el Teatro Municipal de Santa Cruz', 2, 6, 25.00);  -- Ciudad: Santa Cruz de la Sierra
+    ('Ascenso al Huayna Potosí', 1, 1, '2024-05-10', 40.00, 'Horario: 12:00pm'),  -- Ciudad: La Paz
+    ('Visita al Museo de la Coca', 1, 2, '2024-05-23', 15.00, 'Horario: 12:00pm'),  -- Ciudad: La Paz
+    ('Avistamiento de aves en el Jardín Botánico', 3, 3, '2024-06-07', 5.00, 'Horario: 12:00pm'),  -- Ciudad: Cochabamba
+    ('Ciclismo de montaña en la Ruta de las Yungas', 1, 4, '2024-06-21', 20.00, 'Horario: 12:00pm'),  -- Ciudad: La Paz
+    ('Tour gastronómico por la calle Jaén', 1, 5, '2024-05-02', 10.00, 'Horario: 12:00pm'),  -- Ciudad: La Paz
+    ('Concierto en el Estadio Hernando Siles', 1, 6, '2024-04-28', 30.00, 'Horario: 12:00pm'),  -- Ciudad: La Paz
+    ('Recital en el Teatro Municipal de Santa Cruz', 2, 6, '2024-06-17', 25.00, 'Horario: 12:00pm');  -- Ciudad: Santa Cruz de la Sierra
 
+select * from Actividad;
 
 INSERT INTO Auto (modelo, marca, tipo)
 VALUES 
@@ -131,6 +134,7 @@ VALUES
     ('RAV4', 'Toyota', 'SUV'),
     ('CR-V', 'Honda', 'SUV');
 
+select * from auto;
 
 INSERT INTO Seguro (seguro, cobertura, precio)
 VALUES 

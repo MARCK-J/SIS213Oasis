@@ -15,9 +15,6 @@ import Error from "./components/Error.vue";
 import NavBar from "./components/NavBar.vue";
 
 export default {
-  components: {
-    NavBar,
-    Error
-  }
+
 };
 </script>

@@ -49,5 +49,9 @@ public class PersonaBl {
         personaDao.deleteById(id);
     }
 
+    public Long getLastIdPersona () {
+        return personaDao.getLastInsertedPersonaId();
+    }
+
 
 }
