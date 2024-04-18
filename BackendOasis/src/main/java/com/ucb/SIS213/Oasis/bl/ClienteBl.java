@@ -2,6 +2,7 @@ package com.ucb.SIS213.Oasis.bl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.ucb.SIS213.Oasis.dao.ClienteDao;
 import com.ucb.SIS213.Oasis.entity.Cliente;
@@ -10,11 +11,15 @@ import java.util.List;
 
 @Service
 public class ClienteBl {
+
+
     private ClienteDao clienteDao;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public ClienteBl(ClienteDao clienteDao) {
+    public ClienteBl(ClienteDao clienteDao, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.clienteDao = clienteDao;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     public List<Cliente> getAllCliente() {
@@ -30,6 +35,10 @@ public class ClienteBl {
     }
 
     public Cliente createCliente(Cliente cliente) {
+        String password = cliente.getPassword();
+        String hashedPassword = bCryptPasswordEncoder.encode(password);
+        cliente.setPassword(hashedPassword);
+        System.out.println("Contraseña: " + cliente.getPassword());
         return clienteDao.save(cliente);
     }
 

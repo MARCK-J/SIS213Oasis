@@ -55,6 +55,7 @@ public class PersonaAPI {
     public ResponseDTO createPersona(@RequestBody Persona persona) {
         Persona personaCreada;
         try{
+
             personaCreada = personaBl.createPersona(persona);
             LOGGER.info("Persona creada");
         } catch (RuntimeException e){
