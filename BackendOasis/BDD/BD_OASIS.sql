@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-04-18 19:11:23.958
+-- Last modification date: 2024-04-21 17:02:35.853
 
 -- tables
 -- Table: Actividad
@@ -124,6 +124,7 @@ CREATE TABLE Hotel (
                        puntuacion int  NOT NULL,
                        Ciudad_idCiudad int  NOT NULL,
                        CategoriaHotel_idCatHot int  NOT NULL,
+                       totalHabitaciones int  NOT NULL,
                        CONSTRAINT Hotel_pk PRIMARY KEY (idHotel)
 );
 
@@ -152,6 +153,9 @@ CREATE TABLE ReservaHotel (
                               precio decimal(7,2)  NOT NULL,
                               personas int  NOT NULL,
                               Hotel_idHotel int  NOT NULL,
+                              NroReservaHotel varchar(45)  NOT NULL,
+                              habitaciones int  NOT NULL,
+                              Detalle int  NOT NULL,
                               CONSTRAINT ReservaHotel_pk PRIMARY KEY (idReservaHotel)
 );
 
@@ -162,10 +166,10 @@ CREATE TABLE ReservaViaje (
                               Cliente_idCliente int  NOT NULL,
                               Viaje_idViaje int  NOT NULL,
                               Seguro_idSeguro int  NOT NULL,
-                              AlquilerAuto_idAlquiler int  NOT NULL,
-                              Atraccion_idAtraccion int  NOT NULL,
-                              Actividad_idActividad int  NOT NULL,
-                              ReservaHotel_idReservaHotel int  NOT NULL,
+                              AlquilerAuto_idAlquiler int,
+                              Atraccion_idAtraccion int,
+                              Actividad_idActividad int,
+                              ReservaHotel_idReservaHotel int,
                               CONSTRAINT ReservaViaje_pk PRIMARY KEY (idReservaViaja)
 );
 

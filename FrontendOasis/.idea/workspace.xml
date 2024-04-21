@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7f7bb494-9d16-43a3-86fb-ed85721bc49d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contactanos.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contactanos.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Informacion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Informacion.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +87,8 @@
       <workItem from="1713370988986" duration="8726000" />
       <workItem from="1713391234975" duration="7547000" />
       <workItem from="1713450254275" duration="8700000" />
+      <workItem from="1713718479096" duration="591000" />
+      <workItem from="1713719111319" duration="598000" />
     </task>
     <servers />
   </component>

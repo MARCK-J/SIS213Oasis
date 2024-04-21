@@ -1,20 +1,24 @@
 <template>
-  <div class="Contactanos-contenedor">
-    <form action="#">
-      <h2>Contactanos</h2>
-      <p>
-        Si tienes dudas, consultas o reclamos con nuestros servicio y/o
-        promociones, no dudes en tomar contacto con nosotros. Una Ejecutiva te
-        responderá a la brevedad. Solo completa el siguiente formulario.
-      </p>
-      <input type="text" placeholder="Nombre" /> <br>
-      <input type="email" placeholder="Correo Electronico" /> <br> 
-      <input type="number" placeholder="Telefono" /> <br>
-      <textarea placeholder="Mensaje" /> <br>
-      <br />
-      <button>Enviar</button>
-    </form>
-  </div>
+  <center>
+    <div class="Contactanos-contenedor">
+      <form action="#">
+        <h2>Contactanos</h2>
+        <p>
+          Si tienes dudas, consultas o reclamos con nuestros servicio y/o
+          promociones, no dudes en tomar contacto con nosotros. Una Ejecutiva te
+          responderá a la brevedad. Solo completa el siguiente formulario.
+        </p>
+        <input type="text" placeholder="Nombre" /> <br>
+        <input type="email" placeholder="Correo Electronico" /> <br>
+        <input type="number" placeholder="Telefono" /> <br>
+        <textarea placeholder="Mensaje" /> <br>
+        <br />
+        <button>Enviar</button>
+      </form>
+    </div>
+
+  </center>
+
 </template>
 
 <style>
@@ -22,7 +26,7 @@
     margin-left: 20px;
     width: 60%;
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
 }
 .Contactanos-contenedor input{
     width:85%;
@@ -53,3 +57,5 @@
   }
 }
 </style>
+<script setup lang="ts">
+</script>
