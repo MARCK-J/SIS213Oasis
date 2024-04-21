@@ -1,13 +1,13 @@
 
 INSERT INTO Pais (pais)
-VALUES 
-    ('Bolivia'); 
-	
+VALUES
+    ('Bolivia');
+
 select * from pais;
 
 
 INSERT INTO Ciudad (ciudad, Pais_idPais)
-VALUES 
+VALUES
     ('La Paz', 1),  -- Departamento: La Paz
     ('Santa Cruz de la Sierra', 1),  -- Departamento: Santa Cruz
     ('Cochabamba', 1),  -- Departamento: Cochabamba
@@ -29,7 +29,7 @@ SELECT setval('idCiudad', 1, false);
 
 select * from Ciudad
 
-INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel');
+    INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hostal');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel de lujo');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel de negocios');
@@ -39,49 +39,49 @@ INSERT INTO CategoriaHotel (categoria) VALUES ('Alojamiento');
 
 select * from CategoriaHotel
 
-INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot)
-VALUES 
-    ('Hotel Plaza', 4, 1, 1),  -- Categoría: Hotel - Ciudad: La Paz
-    ('Hostal del Lago', 3, 2, 2),  -- Categoría: Hostal - Ciudad: Santa Cruz de la Sierra
-    ('Hotel Camino Real', 5, 3, 3),  -- Categoría: Hotel de lujo - Ciudad: Cochabamba
-    ('Hotel Los Tajibos', 4, 4, 4),  -- Categoría: Hotel de negocios - Ciudad: Sucre
-    ('Hotel Rosario', 4, 5, 5),  -- Categoría: Hotel resort - Ciudad: Oruro
-    ('Hotel Las Palmas', 3, 6, 6),  -- Categoría: Hotel Familiar - Ciudad: Potosí
-    ('Alojamiento Samay', 5, 7, 7),  -- Categoría: Alojamiento - Ciudad: Tarija
-    ('Hotel La Siesta', 4, 8, 1),  -- Categoría: Hotel - Ciudad: Beni
-    ('Hostal Maya', 3, 9, 2),  -- Categoría: Hostal - Ciudad: Pando
-    ('Hotel Alcala', 5, 1, 3),  -- Categoría: Hotel de lujo - Ciudad: La Paz
-    ('Hotel Regina', 4, 2, 4),  -- Categoría: Hotel de negocios - Ciudad: Santa Cruz de la Sierra
-    ('Hotel Colonial', 4, 4, 5),  -- Categoría: Hotel resort - Ciudad: Cochabamba
-    ('Hostal San Francisco', 3, 4, 6),  -- Categoría: Hotel Familiar - Ciudad: Sucre
-    ('Hotel Europa', 5, 5, 7),  -- Categoría: Alojamiento - Ciudad: Oruro
-    ('Hotel Real', 4, 6, 1);  -- Categoría: Hotel - Ciudad: Potosí
-	
+    INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot, totalhabitaciones)
+VALUES
+    ('Hotel Plaza', 4, 1, 1,120),  -- Categoría: Hotel - Ciudad: La Paz
+    ('Hostal del Lago', 3, 2, 2,150),  -- Categoría: Hostal - Ciudad: Santa Cruz de la Sierra
+    ('Hotel Camino Real', 5, 3, 3,160),  -- Categoría: Hotel de lujo - Ciudad: Cochabamba
+    ('Hotel Los Tajibos', 4, 4, 4,100),  -- Categoría: Hotel de negocios - Ciudad: Sucre
+    ('Hotel Rosario', 4, 5, 5,95),  -- Categoría: Hotel resort - Ciudad: Oruro
+    ('Hotel Las Palmas', 3, 6, 6,140),  -- Categoría: Hotel Familiar - Ciudad: Potosí
+    ('Alojamiento Samay', 5, 7, 7,130),  -- Categoría: Alojamiento - Ciudad: Tarija
+    ('Hotel La Siesta', 4, 8, 1,160),  -- Categoría: Hotel - Ciudad: Beni
+    ('Hostal Maya', 3, 9, 2,180),  -- Categoría: Hostal - Ciudad: Pando
+    ('Hotel Alcala', 5, 1, 3,160),  -- Categoría: Hotel de lujo - Ciudad: La Paz
+    ('Hotel Regina', 4, 2, 4,200),  -- Categoría: Hotel de negocios - Ciudad: Santa Cruz de la Sierra
+    ('Hotel Colonial', 4, 4, 5,165),  -- Categoría: Hotel resort - Ciudad: Cochabamba
+    ('Hostal San Francisco', 3, 4, 6,170),  -- Categoría: Hotel Familiar - Ciudad: Sucre
+    ('Hotel Europa', 5, 5, 7,210),  -- Categoría: Alojamiento - Ciudad: Oruro
+    ('Hotel Real', 4, 6, 1,130);  -- Categoría: Hotel - Ciudad: Potosí
+
 select * from Hotel;
 
 INSERT INTO Aerolinea (aerolinea)
-VALUES 
+VALUES
     ('Boliviana de Aviacion'),
-	('Amaszonas'),
-	('Latam'),
-	('Iberia'),
-	('Avianca'),
-	('Volaris');
-	
+    ('Amaszonas'),
+    ('Latam'),
+    ('Iberia'),
+    ('Avianca'),
+    ('Volaris');
+
 select * from aerolinea;
 
 
-INSERT INTO CategoriaAtraccion (categoria) 
-VALUES 
+INSERT INTO CategoriaAtraccion (categoria)
+VALUES
     ('Parque Nacional'),
     ('Sitio Arqueológico'),
     ('Mirador'),
     ('Cascada'),
     ('Mercado artesanal');
-	
+
 
 INSERT INTO Atraccion (atraccion, CategoriaAtraccion_idCatAtrac, Ciudad_idCiudad, precio, detalle)
-VALUES 
+VALUES
     ('Cataratas del Yguazú', 4, 1, 25.00,''),  -- Ciudad: La Paz, Categoría: Cascada
     ('Ruinas de Tiwanaku', 2, 1, 10.00,''),  -- Ciudad: La Paz, Categoría: Sitio Arqueológico
     ('Cristo de la Concordia', 3, 3, 5.00,''),  -- Ciudad: Cochabamba, Categoría: Mirador
@@ -99,17 +99,17 @@ DELETE FROM CategoriaActividad;
 ALTER SEQUENCE categoriaactividad_idcatacti_seq RESTART WITH 1;
 
 -- Insertar categorías de actividad
-INSERT INTO CategoriaActividad (categoria) VALUES 
-    ('Trekking'),
-    ('Visita a museos'),
-    ('Avistamiento de aves'),
-    ('Ciclismo de montaña'),
-    ('Tour gastronómico'),
-    ('Conciertos');
+INSERT INTO CategoriaActividad (categoria) VALUES
+                                               ('Trekking'),
+                                               ('Visita a museos'),
+                                               ('Avistamiento de aves'),
+                                               ('Ciclismo de montaña'),
+                                               ('Tour gastronómico'),
+                                               ('Conciertos');
 
 -- Insertar actividades
 INSERT INTO Actividad (actividad, Ciudad_idCiudad, CategoriaActividad_idCatActi, fecha, precio, detalle)
-VALUES 
+VALUES
     ('Ascenso al Huayna Potosí', 1, 1, '2024-05-10', 40.00, 'Horario: 12:00pm'),  -- Ciudad: La Paz
     ('Visita al Museo de la Coca', 1, 2, '2024-05-23', 15.00, 'Horario: 12:00pm'),  -- Ciudad: La Paz
     ('Avistamiento de aves en el Jardín Botánico', 3, 3, '2024-06-07', 5.00, 'Horario: 12:00pm'),  -- Ciudad: Cochabamba
@@ -121,7 +121,7 @@ VALUES
 select * from Actividad;
 
 INSERT INTO Auto (modelo, marca, tipo)
-VALUES 
+VALUES
     ('Civic', 'Honda', 'Sedán'),
     ('Corolla', 'Toyota', 'Sedán'),
     ('Accord', 'Honda', 'Sedán'),
@@ -137,16 +137,16 @@ VALUES
 select * from auto;
 
 INSERT INTO Seguro (seguro, cobertura, precio)
-VALUES 
+VALUES
     ('Seguro Básico', 'Atención médica básica', 50.00),
     ('Seguro Estándar', 'Atención médica y repatriación', 75.00),
     ('Seguro Premium', 'Atención médica y pérdida de equipaje', 100.00),
     ('Seguro de Viaje Aventura', 'Atención médica especializada', 120.00),
     ('Seguro Familiar', 'Cobertura para toda la familia', 150.00);
-	
-	
+
+
 INSERT INTO FormaPago (formapago)
-VALUES 
+VALUES
     ('Efectivo'),
     ('Tarjeta de crédito'),
     ('Tarjeta de débito'),
