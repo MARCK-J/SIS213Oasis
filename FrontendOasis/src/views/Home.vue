@@ -15,15 +15,15 @@
 </template>
 
 <script lang="ts">
-import NuestrosServicios from "../components/NuestrosServicios.vue";
-import Inicio from "../components/Inicio.vue"
-import NuestrosViajes from "../components/NuestrosViajes.vue"
-import Team from "../components/Team.vue";
-import Contactanos from "../components/Contactanos.vue";
-import Ubicacion from "../components/Ubicacion.vue";
+import NuestrosServicios from "../components/Home/NuestrosServicios.vue";
+import Inicio from "../components/Home/Inicio.vue"
+import NuestrosViajes from "../components/Home/NuestrosViajes.vue"
+import Team from "../components/Home/Team.vue";
+import Contactanos from "../components/Home/Contactanos.vue";
+import Ubicacion from "../components/Home/Ubicacion.vue";
 import NavBar from "../components/NavBar.vue";
-import Carusel from '../components/Carusel.vue'
-import Informacion from "../components/Informacion.vue";
+import Carusel from '../components/Home/Carusel.vue'
+import Informacion from "../components/Home/Informacion.vue";
 
 export default {
   name: "home-view",
