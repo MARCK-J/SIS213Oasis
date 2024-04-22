@@ -22,7 +22,7 @@
     margin-left: 20px;
     width: 60%;
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
 }
 .Contactanos-contenedor input{
     width:85%;
