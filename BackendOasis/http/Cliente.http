@@ -13,5 +13,5 @@ Accept: application/json
     "correo": "Juan@asasd",
     "password": "Perez",
     "estadoCuenta": "Activo",
-    "idPersona": 3
+    "idPersona": 1
 }

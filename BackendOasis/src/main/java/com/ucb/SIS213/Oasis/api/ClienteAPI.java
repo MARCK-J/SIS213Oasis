@@ -55,10 +55,12 @@ public class ClienteAPI {
         public ResponseDTO createCliente(@RequestBody Cliente cliente) {
             Cliente clienteCreado;
             try{
+                LOGGER.info("Password: " + cliente.getPassword().toString());
                 clienteCreado = clienteBl.createCliente(cliente);
+
                 LOGGER.info("Cliente creado");
             } catch (RuntimeException e){
-                LOGGER.error("Error al crear el cliente");
+                LOGGER.error("Error al crear el cliente", e);
                 return new ResponseDTO("TASK-1000", e.getMessage());
             }
             return new ResponseDTO(clienteCreado);

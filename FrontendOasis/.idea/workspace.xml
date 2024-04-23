@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7bb494-9d16-43a3-86fb-ed85721bc49d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/imageRegister.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegistroPersona.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegistroPersona.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contactanos.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contactanos.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Informacion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Informacion.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,23 +25,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Max-Branch",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis/src/assets",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.npm run dev.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\maxpa\\Desktop\\Max Pasten\\Ingenieria de sistemas\\7mo Semestre\\Ingenieria de Software\\Proyecto\\SIS213Oasis\\FrontendOasis\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Max-Branch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis/src/assets&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.npm run dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\maxpa\\Desktop\\Max Pasten\\Ingenieria de sistemas\\7mo Semestre\\Ingenieria de Software\\Proyecto\\SIS213Oasis\\FrontendOasis\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\assets" />
@@ -89,6 +87,8 @@
       <workItem from="1713370988986" duration="8726000" />
       <workItem from="1713391234975" duration="7547000" />
       <workItem from="1713450254275" duration="8700000" />
+      <workItem from="1713718479096" duration="591000" />
+      <workItem from="1713719111319" duration="598000" />
     </task>
     <servers />
   </component>
