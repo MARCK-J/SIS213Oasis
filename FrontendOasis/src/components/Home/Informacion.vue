@@ -39,7 +39,7 @@
 <style>
 .tarjeta-informacion{
   width: 70%;
-  background-color: #348bbb;
+  background-color: #fff;
   border: 2px solid #000000;
   border-radius: 15px;
   padding: 20px;
@@ -48,11 +48,11 @@
 }
 .tarjeta-informacion h2 {
   text-align: center;
-  color: rgb(159, 170, 236);
+  color: rgb(0, 0, 0);
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5); /* Agrega un efecto de sombra al texto */
 }
 .agencia-informacion-container {
-  background-color: #f0f0f0;
+  background-color: #bcbbbb;
   padding: 50px 0;
   display: flex;
   justify-content: center;
