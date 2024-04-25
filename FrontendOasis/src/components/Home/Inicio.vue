@@ -8,14 +8,14 @@
           extraordinario en cada rincón del mundo.
         </p>
       </div>
-      <img class="aventurero" src="/src/assets/mochilero.png" alt="Aventurero">
+      <img class="aventurero" src="/src/assets/Home/mochilero.png" alt="Aventurero">
     </div>
 </template>
 
 
 <style lang="css" scoped>
 .welcome-view{
-  background: url(/src/assets/fondo.png);
+  background: url(/src/assets/Home/fondo.png);
   background-size: cover; /* La imagen se expandirá para cubrir todo el contenedor sin distorsionarla */
   background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
   color: #fff;

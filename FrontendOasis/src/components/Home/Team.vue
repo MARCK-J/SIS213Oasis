@@ -4,7 +4,7 @@
     <br />
     <div class="Tarjetas-team-contenedor">
       <TarjetaTeam
-        imagen="src/assets/team/Caro.jpg"
+        imagen="src/assets/Home/team/Caro.jpg"
         nombre="Ana Carolina Zeballos"
         cargo="Analista de calidad"
         mensajeLink="#"
@@ -12,7 +12,7 @@
         githubLink="https://github.com/CaroZeballos"
       />
       <TarjetaTeam
-        imagen="src/assets/team/Max.jpg"
+        imagen="src/assets/Home/team/Max.jpg"
         nombre="Max Pasten"
         cargo="Scrum Master"
         mensajeLink="#"
@@ -20,7 +20,7 @@
         githubLink="https://github.com/Max-APL"
       />
       <TarjetaTeam
-        imagen="src/assets/team/Marco.jpg"
+        imagen="src/assets/Home/team/Marco.jpg"
         nombre="Marco Reynolds"
         cargo="Product Owner"
         mensajeLink="#"
@@ -28,7 +28,7 @@
         githubLink="https://github.com/MARCK-J"
       />
       <TarjetaTeam
-        imagen="src/assets/team/Luan.jpeg"
+        imagen="src/assets/Home/team/Luan.jpeg"
         nombre="Luan Huanca"
         cargo="Desarrollador"
         mensajeLink="#"
@@ -36,7 +36,7 @@
         githubLink="https://github.com/LuanHuanca"
       />
       <TarjetaTeam
-        imagen="src/assets/team/Nyc.jpeg"
+        imagen="src/assets/Home/team/Nyc.jpeg"
         nombre="Nyc Callizaya"
         cargo="Diseñador UI/UX"
         mensajeLink="#"
@@ -44,7 +44,7 @@
         githubLink="https://github.com/NycKev"
       />
       <TarjetaTeam
-        imagen="src/assets/team/Andy.jpeg"
+        imagen="src/assets/Home/team/Andy.jpeg"
         nombre="Andy Calle"
         cargo="Diseñador UI/UX"
         mensajeLink="#"
