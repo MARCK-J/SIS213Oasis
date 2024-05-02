@@ -56,7 +56,7 @@
     flex-direction: column;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 760px) {
     .icono {
       width: 200px;
     }

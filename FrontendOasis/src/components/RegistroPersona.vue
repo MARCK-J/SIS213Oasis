@@ -41,9 +41,8 @@
         </form>
         <!-- Mensaje para iniciar sesión -->
         <p class="login-message">¿Ya tienes una cuenta?
-            <router-link v-if="!isAuthenticated"
-                to=""
-                @click.prevent="login"
+            <router-link 
+                to="/login"
                 class="nav-link"
             >Inicia sesión aquí</router-link>
         </p>
@@ -54,28 +53,9 @@
 
 
 <script>
-import { useAuth0 } from '@auth0/auth0-vue';
 import axios from 'axios';
 export default {
-  setup() {
-    const auth0 = useAuth0();
 
-    return {
-      isAuthenticated: auth0.isAuthenticated,
-      isLoading: auth0.isLoading,
-      user: auth0.user,
-      login() {
-        auth0.loginWithRedirect();
-      },
-      logout() {
-        auth0.logout({
-          logoutParams: {
-            returnTo: window.location.origin
-          }
-        });
-      }
-    }
-  },
   data() {
     return {
       personas:[],
