@@ -9,8 +9,6 @@
     <Team/>
     <Contactanos/>
     <Ubicacion/>
-    <!-- <hr />
-    <home-content /> -->
   </div>
 </template>
 
