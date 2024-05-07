@@ -11,6 +11,8 @@
       <div class="col-md text-center text-md-left">
         <h2>{{ user?.name }}</h2>
         <p class="lead text-muted">{{ user?.email }}</p>
+        <h2>Cumpleanios</h2>
+        <h2>{{ user?.birthdate }}</h2>
       </div>
     </div>
 
