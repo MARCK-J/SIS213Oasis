@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-container mb-3">
+  <div class="nav-container">
     <nav class="navbar navbar-expand-md navbar-light custom-navbar-color">
       <div class="container">
         <img id="logo" src="/src/assets/logo.png" alt="Logo de Oasis">
@@ -68,7 +68,6 @@
                 />
               </a>
               <div class="dropdown-menu dropdown-menu-right ">
-                <div class="dropdown-header">{{ user.name }}</div>
                 <router-link to="/profile" class="dropdown-item dropdown-profile">
                   <font-awesome-icon class="mr-3" icon="user" />Profile
                 </router-link>
@@ -113,30 +112,40 @@
 </template>
 
 <script lang="ts">
-import { useAuth0 } from '@auth0/auth0-vue';
+import { defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from "vue-router";
+import { googleLogout } from 'vue3-google-login';
 
-export default {
+export default defineComponent({
   name: "NavBar",
   setup() {
-    const auth0 = useAuth0();
+    const store = useStore();
+    const router = useRouter();
+    const isAuthenticated = store.state.loggedIn;
+    const user = store.state.user;
+
+    const login = () => {
+      router.push("/login");
+    };
+
+    const logout = () => {
+      console.log("Proceso de cerrado de sesion")
+      googleLogout();
+      store.commit('setLoggedIn', false);
+      store.commit('setUser', null);
+      console.log("Cierre completado");
+      window.location.reload();
+    };
 
     return {
-      isAuthenticated: auth0.isAuthenticated,
-      isLoading: auth0.isLoading,
-      user: auth0.user,
-      login() {
-        auth0.loginWithRedirect();
-      },
-      logout() {
-        auth0.logout({
-          logoutParams: {
-            returnTo: window.location.origin
-          }
-        });
-      }
-    }
+      isAuthenticated,
+      user,
+      login,
+      logout
+    };
   }
-};
+});
 </script>
 
 <style scoped>

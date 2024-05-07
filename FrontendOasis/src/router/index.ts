@@ -6,6 +6,9 @@ import { App } from 'vue';
 import RegistroPersona from "../components/RegistroPersona.vue";
 import RegistroAdmin from "../components/RegistroAdmin.vue";
 
+import Login from "../views/Login.vue";
+
+
 export function createRouter(app: App): Router {
   return createVueRouter({
     routes: [
@@ -18,7 +21,6 @@ export function createRouter(app: App): Router {
         path: "/profile",
         name: "profile",
         component: Profile,
-        beforeEnter: createAuthGuard(app)
       },
       {
         path: "/RegistroPersona",
@@ -29,6 +31,11 @@ export function createRouter(app: App): Router {
         path: "/RegistroAdmin",
         name: "registroAdmin",
         component: RegistroAdmin
+      },
+      { 
+        path: "/Login",
+        name: "Login",
+        component: Login
       },
     ],
     history: createWebHashHistory()

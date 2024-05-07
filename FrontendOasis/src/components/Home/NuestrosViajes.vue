@@ -4,7 +4,7 @@
         <br/>
         <div class="tarjetas-viajes-contenedor">
             <TarjetaViajes
-            imagen="src/assets/travels/Peru.png"
+            imagen="src/assets/Home/travels/Peru.png"
             alt="Viaje a peru"
             titulo="Vive la magia de Peru"
             duracion="Viaje de 8 dias y 7 noches"
@@ -12,7 +12,7 @@
             ciudades="Lima, Cusco, Machu Pichu"
             />
             <TarjetaViajes
-            imagen="src/assets/travels/Colombia.png"
+            imagen="src/assets/Home/travels/Colombia.png"
             alt="Viaje a Colombia"
             titulo="Con sabor a Colombia"
             duracion="Viaje de 8 dias y 7 noches"
@@ -20,7 +20,7 @@
             ciudades="Bogota, Medellin, Cartagena"
             />
             <TarjetaViajes
-            imagen="src/assets/travels/Buenos Aires.png"
+            imagen="src/assets/Home/travels/Buenos Aires.png"
             alt="Viaje a Buenos Aires"
             titulo="Buenos Aires a su medida"
             duracion="Viaje 8 dias y 7 noches"
@@ -28,7 +28,7 @@
             ciudades="Buenos Aires"
             />
             <TarjetaViajes
-            imagen="src/assets/travels/Brasil y Argentina.png"
+            imagen="src/assets/Home/travels/Brasil y Argentina.png"
             alt="Viaje a Brasil y Argentina"
             titulo="Brasil y Argentina"
             duracion="Viaje de 15 dias y 7 noches"
@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import TarjetaViajes from "../components/TarjetaViajes.vue"
+import TarjetaViajes from "./TarjetaViajes.vue"
 
 export default {
   components: {
