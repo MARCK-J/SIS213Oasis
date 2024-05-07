@@ -13,4 +13,6 @@ public interface ClienteDao extends JpaRepository<Cliente, Long> {
     @Query(value = "SELECT * FROM persona WHERE idPersona = ?1",
             nativeQuery = true)
     List<Cliente> findLabelsByUserId(Long userId);
+
+    public Cliente findByCorreo(String correo);
 }

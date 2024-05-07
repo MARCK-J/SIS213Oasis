@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.ucb.SIS213.Oasis.dao.ClienteDao;
 import com.ucb.SIS213.Oasis.entity.Cliente;
+import com.ucb.SIS213.Oasis.exep.UserException;
 
 import java.util.List;
 
@@ -41,6 +42,29 @@ public class ClienteBl {
         System.out.println("Contraseña: " + cliente.getPassword());
         return clienteDao.save(cliente);
     }
+
+    public Cliente login(String correo, String password) throws UserException {
+        // Encontrar al cliente por correo
+        Cliente cliente = clienteDao.findByCorreo(correo);
+        
+        if (cliente == null) {
+            throw new UserException("Correo o contraseña incorrectos");
+        }
+        
+        // Obtener la contraseña almacenada del cliente
+        String hashedPassword = cliente.getPassword();
+        
+        // Verificar si la contraseña proporcionada coincide con la contraseña almacenada después de ser hasheada
+        if (!bCryptPasswordEncoder.matches(password, hashedPassword)) {
+            throw new UserException("Correo o contraseña incorrectos");
+        }
+        
+        // No es necesario volver a hashear la contraseña al hacer el login
+        cliente.setPassword(null);
+        
+        return cliente;
+    }
+    
 
     public Cliente updateCliente(Cliente cliente) {
         Cliente clienteExistente = clienteDao.findById(cliente.getIdCliente()).orElse(null);
