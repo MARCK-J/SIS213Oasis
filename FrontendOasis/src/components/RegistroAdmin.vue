@@ -7,7 +7,7 @@
       <!-- Contenedor del formulario -->
       <div class="form-container">
         <!-- Título del formulario -->
-        <h2 class="form-title">Registro</h2>
+        <h2 class="form-title">Registro Administrador</h2>
         <!-- Formulario -->
         <form @submit.prevent="createPersona" class="form">
           <!-- Datos Personales -->
@@ -23,15 +23,12 @@
           <div class="form-group">
             <input type="tel" v-model="telefono" class="form-control" placeholder="Teléfono">
           </div>
-          <!-- Datos de Cuenta -->
           <div class="form-group">
-            <input type="email" v-model="correo" class="form-control" placeholder="Correo electrónico" required>
-          </div>
-          <div class="form-group">
-            <input type="password" v-model="password" class="form-control" placeholder="Contraseña" required>
-          </div>
-          <div class="form-group">
-            <input type="password" v-model="passwordConf" class="form-control" placeholder="Confirmar contraseña" required>
+            <select v-model="rol" class="form-control" style="height: 40px">
+              <option value="" disabled selected>Selecciona un Rol</option>
+              <option value="Admin">Admin</option>
+              <option value="Usuario">Usuario</option>
+            </select>
           </div>
           <!-- Botones -->
           <div class="button-group">
@@ -39,13 +36,6 @@
             <input type="submit" value="Continuar" class="btn btn-primary">
           </div>
         </form>
-        <!-- Mensaje para iniciar sesión -->
-        <p class="login-message">¿Ya tienes una cuenta?
-            <router-link 
-                to="/login"
-                class="nav-link"
-            >Inicia sesión aquí</router-link>
-        </p>
       </div>
     </div>
   </div>
@@ -53,6 +43,7 @@
 
 
 <script>
+import { useAuth0 } from '@auth0/auth0-vue';
 import axios from 'axios';
 
 export default {
@@ -66,26 +57,12 @@ export default {
       telefono: '',
       correo: '',
       password: '',
-      passwordConf: '',
+      rol: ''
     };
   },
   methods: {
     async createPersona(){
       try {
-        // Validar contraseña
-        if (this.password !== this.passwordConf) {
-          console.error("Las contraseñas no coinciden");
-          window.alert("Las contraseñas no coinciden");
-          return;
-        }
-
-        // Validar complejidad de la contraseña
-        if (!this.validatePassword(this.password)) {
-          console.error("La contraseña no cumple con los requisitos mínimos");
-          window.alert("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos," +
-              "mayusculas y minusculas");
-          return;
-        }
 
         // Enviar solicitud para crear una persona
         const response = await axios.post('http://localhost:9999/api/v1/persona/create',{
@@ -93,6 +70,7 @@ export default {
           apellidoP: this.apellidoP,
           apellidoM: this.apellidoM,
           telefono: this.telefono,
+          rol: this.rol
         });
 
         const nuevaPersona = response.data.data;
@@ -103,16 +81,20 @@ export default {
         const lastPersona = response2.data.result;
         console.log("Last persona",lastPersona);
 
-        // Enviar solicitud para crear una cuenta
-        const response3 = await axios.post('http://localhost:9999/api/v1/cliente/create',{
-          correo: this.correo,
-          password: this.password,
-          estadoCuenta: 'Activa',
-          idPersona: lastPersona,
+        // Enviar solicitud para crear un nuevo administrador
+        const response3 = await axios.post('http://localhost:9999/api/v1/admin/create', {
+
+          persona: {
+            idPersona: lastPersona,
+            nombre: this.nombre,
+            apellidoP: this.apellidoP,
+            apellidoM: this.apellidoM,
+            telefono: this.telefono
+          },
+          rol: this.rol
         });
 
-        const nuevaCuenta = response3.data.data;
-        console.log("Cuenta created");
+        console.log("Cuenta Admin created");
 
         // Limpiar campos
         this.nombre = '';
@@ -121,31 +103,16 @@ export default {
         this.telefono = '';
         this.correo = '';
         this.password = '';
-        this.passwordConf = '';
 
         this.$router.push('/'); // Redirige a la ruta de Login
 
-      } catch (error){
-        console.error("Error al crear la persona",error)
+      } catch (error) {
+        console.error("Error al crear la persona", error)
       }
     },
     goBack() {
       this.$router.push('/');
     },
-    // Función para validar la complejidad de la contraseña
-    validatePassword(password) {
-      // Al menos 8 caracteres
-      if (password.length < 8) return false;
-      // Al menos un número
-      if (!/\d/.test(password)) return false;
-      // Al menos una letra minúscula
-      if (!/[a-z]/.test(password)) return false;
-      // Al menos una letra mayúscula
-      if (!/[A-Z]/.test(password)) return false;
-      // Al menos un carácter especial
-      if (!/[^a-zA-Z0-9]/.test(password)) return false;
-      return true;
-    }
   }
 };
 </script>

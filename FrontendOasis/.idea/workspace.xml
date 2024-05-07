@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7bb494-9d16-43a3-86fb-ed85721bc49d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/http/Admin.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/http/Auditoria.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AdminAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AuditoriaAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/AdminBl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/AuditoriaBl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/AdminDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/AuditoriaDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/Auditoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RegistroAdmin.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/BDD/BD_OASIS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/BDD/BD_OASIS.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegistroPersona.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegistroPersona.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Profile.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +46,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Max-Branch&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis/src/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -85,8 +105,19 @@
       <workItem from="1713370988986" duration="8726000" />
       <workItem from="1713391234975" duration="7547000" />
       <workItem from="1713450254275" duration="8700000" />
-      <workItem from="1714059328107" duration="2953000" />
-      <workItem from="1714081247967" duration="282000" />
+      <workItem from="1713718479096" duration="591000" />
+      <workItem from="1713719111319" duration="598000" />
+      <workItem from="1713791248163" duration="151000" />
+      <workItem from="1713981478480" duration="816000" />
+      <workItem from="1714011151778" duration="1572000" />
+      <workItem from="1714178791076" duration="762000" />
+      <workItem from="1714396488949" duration="954000" />
+      <workItem from="1714399236394" duration="111000" />
+      <workItem from="1714411863138" duration="13876000" />
+      <workItem from="1714480068064" duration="782000" />
+      <workItem from="1714482470679" duration="70000" />
+      <workItem from="1714667268992" duration="3652000" />
+      <workItem from="1715016540694" duration="5610000" />
     </task>
     <servers />
   </component>
