@@ -55,9 +55,7 @@ public class ClienteAPI {
         public ResponseDTO createCliente(@RequestBody Cliente cliente) {
             Cliente clienteCreado;
             try{
-                LOGGER.info("Password: " + cliente.getPassword().toString());
                 clienteCreado = clienteBl.createCliente(cliente);
-
                 LOGGER.info("Cliente creado");
             } catch (RuntimeException e){
                 LOGGER.error("Error al crear el cliente", e);

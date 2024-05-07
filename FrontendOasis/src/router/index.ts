@@ -4,7 +4,10 @@ import Profile from "../views/Profile.vue";
 import { createAuthGuard } from "@auth0/auth0-vue";
 import { App } from 'vue';
 import RegistroPersona from "../components/RegistroPersona.vue";
+import RegistroAdmin from "../components/RegistroAdmin.vue";
+
 import Login from "../views/Login.vue";
+
 
 export function createRouter(app: App): Router {
   return createVueRouter({
@@ -25,6 +28,11 @@ export function createRouter(app: App): Router {
         component: RegistroPersona
       },
       {
+        path: "/RegistroAdmin",
+        name: "registroAdmin",
+        component: RegistroAdmin
+      },
+      { 
         path: "/Login",
         name: "Login",
         component: Login
