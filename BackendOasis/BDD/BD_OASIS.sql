@@ -1,5 +1,7 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-04-21 17:02:35.853
+-- Last modification date: 2024-05-02 18:14:42.997
+
+-- Crear la base de datos 'Oasis' en PgAdmin
 
 -- tables
 -- Table: Actividad
@@ -41,6 +43,20 @@ CREATE TABLE Atraccion (
                            precio decimal(7,2)  NOT NULL,
                            detalle varchar(255)  NOT NULL,
                            CONSTRAINT Atraccion_pk PRIMARY KEY (idAtraccion)
+);
+
+-- Table: Auditoria
+CREATE TABLE Auditoria (
+                           idAudit serial NOT NULL,
+                           actividad varchar(250)  NOT NULL,
+                           fecha date  NOT NULL,
+                           hora time  NOT NULL,
+                           fechaInicio timestamp,
+                           fechaFin timestamp,
+                           ip varchar(50),
+                           admin_idAdmin int,
+                           Cliente_idCliente int,
+                           CONSTRAINT Auditoria_pk PRIMARY KEY (idAudit)
 );
 
 -- Table: Auto
@@ -166,10 +182,10 @@ CREATE TABLE ReservaViaje (
                               Cliente_idCliente int  NOT NULL,
                               Viaje_idViaje int  NOT NULL,
                               Seguro_idSeguro int  NOT NULL,
-                              AlquilerAuto_idAlquiler int,
-                              Atraccion_idAtraccion int,
-                              Actividad_idActividad int,
-                              ReservaHotel_idReservaHotel int,
+                              AlquilerAuto_idAlquiler int  NOT NULL,
+                              Atraccion_idAtraccion int  NOT NULL,
+                              Actividad_idActividad int  NOT NULL,
+                              ReservaHotel_idReservaHotel int  NOT NULL,
                               CONSTRAINT ReservaViaje_pk PRIMARY KEY (idReservaViaja)
 );
 
@@ -251,6 +267,22 @@ ALTER TABLE Atraccion ADD CONSTRAINT Atraccion_CategoriaAtraccion
 ALTER TABLE Atraccion ADD CONSTRAINT Atraccion_Ciudad
     FOREIGN KEY (Ciudad_idCiudad)
         REFERENCES Ciudad (idCiudad)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: Auditoria_Cliente (table: Auditoria)
+ALTER TABLE Auditoria ADD CONSTRAINT Auditoria_Cliente
+    FOREIGN KEY (Cliente_idCliente)
+        REFERENCES Cliente (idCliente)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: Auditoria_admin (table: Auditoria)
+ALTER TABLE Auditoria ADD CONSTRAINT Auditoria_admin
+    FOREIGN KEY (admin_idAdmin)
+        REFERENCES admin (idAdmin)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
