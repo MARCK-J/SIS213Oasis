@@ -31,9 +31,10 @@
 <script>
 import { defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { decodeCredential } from "vue3-google-login";
-import CustomInput from "./CustomInput.vue";
 import { useRouter } from "vue-router";
+import axios from 'axios'; // Importa axios para hacer solicitudes HTTP
+
+import CustomInput from "./CustomInput.vue";
 
 export default defineComponent({
   name: "TarjetaLogin",
@@ -44,6 +45,37 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
 
+    const loginPersona = async () => {
+      try {
+        // Realiza una solicitud POST al endpoint de inicio de sesión
+        const response = await axios.post('/api/v1/cliente/login', {
+          correo: nombre, // Usa el valor del nombre de usuario del input
+          password: password // Usa el valor de la contraseña del input
+        });
+
+        // Si la solicitud es exitosa, actualiza el estado de autenticación y redirige al usuario
+        store.commit('setLoggedIn', true);
+        store.commit('setUser', response.data);
+        router.push("/");
+
+      } catch (error) {
+        // Si hay un error en la solicitud, muestra un mensaje de error
+        console.error("Error al iniciar sesión:", error.response.data.message);
+        // Aquí puedes mostrar el mensaje de error en tu aplicación, por ejemplo, en un componente de alerta
+      }
+    };
+
+    const continuar = () => {
+      // Validar los campos, por ejemplo, si están llenos
+      if (nombre && password) {
+        // Si los campos son válidos, llamar a loginPersona para iniciar sesión
+        loginPersona();
+      } else {
+        // Si los campos no son válidos, puedes mostrar un mensaje de error o realizar otra acción
+        console.error("Los campos no pueden estar vacíos");
+      }
+    };
+
     const callback = (response) => {
       console.log("Inicio de sesión con éxito");
       const user = decodeCredential(response.credential);
@@ -53,13 +85,12 @@ export default defineComponent({
     };
 
     return {
+      continuar,
       callback
     };
   },
 });
 </script>
-
-
 
 <style>
 .form {
