@@ -1,6 +1,11 @@
 <template>
   <div class="dashboard">
-    <h1>Dashboard</h1>
+    <div class="dashboardTitle">
+      <h1>Dashboard</h1>
+      <button>
+        <router-link to="/RegistroAdmin" class="enlacerouter"> Registrar Administrador</router-link>
+      </button>
+    </div>
     <div class="total-registros">
       <h2>Datos de Auditoria</h2>
       <table>
@@ -69,11 +74,26 @@ body {
   margin: 0;
   padding: 0;
 }
+.dashboardTitle{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 50px;
+}
+.dashboardTitle button{
+  margin-left: 30px;
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 10px 20px;
+  background-color: rgb(84, 84, 239); 
+}
 
 .dashboard {
   width: 95%;
   margin: 20px auto;
   text-align: left;
+}
+.enlacerouter{
+  color: #fff;
 }
 
 .total-registros {

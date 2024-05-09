@@ -1,6 +1,6 @@
 <template>
   <div class="verificacion">
-    <router-link to="/" class="back-link">Regresar</router-link>
+    <router-link to="/login" class="back-link">Regresar</router-link>
     <TarjetaVerificacion />
   </div>
 </template>

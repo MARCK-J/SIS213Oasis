@@ -44,7 +44,7 @@
           </ul>
           <ul class="navbar-nav mr-auto">
             <li v-if="!isAuthenticated" class="nav-item">
-              <router-link to="/Dashboard" class="nav-link">Registrarse</router-link>
+              <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
@@ -202,6 +202,7 @@ export default defineComponent({
         store.commit('setLoggedIn', false);
         store.commit('setUser', null);
         console.log("Cierre completado");
+        router.push("/");
         window.location.reload();
       } catch (error) {
         console.error('Error al cerrar sesión:', error);
