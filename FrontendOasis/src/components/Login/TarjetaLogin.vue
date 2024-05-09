@@ -43,7 +43,14 @@ export default defineComponent({
   data() {
     return {
       correo: '',
-      password: ''
+      password: '',
+      actividad: '',
+      fecha: "",
+      hora: "",
+      fechaInicio: "",
+      fechaFin: "",
+      ipAddress: ""
+
     };
   },
   components: {
@@ -66,7 +73,57 @@ export default defineComponent({
     };
   },
 
+  created() {
+    // Calcular IP
+    this.getIPAddress();
+  },
+
   methods: {
+    calcularFecha() {
+      const ahora = new Date();
+      const dia = String(ahora.getDate()).padStart(2, '0');
+      const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+      const anio = ahora.getFullYear();
+      const horas = String(ahora.getHours()).padStart(2, '0');
+      const minutos = String(ahora.getMinutes()).padStart(2, '0');
+      const segundos = String(ahora.getSeconds()).padStart(2, '0');
+
+      this.fecha = `${anio}-${mes}-${dia}`;
+      this.hora = `${horas}:${minutos}:${segundos}`;
+      this.fechaInicio = `${this.fecha}T${this.hora}`;
+    },
+
+    async getIPAddress() {
+      try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        console.log("IP: ", data.ip);
+        return this.ipAddress = data.ip;
+
+      } catch (error) {
+        console.error('Error al obtener la dirección IP:', error);
+      }
+
+    },
+
+    async auditoriaUser (actividad, fecha, hora, fechaInicio, fechaFin, ip, idAdmin){
+      // Enviar solicitud para crear una auditoria
+      const response = await axios.post('http://localhost:9999/api/v1/auditoria/create',{
+        actividad: actividad,
+        fecha: fecha,
+        hora: hora,
+        fechaInicio: fechaInicio,
+        fechaFin: fechaFin,
+        ip: ip,
+        idAdmin: idAdmin,
+        idCliente: null
+      });
+
+      const nuevaPersona = response.data.data;
+      console.log("Auditoria created");
+
+    },
+
     async loginPersona () {
       const store = useStore();
       const router = useRouter();
@@ -79,9 +136,23 @@ export default defineComponent({
 
         const user = response.data.code;
         if (user === '200-OK') {
+
+
+
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit('setLoggedIn', true);
           this.$store.commit('setUser', user);
+
+          // Calcular fechas
+          this.calcularFecha();
+
+
+          // Registrar auditoria:
+          this.actividad = "Inicio de Sesion";
+          this.auditoriaUser(this.actividad, this.fecha, this.hora, this.fechaInicio,
+              this.fechaFin, this.ipAddress, 1);
+
+
           //router.push("/");
           this.$router.push('/');
         } else {
