@@ -9,6 +9,8 @@ import RegistroAdmin from "../components/RegistroAdmin.vue";
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Verificacion from "../views/Verificacion.vue";
+import TokenOlvido from "../views/TokenOlvido.vue";
+import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
 
 
 
@@ -49,6 +51,16 @@ export function createRouter(app: App): Router {
         path: "/Verificacion",
         name: "verificacion",
         component: Verificacion
+      },
+      {
+        path: "/TokenOlvido",
+        name: "tokenOlvido",
+        component: TokenOlvido
+      },
+      {
+        path: "/RestablecerContrasenia",
+        name: "restablecerContrasenia",
+        component: RestablecerContrasenia
       },
     ],
     history: createWebHashHistory()

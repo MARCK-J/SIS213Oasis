@@ -21,7 +21,9 @@
           v-model="password"
         />
       </div>
-      <router-link to="" class="enlace">¿Olvidaste tu contraseña?</router-link>
+      <router-link to="" @click="olvideContrasena" class="enlace"
+        >¿Olvidaste tu contraseña?</router-link
+      >
       <button type="submit">Continuar</button>
     </form>
     <div class="registro-enlace-container">
@@ -70,6 +72,22 @@ export default defineComponent({
   },
 
   methods: {
+    olvideContrasena() {
+      const router = useRouter();
+      if (this.correo) {
+        this.randomCode = this.generateCode(); // Llama a la función dentro del componente
+        this.$store.commit("setRandomCode", this.randomCode);
+        this.tokenDeOlvido();
+        this.$router.push("/TokenOlvido");
+
+      } else {
+        console.error("Por favor, Llena por lo menos el email");
+        this.mostrarError(
+          "Por favor, debe ingresar al menos el email ",
+          "error"
+        );
+      }
+    },
     async loginPersona() {
       const store = useStore();
       const router = useRouter();
@@ -99,12 +117,15 @@ export default defineComponent({
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error("Error al iniciar sesión:", response.data.message);
           // alert("Error al iniciar sesión: Correo o contraseña incorrectos");
-          this.mostrarError("Error al iniciar sesión: Correo o contraseña incorrectos","error");
+          this.mostrarError(
+            "Error al iniciar sesión: Correo o contraseña incorrectos",
+            "error"
+          );
         }
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         // alert("Error al iniciar sesión");
-        this.mostrarError("Error al iniciar sesion","error");
+        this.mostrarError("Error al iniciar sesion", "error");
       }
     },
 
@@ -128,18 +149,23 @@ export default defineComponent({
           this.$store.commit("setUser", user);
           //router.push("/");
           this.$router.push("/Dashboard");
-          this.mostrarError("Felicidades acceso aceptado Administrador","success");
+          this.mostrarError(
+            "Felicidades acceso aceptado Administrador",
+            "success"
+          );
         } else {
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error("Error al iniciar sesión:", response.data.message);
           // alert("Error al iniciar sesión: Correo o contraseña incorrectos");
-          this.mostrarError("Error al iniciar sesión: Correo o contraseña incorrectos","error");
-
+          this.mostrarError(
+            "Error al iniciar sesión: Correo o contraseña incorrectos",
+            "error"
+          );
         }
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         // alert("Error al iniciar sesión");
-        this.mostrarError("Error al iniciar sesion","error");
+        this.mostrarError("Error al iniciar sesion", "error");
       }
     },
 
@@ -167,27 +193,28 @@ export default defineComponent({
         // Si los campos no son válidos, puedes mostrar un mensaje de error o realizar otra acción
         console.error("Por favor, llena todos los campos");
         // window.alert("Por favor, llena todos los campos");
-        this.mostrarError("Por favor, llena todos los campos! ","error");
+        this.mostrarError("Por favor, llena todos los campos! ", "error");
       }
     },
-    mostrarError(message,icon){
+    mostrarError(message, icon) {
       this.$swal({
-          icon: icon,
-          title: "Oops...",
-          text: message,
-        });
+        icon: icon,
+        title: "Oops...",
+        text: message,
+      });
     },
     toastTopEnd() {
       this.$swal({
         toast: true,
-        position: 'top-end',
+        position: "top-end",
         showConfirmButton: false,
         timer: 3000,
 
-        icon: 'success',
-        title: 'Acceso casi completo',
-        text: 'Seguimos con la autenticacion de dos pasos',
-      })},
+        icon: "success",
+        title: "Acceso casi completo",
+        text: "Seguimos con la autenticacion de dos pasos",
+      });
+    },
 
     async sendMail() {
       const url = "http://localhost:9999/mail/send/" + this.correo;
@@ -211,7 +238,36 @@ Agencia de Viajes Oasis
 Max Pasten, Gerente de la agencia de viajes`,
       };
       const response2 = await axios
-        .post(url,data)
+        .post(url, data)
+        .then((response) => {
+          console.log("El correo fue enviado exitosamente:", response.data);
+        })
+        .catch((error) => {
+          console.error("Hubo un problema al enviar el correo:", error);
+        });
+    },
+    async tokenDeOlvido() {
+      const url = "http://localhost:9999/mail/send/" + this.correo;
+      const data = {
+  subject: "Solicitud de restablecimiento de contraseña",
+  message: `Estimado/a Usuario/a,
+
+Hemos recibido una solicitud para restablecer tu contraseña. Si no has solicitado este cambio, por favor ignora este mensaje.
+
+Para restablecer tu contraseña, utiliza el siguiente código de verificación:
+
+Código de Verificación: ${this.randomCode}
+
+Por favor, asegúrate de introducir este código en el campo correspondiente en la pantalla de restablecimiento de contraseña para completar el proceso.
+
+Si tienes alguna pregunta o necesitas asistencia, no dudes en ponerte en contacto con nuestro equipo de soporte.
+
+Gracias,
+Agencia de Viajes Oasis`,
+};
+
+      await axios
+        .post(url, data)
         .then((response) => {
           console.log("El correo fue enviado exitosamente:", response.data);
         })
