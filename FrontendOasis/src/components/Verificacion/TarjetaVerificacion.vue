@@ -5,7 +5,7 @@
       <h3>Verificacion de dos pasos</h3>
       <p>Se le envio un codigo de verificacion a su correo</p>
       <p>por favor ingrese ese codigo en el siguiente campo para la validacion</p>
-      <form @submit.prevent="verificarCodigo" class="form">
+      <form @submit.prevent="verificacionCodigo" class="form">
         <div class="CustomInput">
           <p>Codigo de verificacion:</p>
         <input
@@ -20,38 +20,58 @@
     </div>
   </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue'; // Importa ref para manejar la referencia al input
 import { useStore } from 'vuex';
 import { useRouter } from "vue-router";
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 
 export default defineComponent({
-  name: "VerificacionDosPasos",
+  name: "NavBar",
   setup() {
     const store = useStore();
     const router = useRouter();
-    const verificacion = ''; // Variable para almacenar el código de verificación ingresado por el usuario
+    const codigo = store.state.randomCode;
+    const verificacion = ref(""); // Crea una referencia reactiva para el valor del input
 
-    const verificarCodigo = () => {
-      // Obtener el código de verificación almacenado en Vuex
-      const codigoGuardado = store.state.codigoVerificacion;
-      
-      // Verificar si el código ingresado coincide con el código guardado
-      if (verificacion === codigoGuardado) {
-        // Código correcto, realizar la acción deseada (por ejemplo, redireccionar a otra página)
-        router.push('/');
+    const verificacionCodigo = () => {
+      if (verificacion.value === codigo) { 
+        toastTopEnd();
+        router.push("/");
       } else {
-        // Código incorrecto, mostrar un mensaje de error o realizar alguna otra acción
-        alert('El código de verificación ingresado es incorrecto. Por favor, inténtelo de nuevo.');
+        mostrarError("El código de verificación ingresado es incorrecto. Por favor, inténtelo de nuevo.");
       }
+    };
+
+    const mostrarError = (message:string) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+      });
+    };
+
+    const toastTopEnd = () => {
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        icon: 'success',
+        title: 'Felicidades',
+        text: 'Su inicio de sesion se completo correctamente',
+      });
     };
 
     return {
       verificacion,
-      verificarCodigo
+      verificacionCodigo,
+      mostrarError,
+      toastTopEnd,
     };
-  }
+  },
 });
 </script>
+
 
   <style>
   .CustomInput {

@@ -10,6 +10,8 @@ import hljsVuePlugin from "@highlightjs/vue-plugin";
 import "highlight.js/styles/github.css";
 import vue3GoogleLogin from "vue3-google-login";
 import store from "./functions/store";
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 hljs.registerLanguage('json', json);
 
@@ -19,6 +21,7 @@ library.add(faLink, faUser, faPowerOff);
 
 app
   .use(hljsVuePlugin)
+  .use(VueSweetalert2)
   .use(createRouter(app))
   .use(store)
   .use(vue3GoogleLogin, {

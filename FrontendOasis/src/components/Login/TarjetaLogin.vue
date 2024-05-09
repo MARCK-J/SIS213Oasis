@@ -11,7 +11,6 @@
           placeholder="Ingrese su correo electronico"
           type="text"
           v-model="correo"
-          required
         />
       </div>
       <div class="CustomInput">
@@ -20,7 +19,6 @@
           placeholder="Ingrese su contraseña"
           type="password"
           v-model="password"
-          required
         />
       </div>
       <router-link to="" class="enlace">¿Olvidaste tu contraseña?</router-link>
@@ -90,17 +88,23 @@ export default defineComponent({
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit("setLoggedIn", true);
           this.$store.commit("setUser", user);
-          generateCode();
+          this.randomCode = this.generateCode(); // Llama a la función dentro del componente
+          this.$store.commit("setRandomCode", this.randomCode);
+          this.sendMail(); // Llama a la función sendMail() para enviar el correo de verificación
+          console.log("Se envio la solicitud al correo" + this.correo);
+          this.toastTopEnd();
           //router.push("/");
           this.$router.push("/Verificacion");
         } else {
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error("Error al iniciar sesión:", response.data.message);
-          alert("Error al iniciar sesión: Correo o contraseña incorrectos");
+          // alert("Error al iniciar sesión: Correo o contraseña incorrectos");
+          this.mostrarError("Error al iniciar sesión: Correo o contraseña incorrectos","error");
         }
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
-        alert("Error al iniciar sesión");
+        // alert("Error al iniciar sesión");
+        this.mostrarError("Error al iniciar sesion","error");
       }
     },
 
@@ -124,14 +128,18 @@ export default defineComponent({
           this.$store.commit("setUser", user);
           //router.push("/");
           this.$router.push("/Dashboard");
+          this.mostrarError("Felicidades acceso aceptado Administrador","success");
         } else {
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error("Error al iniciar sesión:", response.data.message);
-          alert("Error al iniciar sesión: Correo o contraseña incorrectos");
+          // alert("Error al iniciar sesión: Correo o contraseña incorrectos");
+          this.mostrarError("Error al iniciar sesión: Correo o contraseña incorrectos","error");
+
         }
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
-        alert("Error al iniciar sesión");
+        // alert("Error al iniciar sesión");
+        this.mostrarError("Error al iniciar sesion","error");
       }
     },
 
@@ -158,15 +166,30 @@ export default defineComponent({
       } else {
         // Si los campos no son válidos, puedes mostrar un mensaje de error o realizar otra acción
         console.error("Por favor, llena todos los campos");
-        window.alert("Por favor, llena todos los campos");
+        // window.alert("Por favor, llena todos los campos");
+        this.mostrarError("Por favor, llena todos los campos! ","error");
       }
     },
-    generateCode() {
-      randomCode = generateRandomCode();
-      this.$store.commit("setRandomCode", randomCode);
-      sendMail();
+    mostrarError(message,icon){
+      this.$swal({
+          icon: icon,
+          title: "Oops...",
+          text: message,
+        });
     },
-    sendMail() {
+    toastTopEnd() {
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+
+        icon: 'success',
+        title: 'Acceso casi completo',
+        text: 'Seguimos con la autenticacion de dos pasos',
+      })},
+
+    async sendMail() {
       const url = "http://localhost:9999/mail/send/" + this.correo;
       const data = {
         subject: "Código de Verificación en Dos Pasos para Acceder a tu Cuenta",
@@ -187,10 +210,8 @@ Atentamente,
 Agencia de Viajes Oasis
 Max Pasten, Gerente de la agencia de viajes`,
       };
-
-      // Enviar la solicitud POST usando Axios
-      axios
-        .post(url, data)
+      const response2 = await axios
+        .post(url,data)
         .then((response) => {
           console.log("El correo fue enviado exitosamente:", response.data);
         })
@@ -198,17 +219,20 @@ Max Pasten, Gerente de la agencia de viajes`,
           console.error("Hubo un problema al enviar el correo:", error);
         });
     },
+    // Método para generar un código aleatorio de 6 dígitos
+    generateCode() {
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let code = "";
+      for (let i = 0; i < 6; i++) {
+        code += characters.charAt(
+          Math.floor(Math.random() * characters.length)
+        );
+      }
+      return code;
+    },
   },
 });
-function generateRandomCode() {
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let code = "";
-  for (let i = 0; i < 6; i++) {
-    code += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return code;
-}
 </script>
 
 <style>
