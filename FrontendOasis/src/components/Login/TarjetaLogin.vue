@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import {defineComponent, ref} from 'vue';
 import { useStore } from 'vuex';
 import { decodeCredential } from "vue3-google-login";
 import CustomInput from "./CustomInput.vue";
@@ -49,7 +49,9 @@ export default defineComponent({
       hora: "",
       fechaInicio: "",
       fechaFin: "",
-      ipAddress: ""
+      ipAddress: "",
+      idAdmin: 0,
+      idCliente: 0,
 
     };
   },
@@ -61,15 +63,89 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
 
-    const callback = (response) => {
+    const actividad = ref('');
+    const fecha = ref('');
+    const hora = ref('');
+    const fechaInicio = ref('');
+    const fechaFin = ref('');
+    const ipAddress = ref('');
+    const idAdmin = ref('');
+    const idCliente = ref('');
+
+    const calcularFecha = () => {
+      const ahora = new Date();
+      const dia = String(ahora.getDate()).padStart(2, '0');
+      const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+      const anio = ahora.getFullYear();
+      const horas = String(ahora.getHours()).padStart(2, '0');
+      const minutos = String(ahora.getMinutes()).padStart(2, '0');
+      const segundos = String(ahora.getSeconds()).padStart(2, '0');
+
+      fecha.value = `${anio}-${mes}-${dia}`;
+      hora.value = `${horas}:${minutos}:${segundos}`;
+      fechaInicio.value = `${fecha.value}T${hora.value}`;
+      fechaFin.value = `${fecha.value}T${hora.value}`;
+    };
+
+    const getIPAddress = async () => {
+      try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        console.log("IP: ", data.ip);
+        ipAddress.value = data.ip;
+      } catch (error) {
+        console.error('Error al obtener la dirección IP:', error);
+      }
+    };
+
+    const auditoriaUser = async () => {
+
+      try {
+        actividad.value = "Inicio Sesion Google"
+        await axios.post('http://localhost:9999/api/v1/auditoria/create', {
+          actividad: actividad.value,
+          fecha: fecha.value,
+          hora: hora.value,
+          fechaInicio: "",
+          fechaFin: fechaFin.value,
+          ip: ipAddress.value,
+          idAdmin: null,
+          idCliente: parseInt(idCliente.value, 16)
+        });
+
+        console.log("Auditoria created");
+      } catch (error) {
+        console.error('Error al crear la auditoría:', error);
+      }
+    };
+
+
+    const callback = async (response) => {
+
       console.log("Inicio de sesión con éxito");
       const user = decodeCredential(response.credential);
       store.commit('setLoggedIn', true);
       store.commit('setUser', user);
+      console.info("SUB: ",user.sub )
+      store.commit('setId', user.sub);
+      calcularFecha();
+      await getIPAddress();
+
+
+      console.info("ID SUB: ",store.state.id )
+
+
+      idAdmin.value = null;
+      idCliente.value = parseInt(store.state.id, 16);
+      await auditoriaUser();
+
       router.push("/");
+
+
     };
     return {
-      callback
+      callback,
+      user: store.state.user,
     };
   },
 
@@ -106,7 +182,7 @@ export default defineComponent({
 
     },
 
-    async auditoriaUser (actividad, fecha, hora, fechaInicio, fechaFin, ip, idAdmin){
+    async auditoriaUser (actividad, fecha, hora, fechaInicio, fechaFin, ip, idAdmin, idCliente){
       // Enviar solicitud para crear una auditoria
       const response = await axios.post('http://localhost:9999/api/v1/auditoria/create',{
         actividad: actividad,
@@ -116,7 +192,7 @@ export default defineComponent({
         fechaFin: fechaFin,
         ip: ip,
         idAdmin: idAdmin,
-        idCliente: null
+        idCliente: idCliente
       });
 
       const nuevaPersona = response.data.data;
@@ -142,15 +218,26 @@ export default defineComponent({
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit('setLoggedIn', true);
           this.$store.commit('setUser', user);
+          console.info("ID: ", response.data.result["idCliente"]);
+          this.$store.commit('setId', response.data.result["idCliente"]);
+          this.$store.commit('setRol', "Cliente");
+
+
 
           // Calcular fechas
           this.calcularFecha();
 
 
+
           // Registrar auditoria:
           this.actividad = "Inicio de Sesion";
-          this.auditoriaUser(this.actividad, this.fecha, this.hora, this.fechaInicio,
-              this.fechaFin, this.ipAddress, 1);
+          console.info("ID: ", this.$store.state.id);
+          //this.idAdmin.value = this.$store.state.id;
+          this.idAdmin = null;
+          this.idCliente = this.$store.state.id;
+          await this.auditoriaUser(this.actividad, this.fecha, this.hora, this.fechaInicio,
+              this.fechaFin, this.ipAddress, this.idAdmin , this.idCliente);
+
 
 
           //router.push("/");
@@ -182,6 +269,23 @@ export default defineComponent({
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit('setLoggedIn', true);
           this.$store.commit('setUser', user);
+          console.info("ID: ", response.data.result["idAdmin"]);
+          this.$store.commit('setId', response.data.result["idAdmin"]);
+          this.$store.commit('setRol', "Admin");
+
+          // Calcular fechas
+          this.calcularFecha();
+
+
+          // Registrar auditoria:
+          this.actividad = "Inicio de Sesion";
+          console.info("ID: ", this.$store.state.id);
+          //this.idAdmin.value = this.$store.state.id;
+          this.idAdmin = this.$store.state.id;
+          this.idCliente = null;
+          await this.auditoriaUser(this.actividad, this.fecha, this.hora, this.fechaInicio,
+              this.fechaFin, this.ipAddress, this.idAdmin , this.idCliente);
+
           //router.push("/");
           this.$router.push('/Dashboard');
         } else {

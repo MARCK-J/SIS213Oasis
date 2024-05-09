@@ -8,6 +8,7 @@ import RegistroAdmin from "../components/RegistroAdmin.vue";
 
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Hotel from "../views/Hotel.vue";
 
 
 export function createRouter(app: App): Router {
@@ -42,6 +43,11 @@ export function createRouter(app: App): Router {
         path: "/Dashboard",
         name: "dashboard",
         component: Dashboard
+      },
+      {
+        path: "/Hotel",
+        name: "hotel",
+        component: Hotel
       },
     ],
     history: createWebHashHistory()

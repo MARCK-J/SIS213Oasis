@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7bb494-9d16-43a3-86fb-ed85721bc49d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/imagen2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/lupa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hoteles/CarrilHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hoteles/FooterHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hoteles/InicioHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Hotel.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/TarjetaLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/TarjetaLogin.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +74,8 @@
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\assets\Hotel" />
+      <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\components\Hoteles" />
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\components" />
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\views" />
     </key>
@@ -117,6 +132,7 @@
       <workItem from="1715091478323" duration="452000" />
       <workItem from="1715133592460" duration="690000" />
       <workItem from="1715184827043" duration="17581000" />
+      <workItem from="1715274770456" duration="7333000" />
     </task>
     <servers />
   </component>

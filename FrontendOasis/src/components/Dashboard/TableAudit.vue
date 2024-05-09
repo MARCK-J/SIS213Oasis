@@ -8,6 +8,7 @@
         <tr>
           <th>ID</th>
           <th>Actividad</th>
+          <th>Administrador</th>
           <th>Usuario</th>
           <th>Fecha</th>
           <th>Hora</th>
@@ -21,6 +22,7 @@
           <td>{{ auditoria.idAudit }}</td>
           <td>{{ auditoria.actividad }}</td>
           <td>{{ auditoria.idAdmin }}</td>
+          <td>{{ auditoria.idCliente }}</td>
           <td>{{ auditoria.fecha }}</td>
           <td>{{ auditoria.hora }}</td>
           <td>{{ auditoria.fechaInicio }}</td>

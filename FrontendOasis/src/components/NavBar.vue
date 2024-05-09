@@ -24,7 +24,7 @@
           </ul>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link to="/hoteles" class="nav-link">Hoteles</router-link>
+              <router-link to="/Hotel" class="nav-link">Hoteles</router-link>
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
@@ -132,6 +132,8 @@ export default defineComponent({
     const fechaInicio = ref('');
     const fechaFin = ref('');
     const ipAddress = ref('');
+    const idAdmin = ref('');
+    const idCliente = ref('');
 
     const login = () => {
       router.push("/login");
@@ -173,8 +175,8 @@ export default defineComponent({
           fechaInicio: "",
           fechaFin: fechaFin.value,
           ip: ipAddress.value,
-          idAdmin: 1,
-          idCliente: null
+          idAdmin: idAdmin.value,
+          idCliente: idCliente.value
         });
 
         console.log("Auditoria created");
@@ -187,6 +189,12 @@ export default defineComponent({
       try {
         calcularFecha();
         await getIPAddress();
+
+        if (store.state.rol === 'admin') {
+          idAdmin.value = store.state.id;
+        } else if (store.state.rol === 'cliente') {
+          idCliente.value = store.state.id;
+        }
         await auditoriaUser();
 
         console.log("Proceso de cerrado de sesión");
