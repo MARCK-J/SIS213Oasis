@@ -92,7 +92,7 @@ export default defineComponent({
           this.$store.commit("setUser", user);
           generateCode();
           //router.push("/");
-          this.$router.push("/Vericacion");
+          this.$router.push("/Verificacion");
         } else {
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error("Error al iniciar sesión:", response.data.message);
