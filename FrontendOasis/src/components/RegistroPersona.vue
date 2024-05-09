@@ -41,10 +41,10 @@
         </form>
         <!-- Mensaje para iniciar sesión -->
         <p class="login-message">¿Ya tienes una cuenta?
-            <router-link 
-                to="/login"
-                class="nav-link"
-            >Inicia sesión aquí</router-link>
+          <router-link
+              to="/login"
+              class="nav-link"
+          >Inicia sesión aquí</router-link>
         </p>
       </div>
     </div>
@@ -54,6 +54,8 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
 
 export default {
 
@@ -75,15 +77,35 @@ export default {
         // Validar contraseña
         if (this.password !== this.passwordConf) {
           console.error("Las contraseñas no coinciden");
-          window.alert("Las contraseñas no coinciden");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Las contraseñas no coinciden',
+            showClass: {
+              popup: 'animate_animated animate_bounceIn'
+            },
+            hideClass: {
+              popup: 'animate_animated animate_fadeOut'
+            }
+          });
           return;
         }
 
         // Validar complejidad de la contraseña
         if (!this.validatePassword(this.password)) {
           console.error("La contraseña no cumple con los requisitos mínimos");
-          window.alert("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos," +
-              "mayusculas y minusculas");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos," +
+                "mayusculas y minusculas",
+            showClass: {
+              popup: 'animate_animated animate_bounceIn'
+            },
+            hideClass: {
+              popup: 'animate_animated animate_fadeOut'
+            }
+          });
           return;
         }
 
@@ -127,6 +149,17 @@ export default {
 
       } catch (error){
         console.error("Error al crear la persona",error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: "Error al crear la persona",
+          showClass: {
+            popup: 'animate_animated animate_bounceIn'
+          },
+          hideClass: {
+            popup: 'animate_animated animate_fadeOut'
+          }
+        });
       }
     },
     goBack() {
@@ -185,7 +218,7 @@ export default {
   padding: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 80%; /* Ancho del formulario */
-  max-width: 400px; /* Ancho máximo del formulario */
+  max-width: 430px; /* Ancho máximo del formulario */
 }
 
 /* Título del formulario */
@@ -221,7 +254,7 @@ export default {
 .button-group {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centrar los botones */
 }
 
 .btn {
@@ -231,6 +264,7 @@ export default {
   font-size: 16px;
   text-transform: uppercase;
   transition: all 0.3s ease; /* Transición suave */
+  margin: 0 10px; /* Espacio entre los botones */
 }
 
 .btn-secondary {
@@ -259,17 +293,66 @@ export default {
   font-size: 14px;
 }
 
+/* Estilos para las alertas */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.alert-success {
+  background-color: #c6dbcb;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
 /* Estilos responsivos */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .form-container {
     padding: 20px;
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
   .form-container {
     padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .form-container {
+    padding: 10px;
     width: 90%;
+    max-width: 400px; /* Reducir el ancho máximo del formulario en pantallas pequeñas */
+  }
+
+  .button-group {
+    flex-wrap: wrap; /* Permitir que los botones se envuelvan en pantallas pequeñas */
+  }
+
+  .btn {
+    margin: 5px; /* Espacio entre los botones en pantallas pequeñas */
+    width: calc(50% - 10px); /* Ancho de los botones en pantallas pequeñas */
+  }
+}
+
+/* Para pantallas pequeñas, como smartphones en modo horizontal */
+@media only screen and (max-width: 480px) {
+  .form-container {
+    padding: 8px;
+  }
+}
+
+/* Para pantallas muy pequeñas, como smartphones en modo vertical */
+@media only screen and (max-width: 360px) {
+  .form-container {
+    padding: 6px;
   }
 }
 </style>

@@ -234,6 +234,7 @@ export default defineComponent({
           console.info("ID: ", response.data.result["idCliente"]);
           this.$store.commit('setId', response.data.result["idCliente"]);
           this.$store.commit('setRol', "Cliente");
+          console.info("ROL: ", this.$store.state.rol);
 
           this.randomCode = this.generateCode(); // Llama a la función dentro del componente
           this.$store.commit("setRandomCode", this.randomCode);
@@ -294,6 +295,7 @@ export default defineComponent({
           console.info("ID: ", response.data.result["idAdmin"]);
           this.$store.commit('setId', response.data.result["idAdmin"]);
           this.$store.commit('setRol', "Admin");
+          console.info("ROL: ", this.$store.state.rol);
 
           // Calcular fechas
           this.calcularFecha();

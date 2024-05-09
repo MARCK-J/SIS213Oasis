@@ -44,7 +44,7 @@
           </ul>
           <ul class="navbar-nav mr-auto">
             <li v-if="!isAuthenticated" class="nav-item">
-              <router-link to="/Dashboard" class="nav-link">Registrarse</router-link>
+              <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
@@ -190,10 +190,17 @@ export default defineComponent({
         calcularFecha();
         await getIPAddress();
 
-        if (store.state.rol === 'admin') {
+        console.log("ROL: ", store.state.rol);
+        if (store.state.rol === 'Admin') {
           idAdmin.value = store.state.id;
-        } else if (store.state.rol === 'cliente') {
+          idCliente.value = '';
+          console.info("Id Cliente: ", idCliente.value);
+          console.info("Id Admin: ", idAdmin.value);
+        } else if (store.state.rol === 'Cliente') {
           idCliente.value = store.state.id;
+          idAdmin.value = '';
+          console.info("Id Cliente: ", idCliente.value);
+          console.info("Id Admin: ", idAdmin.value);
         }
         await auditoriaUser();
 
