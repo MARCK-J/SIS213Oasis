@@ -5,18 +5,22 @@
     <h3>Bienvenido</h3>
     <p>Inicie su sesión para continuar en Oasis</p>
     <form @submit.prevent="continuar" class="form">
-      <input
-
-        placeholder="Ingrese su nombre de usuario"
+      <div class="CustomInput">
+        <p>Correo electronico:</p>
+        <input
+        placeholder="Ingrese su correo electronico"
         type="text"
         v-model="correo"
       />
-      <input
-
+      </div>
+      <div class="CustomInput">
+        <p>Contraseña:</p>
+        <input
         placeholder="Ingrese su contraseña"
         type="password"
         v-model="password"
       />
+      </div>
       <router-link to="" class="enlace">¿Olvidaste tu contraseña?</router-link>
       <button type="submit">Continuar</button>
     </form>
@@ -362,6 +366,7 @@ export default defineComponent({
     mostrarError(message, icon) {
       this.$swal({
         icon: icon,
+        timer: 2000,
         title: "WOW",
         text: message,
       });
@@ -513,6 +518,22 @@ Agencia de Viajes Oasis`,
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.CustomInput {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+.CustomInput p {
+    padding: 0;
+    margin: 0;
+}
+.CustomInput input {
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px 20px;
 }
 @media (max-width: 860px) {
   .TarjetaLogin {

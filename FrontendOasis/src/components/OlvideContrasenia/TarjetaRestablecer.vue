@@ -45,7 +45,6 @@ export default {
     },
     verificarPassword(){
       if(this.password == this.confirmpassword){
-        this.mostrarError('Las contraseñas son iguales','success');
         this.restablecerContra();
       }else{
         this.mostrarError('Las contraseñas deben ser iguales','error');
@@ -54,6 +53,7 @@ export default {
     mostrarError(message, icon) {
       this.$swal({
         icon: icon,
+        timer: 2000,
         title: "Oops...",
         text: message,
       });

@@ -46,6 +46,7 @@ export default defineComponent({
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
+        timer: 2000,
         text: message,
       });
     };
