@@ -9,6 +9,13 @@
             "name": "OasisApplication",
             "request": "launch",
             "mainClass": "com.ucb.SIS213.Oasis.OasisApplication",
+            "projectName": "BackendOasis"
+        },
+        {
+            "type": "java",
+            "name": "OasisApplication",
+            "request": "launch",
+            "mainClass": "com.ucb.SIS213.Oasis.OasisApplication",
             "projectName": "Oasis"
         },
         {
