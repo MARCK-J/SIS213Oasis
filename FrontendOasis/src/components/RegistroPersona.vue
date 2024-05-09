@@ -75,15 +75,17 @@ export default {
         // Validar contraseña
         if (this.password !== this.passwordConf) {
           console.error("Las contraseñas no coinciden");
-          window.alert("Las contraseñas no coinciden");
+          // window.alert("Las contraseñas no coinciden");
+          this.mostrarError("Las contraseñas no coinciden","error");
           return;
         }
 
         // Validar complejidad de la contraseña
         if (!this.validatePassword(this.password)) {
           console.error("La contraseña no cumple con los requisitos mínimos");
-          window.alert("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos," +
-              "mayusculas y minusculas");
+          // window.alert("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos," +
+          //     "mayusculas y minusculas");
+          this.mostrarError("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos, mayusculas y minusculas","error");
           return;
         }
 
@@ -113,6 +115,8 @@ export default {
 
         const nuevaCuenta = response3.data.data;
         console.log("Cuenta created");
+        this.toastTopEnd();
+
 
         // Limpiar campos
         this.nombre = '';
@@ -145,6 +149,26 @@ export default {
       // Al menos un carácter especial
       if (!/[^a-zA-Z0-9]/.test(password)) return false;
       return true;
+    },
+    mostrarError (message){
+      this.$swal({
+        icon: 'error',
+        title: 'Oops...',
+        timer: 2000,
+        text: message,
+      });
+    },
+
+    toastTopEnd () {
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        icon: 'success',
+        title: 'Felicidades',
+        text: 'Su registro se realizo correctamente, ahora puede iniciar sesion en la pagina',
+      });
     }
   }
 };
