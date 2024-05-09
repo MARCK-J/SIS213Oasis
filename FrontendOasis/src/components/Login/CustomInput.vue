@@ -4,7 +4,7 @@
         <input
             :type="inputType"
             :placeholder="placeholder"
-            :value="value"
+            :v-model="v-model"
             required
         >
     </div>
@@ -22,7 +22,7 @@ export default {
             type: String,
             default: "Enter value"
         },
-        value: {
+        v_model: {
             type: [String, Number],
             default: ""
         },

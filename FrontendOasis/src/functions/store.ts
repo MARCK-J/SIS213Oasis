@@ -5,12 +5,14 @@ interface State {
   user: any;
   rol: any;
   id: any;
+  randomCode: string;
 }
 
 const store = createStore<State>({
   state: {
     loggedIn: false,
     user: null,
+    randomCode: '',
     rol: false,
     id: null
   },
@@ -35,6 +37,9 @@ const store = createStore<State>({
     },
     getId(state) {
         return state.id;
+    },
+    setRandomCode(state, code: string) {
+      state.randomCode = code;
     }
 
 

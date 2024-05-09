@@ -61,10 +61,10 @@
                   data-toggle="dropdown"
               >
                 <img
-                    :src="user.picture"
+                    :src="user.picture ? user.picture : ('/src/assets/deafult.jpeg')"
                     alt="User's profile picture"
                     class="nav-user-profile rounded-circle"
-                    width="50"
+                    width="100"
                 />
               </a>
               <div class="dropdown-menu dropdown-menu-right ">
