@@ -5,18 +5,24 @@
     <h3>Bienvenido</h3>
     <p>Inicie su sesión para continuar en Oasis</p>
     <form @submit.prevent="continuar" class="form">
+      <div class="CustomInput">
+        <p>Correo:</p>
       <input
-
-        placeholder="Ingrese su nombre de usuario"
+        placeholder="Ingrese su correo electronico"
         type="text"
         v-model="correo"
+        required
       />
+      </div>
+      <div class="CustomInput">
+        <p>Contraseña:</p>
       <input
-
         placeholder="Ingrese su contraseña"
         type="password"
         v-model="password"
+        required
       />
+      </div>
       <router-link to="" class="enlace">¿Olvidaste tu contraseña?</router-link>
       <button type="submit">Continuar</button>
     </form>
@@ -83,7 +89,7 @@ export default defineComponent({
           this.$store.commit('setLoggedIn', true);
           this.$store.commit('setUser', user);
           //router.push("/");
-          this.$router.push('/');
+          this.$router.push('/Vericacion');
         } else {
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error('Error al iniciar sesión:', response.data.message);
@@ -156,6 +162,22 @@ export default defineComponent({
 </script>
 
 <style>
+.CustomInput {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+.CustomInput p {
+    padding: 0;
+    margin: 0;
+}
+.CustomInput input {
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
 .form {
   width: 100%;
   display: flex;

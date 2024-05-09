@@ -8,6 +8,8 @@ import RegistroAdmin from "../components/RegistroAdmin.vue";
 
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Verificacion from "../views/Verificacion.vue";
+
 
 
 export function createRouter(app: App): Router {
@@ -42,6 +44,11 @@ export function createRouter(app: App): Router {
         path: "/Dashboard",
         name: "dashboard",
         component: Dashboard
+      },
+      {
+        path: "/Verificacion",
+        name: "verificacion",
+        component: Verificacion
       },
     ],
     history: createWebHashHistory()
