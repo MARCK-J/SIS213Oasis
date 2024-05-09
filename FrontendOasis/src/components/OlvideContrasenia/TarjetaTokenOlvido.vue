@@ -36,7 +36,7 @@ export default defineComponent({
     const verificacionCodigo = () => {
       if (verificacion.value === codigo) { 
         toastTopEnd();
-        router.push("/RestablecerContraseña");
+        router.push("/RestablecerContrasenia");
       } else {
         mostrarError("El código de verificación ingresado es incorrecto. Por favor, inténtelo de nuevo.");
       }
