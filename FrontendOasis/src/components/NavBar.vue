@@ -24,7 +24,7 @@
           </ul>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link to="/hoteles" class="nav-link">Hoteles</router-link>
+              <router-link to="/Hotel" class="nav-link">Hoteles</router-link>
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
@@ -112,30 +112,100 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue'; // Importa ref desde vue
 import { useStore } from 'vuex';
 import { useRouter } from "vue-router";
 import { googleLogout } from 'vue3-google-login';
+import axios from "axios";
 
 export default defineComponent({
   name: "NavBar",
   setup() {
     const store = useStore();
     const router = useRouter();
-    const isAuthenticated = store.state.loggedIn;
-    const user = store.state.user;
+    const isAuthenticated = ref(store.state.loggedIn);
+    const user = ref(store.state.user);
+
+    const actividad = ref('');
+    const fecha = ref('');
+    const hora = ref('');
+    const fechaInicio = ref('');
+    const fechaFin = ref('');
+    const ipAddress = ref('');
+    const idAdmin = ref('');
+    const idCliente = ref('');
 
     const login = () => {
       router.push("/login");
     };
 
-    const logout = () => {
-      console.log("Proceso de cerrado de sesion")
-      googleLogout();
-      store.commit('setLoggedIn', false);
-      store.commit('setUser', null);
-      console.log("Cierre completado");
-      window.location.reload();
+    const calcularFecha = () => {
+      const ahora = new Date();
+      const dia = String(ahora.getDate()).padStart(2, '0');
+      const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+      const anio = ahora.getFullYear();
+      const horas = String(ahora.getHours()).padStart(2, '0');
+      const minutos = String(ahora.getMinutes()).padStart(2, '0');
+      const segundos = String(ahora.getSeconds()).padStart(2, '0');
+
+      fecha.value = `${anio}-${mes}-${dia}`;
+      hora.value = `${horas}:${minutos}:${segundos}`;
+      fechaInicio.value = `${fecha.value}T${hora.value}`;
+      fechaFin.value = `${fecha.value}T${hora.value}`;
+    };
+
+    const getIPAddress = async () => {
+      try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        console.log("IP: ", data.ip);
+        ipAddress.value = data.ip;
+      } catch (error) {
+        console.error('Error al obtener la dirección IP:', error);
+      }
+    };
+
+    const auditoriaUser = async () => {
+      try {
+        actividad.value = "Cierrre Sesion"
+        await axios.post('http://localhost:9999/api/v1/auditoria/create', {
+          actividad: actividad.value,
+          fecha: fecha.value,
+          hora: hora.value,
+          fechaInicio: "",
+          fechaFin: fechaFin.value,
+          ip: ipAddress.value,
+          idAdmin: idAdmin.value,
+          idCliente: idCliente.value
+        });
+
+        console.log("Auditoria created");
+      } catch (error) {
+        console.error('Error al crear la auditoría:', error);
+      }
+    };
+
+    const logout = async () => {
+      try {
+        calcularFecha();
+        await getIPAddress();
+
+        if (store.state.rol === 'admin') {
+          idAdmin.value = store.state.id;
+        } else if (store.state.rol === 'cliente') {
+          idCliente.value = store.state.id;
+        }
+        await auditoriaUser();
+
+        console.log("Proceso de cerrado de sesión");
+        googleLogout();
+        store.commit('setLoggedIn', false);
+        store.commit('setUser', null);
+        console.log("Cierre completado");
+        window.location.reload();
+      } catch (error) {
+        console.error('Error al cerrar sesión:', error);
+      }
     };
 
     return {
@@ -147,6 +217,7 @@ export default defineComponent({
   }
 });
 </script>
+
 
 <style scoped>
 .custom-navbar-color {

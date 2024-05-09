@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="NONE" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7bb494-9d16-43a3-86fb-ed85721bc49d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/hotel5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/imagen2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Hotel/lupa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hoteles/CarrilHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hoteles/FooterHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hoteles/InicioHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Hotel.vue" afterDir="false" />
 
       <change afterPath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" afterDir="false" />
@@ -52,6 +63,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Max-Branch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis/src/components/Dashboard&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.npm run dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\maxpa\\Desktop\\Max Pasten\\Ingenieria de sistemas\\7mo Semestre\\Ingenieria de Software\\Proyecto\\SIS213Oasis\\FrontendOasis\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",

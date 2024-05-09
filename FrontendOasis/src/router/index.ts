@@ -8,6 +8,7 @@ import RegistroAdmin from "../components/RegistroAdmin.vue";
 
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Hotel from "../views/Hotel.vue";
 import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
@@ -46,6 +47,11 @@ export function createRouter(app: App): Router {
         path: "/Dashboard",
         name: "dashboard",
         component: Dashboard
+      },
+      {
+        path: "/Hotel",
+        name: "hotel",
+        component: Hotel
       },
       {
         path: "/Verificacion",
