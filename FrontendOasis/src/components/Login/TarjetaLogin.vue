@@ -360,7 +360,7 @@ export default defineComponent({
     mostrarError(message, icon) {
       this.$swal({
         icon: icon,
-        title: "Oops...",
+        title: "WOW",
         text: message,
       });
     },

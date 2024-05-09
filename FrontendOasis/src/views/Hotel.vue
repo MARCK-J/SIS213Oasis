@@ -19,8 +19,10 @@ export default {
 <template>
   <div>
     <NavBar/>
-    <Inicio/>
-    <Informacion/>
+    <InicioHotel> </InicioHotel>
+    <CarrilHotel/>
+    <FooterHotel/>
+
   </div>
 </template>
 
