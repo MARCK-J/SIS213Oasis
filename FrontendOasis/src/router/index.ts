@@ -7,6 +7,7 @@ import RegistroPersona from "../components/RegistroPersona.vue";
 import RegistroAdmin from "../components/RegistroAdmin.vue";
 
 import Login from "../views/Login.vue";
+import Dashboard from "../views/Dashboard.vue";
 
 
 export function createRouter(app: App): Router {
@@ -36,6 +37,11 @@ export function createRouter(app: App): Router {
         path: "/Login",
         name: "Login",
         component: Login
+      },
+      {
+        path: "/Dashboard",
+        name: "dashboard",
+        component: Dashboard
       },
     ],
     history: createWebHashHistory()

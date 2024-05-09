@@ -3,6 +3,8 @@ package com.ucb.SIS213.Oasis.api;
 import java.util.List;
 import java.util.Map;
 
+import com.ucb.SIS213.Oasis.dto.LoginRequestDTO;
+import com.ucb.SIS213.Oasis.exep.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ucb.SIS213.Oasis.bl.AdminBl;
@@ -108,7 +110,18 @@ public class AdminAPI {
         return admin;
     }
 
-
+    @PostMapping("/login")
+    public ResponseDTO login(@RequestBody LoginRequestDTO loginRequestDTO) {
+        Admin admin;
+        try {
+            admin = adminBl.login(loginRequestDTO.getCorreo(), loginRequestDTO.getPassword());
+            LOGGER.info("Se realizo la autencitacion");
+        } catch (UserException e) {
+            LOGGER.error("NO Se realizo la autencitacion", e);
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO(admin);
+    }
 
     // Endpoint para actualizar un admin
     @PutMapping("/update")
