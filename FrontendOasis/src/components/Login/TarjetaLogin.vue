@@ -4,17 +4,17 @@
     <br />
     <h3>Bienvenido</h3>
     <p>Inicie su sesión para continuar en Oasis</p>
-    <form @submit.prevent="loginPersona" class="form">
-      <CustomInput
-        label="Nombre de Usuario:"
+    <form @submit.prevent="continuar" class="form">
+      <input
+
         placeholder="Ingrese su nombre de usuario"
-        inputType="text"
-        v-model="nombre"
+        type="text"
+        v-model="correo"
       />
-      <CustomInput
-        label="Contraseña:"
+      <input
+
         placeholder="Ingrese su contraseña"
-        inputType="password"
+        type="password"
         v-model="password"
       />
       <router-link to="" class="enlace">¿Olvidaste tu contraseña?</router-link>
@@ -31,50 +31,28 @@
 <script>
 import { defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { useRouter } from "vue-router";
-import axios from 'axios'; // Importa axios para hacer solicitudes HTTP
-
+import { decodeCredential } from "vue3-google-login";
 import CustomInput from "./CustomInput.vue";
+import { useRouter } from "vue-router";
+import axios from 'axios';
+
+
 
 export default defineComponent({
   name: "TarjetaLogin",
+  data() {
+    return {
+      correo: '',
+      password: ''
+    };
+  },
   components: {
     CustomInput,
   },
+
   setup() {
     const store = useStore();
     const router = useRouter();
-
-    const loginPersona = async () => {
-      try {
-        // Realiza una solicitud POST al endpoint de inicio de sesión
-        const response = await axios.post('/api/v1/cliente/login', {
-          correo: nombre, // Usa el valor del nombre de usuario del input
-          password: password // Usa el valor de la contraseña del input
-        });
-
-        // Si la solicitud es exitosa, actualiza el estado de autenticación y redirige al usuario
-        store.commit('setLoggedIn', true);
-        store.commit('setUser', response.data);
-        router.push("/");
-
-      } catch (error) {
-        // Si hay un error en la solicitud, muestra un mensaje de error
-        console.error("Error al iniciar sesión:", error.response.data.message);
-        // Aquí puedes mostrar el mensaje de error en tu aplicación, por ejemplo, en un componente de alerta
-      }
-    };
-
-    const continuar = () => {
-      // Validar los campos, por ejemplo, si están llenos
-      if (nombre && password) {
-        // Si los campos son válidos, llamar a loginPersona para iniciar sesión
-        loginPersona();
-      } else {
-        // Si los campos no son válidos, puedes mostrar un mensaje de error o realizar otra acción
-        console.error("Los campos no pueden estar vacíos");
-      }
-    };
 
     const callback = (response) => {
       console.log("Inicio de sesión con éxito");
@@ -83,12 +61,97 @@ export default defineComponent({
       store.commit('setUser', user);
       router.push("/");
     };
-
     return {
-      continuar,
       callback
     };
   },
+
+  methods: {
+    async loginPersona () {
+      const store = useStore();
+      const router = useRouter();
+      try {
+        // Realiza una solicitud POST al endpoint de inicio de sesión
+        const response = await axios.post('http://localhost:9999/api/v1/cliente/login', {
+          correo: this.correo, // Usa el valor del nombre de usuario del input
+          password: this.password // Usa el valor de la contraseña del input
+        });
+
+        const user = response.data.code;
+        if (user === '200-OK') {
+          // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
+          this.$store.commit('setLoggedIn', true);
+          this.$store.commit('setUser', user);
+          //router.push("/");
+          this.$router.push('/');
+        } else {
+          // Si el inicio de sesión no es exitoso, muestra un mensaje de error
+          console.error('Error al iniciar sesión:', response.data.message);
+          alert('Error al iniciar sesión: Correo o contraseña incorrectos');
+        }
+
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error al iniciar sesión');
+      }
+    },
+
+    async loginAdmin () {
+      const store = useStore();
+      const router = useRouter();
+      try {
+        // Realiza una solicitud POST al endpoint de inicio de sesión
+        const response = await axios.post('http://localhost:9999/api/v1/admin/login', {
+          correo: this.correo, // Usa el valor del nombre de usuario del input
+          password: this.password // Usa el valor de la contraseña del input
+        });
+
+        const user = response.data.code;
+        if (user === '200-OK') {
+          // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
+          this.$store.commit('setLoggedIn', true);
+          this.$store.commit('setUser', user);
+          //router.push("/");
+          this.$router.push('/Dashboard');
+        } else {
+          // Si el inicio de sesión no es exitoso, muestra un mensaje de error
+          console.error('Error al iniciar sesión:', response.data.message);
+          alert('Error al iniciar sesión: Correo o contraseña incorrectos');
+        }
+
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error al iniciar sesión');
+      }
+    },
+
+    async verificarCorreoAdmin(correo) {
+      if (correo.includes('@oasis')) {
+        // El correo contiene el dominio "@oasis", realiza la acción deseada
+        console.log('El correo ingresado pertenece a la empresa');
+        await this.loginAdmin();
+      } else {
+        // El correo no contiene el dominio "@oasis"
+        console.log('El correo ingresado no pertenece a la empresa');
+        await this.loginPersona();
+      }
+    },
+
+    async continuar (){
+      console.log("Usuario:", this.correo);
+      console.log("ENTRA", this.correo, this.password);
+      // Validar los campos, por ejemplo, si están llenos
+      if (this.correo && this.password) {
+        // Si los campos son válidos, llamar a loginPersona para iniciar sesión
+        // Llamar al método para verificar el correo
+        this.verificarCorreoAdmin(this.correo);
+      } else {
+        // Si los campos no son válidos, puedes mostrar un mensaje de error o realizar otra acción
+        console.error("Por favor, llena todos los campos");
+        window.alert("Por favor, llena todos los campos");
+      }
+    },
+  }
 });
 </script>
 

@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7bb494-9d16-43a3-86fb-ed85721bc49d" name="Changes" comment="">
+
+      <change afterPath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Admin.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Admin.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AdminAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AdminAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/AdminBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/AdminBl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/AdminDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/CustomInput.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/CustomInput.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/TarjetaLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/TarjetaLogin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +35,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Composition API Component" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -40,6 +55,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
@@ -47,6 +63,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis/src/assets",
+
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,7 +71,9 @@
     "nodejs_package_manager_path": "npm",
     "npm.npm run dev.executor": "Run",
     "settings.editor.selected.configurable": "preferences.lookFeel",
+
     "show.migrate.to.gradle.popup": "false",
+
     "ts.external.directory.path": "C:\\Users\\maxpa\\Desktop\\Max Pasten\\Ingenieria de sistemas\\7mo Semestre\\Ingenieria de Software\\Proyecto\\SIS213Oasis\\FrontendOasis\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
@@ -66,6 +85,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\components\Dashboard" />
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -122,6 +142,9 @@
       <workItem from="1714482470679" duration="70000" />
       <workItem from="1714667268992" duration="3652000" />
       <workItem from="1715016540694" duration="5610000" />
+      <workItem from="1715091478323" duration="452000" />
+      <workItem from="1715133592460" duration="690000" />
+      <workItem from="1715184827043" duration="10524000" />
     </task>
     <servers />
   </component>

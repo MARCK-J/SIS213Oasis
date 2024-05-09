@@ -44,7 +44,7 @@
           </ul>
           <ul class="navbar-nav mr-auto">
             <li v-if="!isAuthenticated" class="nav-item">
-              <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
+              <router-link to="/Dashboard" class="nav-link">Registrarse</router-link>
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">

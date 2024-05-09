@@ -1,7 +1,7 @@
 <template>
     <div class="CustomInput">
         <p>{{ label }}</p>
-        <input 
+        <input
             :type="inputType"
             :placeholder="placeholder"
             :value="value"
