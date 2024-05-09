@@ -27,40 +27,74 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
+
 export default {
+
   data() {
     return {
-      password: "",
-      confirmpassword: "",
+      correo: '',
+      password: '',
+      confirmpassword: '',
     };
   },
   methods: {
-    async restablecerContra() {
+    async verificarPassword(){
       try {
-        //Aqui va el UPDATE
-      } catch (error) {
-        console.error("Error al actualizar contrasenia", error);
+        // Validar contraseña
+        if (this.password !== this.confirmpassword) {
+          console.error("Las contraseñas no coinciden");
+          // window.alert("Las contraseñas no coinciden");
+          this.mostrarError("Las contraseñas no coinciden","error");
+          return;
+        }
+
+        // Validar complejidad de la contraseña
+        if (!this.validatePassword(this.password)) {
+          console.error("La contraseña no cumple con los requisitos mínimos");
+          this.mostrarError("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos, mayusculas y minusculas","error");
+          // window.alert("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos," +
+          //     "mayusculas y minusculas");
+          return;
+        }
+
+        this.password = '';
+        this.confirmpassword = '';
+
+        this.$router.push('/'); // Redirige a la ruta de Login
+
+      } catch (error){
+        console.log("Error al restablecer contrasena",error);
+        // this.mostrarError("Error al restablecer contrasena"+ error,error)
       }
     },
-    verificarPassword(){
-      if(this.password == this.confirmpassword){
-        this.restablecerContra();
-      }else{
-        this.mostrarError('Las contraseñas deben ser iguales','error');
-      }
+    // Función para validar la complejidad de la contraseña
+    validatePassword(password) {
+      // Al menos 8 caracteres
+      if (password.length < 8) return false;
+      // Al menos un número
+      if (!/\d/.test(password)) return false;
+      // Al menos una letra minúscula
+      if (!/[a-z]/.test(password)) return false;
+      // Al menos una letra mayúscula
+      if (!/[A-Z]/.test(password)) return false;
+      // Al menos un carácter especial
+      if (!/[^a-zA-Z0-9]/.test(password)) return false;
+      return true;
     },
     mostrarError(message, icon) {
       this.$swal({
         icon: icon,
-        timer: 2000,
+        timer: 3000,
         title: "Oops...",
         text: message,
       });
     },
-  },
+  }
 };
 </script>
+
+
 <style>
 .CustomInput {
   width: 85%;

@@ -21,7 +21,7 @@
         v-model="password"
       />
       </div>
-      <router-link to="" class="enlace">¿Olvidaste tu contraseña?</router-link>
+      <router-link to="" @click="olvideContrasena" class="enlace">¿Olvidaste tu contraseña?</router-link>
       <button type="submit">Continuar</button>
     </form>
     <div class="registro-enlace-container">
