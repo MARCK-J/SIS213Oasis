@@ -15,7 +15,7 @@
           </ul>
         </div>
         <div class="footer-section">
-          <h3>Red Social</h3>
+          <h3>Redes Sociales</h3>
           <ul>
             <li><a href="#">Facebook</a></li>
             <li><a href="#">X (twiter)</a></li>
