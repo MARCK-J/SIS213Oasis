@@ -20,7 +20,7 @@
             <li><a href="#">Facebook</a></li>
             <li><a href="#">X (twiter)</a></li>
             <li><a href="#">Instagram</a></li>
-          </ul>
+          </ul>n
         </div>
       </div>
       <div class="footer-bottom">
