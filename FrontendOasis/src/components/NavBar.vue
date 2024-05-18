@@ -118,6 +118,7 @@ import { useRouter } from "vue-router";
 import { googleLogout } from 'vue3-google-login';
 import axios from "axios";
 
+
 export default defineComponent({
   name: "NavBar",
   setup() {
@@ -190,10 +191,17 @@ export default defineComponent({
         calcularFecha();
         await getIPAddress();
 
-        if (store.state.rol === 'admin') {
+        console.log("ROL: ", store.state.rol);
+        if (store.state.rol === 'Admin') {
           idAdmin.value = store.state.id;
-        } else if (store.state.rol === 'cliente') {
+          idCliente.value = '';
+          console.info("Id Cliente: ", idCliente.value);
+          console.info("Id Admin: ", idAdmin.value);
+        } else if (store.state.rol === 'Cliente') {
           idCliente.value = store.state.id;
+          idAdmin.value = '';
+          console.info("Id Cliente: ", idCliente.value);
+          console.info("Id Admin: ", idAdmin.value);
         }
         await auditoriaUser();
 
@@ -215,7 +223,33 @@ export default defineComponent({
       login,
       logout
     };
-  }
+  },
+  data() {
+    return {
+      tiempoRestante: 5*60, // 5 minutos en segundos
+      temporizador: null as number | null
+    };
+  },
+  mounted() {
+    // Iniciar el temporizador
+    this.temporizador = setTimeout(this.realizarAccion, this.tiempoRestante * 1000);
+  },
+  methods: {
+    async realizarAccion() {
+      const store = useStore();
+      const router = useRouter();
+      console.log("Proceso de cerrado de sesión");
+      this.logout();
+      // Aquí puedes poner la acción que quieras realizar después de 5 minutos
+      console.log("Han pasado 5 minutos. Se realiza la acción.");
+
+      // También puedes reiniciar el temporizador si deseas que se repita la acción después de cada intervalo de 5 minutos
+      this.tiempoRestante = 5*60;
+      this.temporizador = setTimeout(this.realizarAccion, this.tiempoRestante * 1000);
+      clearTimeout(this.temporizador);
+    }
+  },
+
 });
 </script>
 
