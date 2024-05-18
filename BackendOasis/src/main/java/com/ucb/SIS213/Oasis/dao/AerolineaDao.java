@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-
 public interface AerolineaDao extends JpaRepository<Aerolinea, Long>{
 
     @Query(value = "SELECT * FROM Aerolinea WHERE idAerolinea = ?1",
