@@ -55,8 +55,6 @@ public class ViajeAPI {
     public ResponseDTO createViaje(@RequestBody Viaje viaje) {
         Viaje viajeCreado;
 
-        //viaje.setCliente_idCliente(1L);
-
         try{
             viajeCreado = viajeBl.createViaje(viaje);
             LOGGER.info("Viaje creado");

@@ -5,10 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.ucb.SIS213.Oasis.dao.ViajeDao;
 import com.ucb.SIS213.Oasis.entity.Viaje;
-import com.ucb.SIS213.Oasis.exep.UserException;
 
 import java.util.List;
-import java.util.Date;
 
 @Service
 public class ViajeBl {
