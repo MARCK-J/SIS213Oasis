@@ -3,7 +3,11 @@
     <!-- Contenedor de la imagen de fondo -->
     <div class="background-container">
       <!-- Imagen de fondo -->
-      <img class="background-image" src="../assets/imageRegister.jpeg" alt="Background Image">
+      <img
+        class="background-image"
+        src="../assets/imageRegister.jpeg"
+        alt="Background Image"
+      />
       <!-- Contenedor del formulario -->
       <div class="form-container">
         <!-- Título del formulario -->
@@ -12,71 +16,162 @@
         <form @submit.prevent="createPersona" class="form">
           <!-- Datos Personales -->
           <div class="form-group">
-            <input type="text" v-model="nombre" class="form-control" placeholder="Nombre" required>
+            <input
+              type="text"
+              v-model="nombre"
+              class="form-control"
+              placeholder="Nombre"
+              required
+            />
           </div>
           <div class="form-group">
-            <input type="text" v-model="apellidoP" class="form-control" placeholder="Apellido Paterno" required>
+            <input
+              type="text"
+              v-model="apellidoP"
+              class="form-control"
+              placeholder="Apellido Paterno"
+              required
+            />
           </div>
           <div class="form-group">
-            <input type="text" v-model="apellidoM" class="form-control" placeholder="Apellido Materno">
+            <input
+              type="text"
+              v-model="apellidoM"
+              class="form-control"
+              placeholder="Apellido Materno"
+            />
           </div>
           <div class="form-group">
-            <input type="tel" v-model="telefono" class="form-control" placeholder="Teléfono">
+            <input
+              type="tel"
+              v-model="telefono"
+              class="form-control"
+              placeholder="Teléfono"
+            />
           </div>
           <!-- Datos de Cuenta -->
           <div class="form-group">
-            <input type="email" v-model="correo" class="form-control" placeholder="Correo electrónico" required>
+            <input
+              type="email"
+              v-model="correo"
+              class="form-control"
+              placeholder="Correo electrónico"
+              required
+            />
           </div>
           <div class="form-group">
-            <input type="password" v-model="password" class="form-control" placeholder="Contraseña" required>
+            <input
+              type="password"
+              v-model="password"
+              class="form-control"
+              placeholder="Contraseña"
+              required
+            />
           </div>
           <div class="form-group">
-            <input type="password" v-model="passwordConf" class="form-control" placeholder="Confirmar contraseña" required>
+            <input
+              type="password"
+              v-model="passwordConf"
+              class="form-control"
+              placeholder="Confirmar contraseña"
+              required
+            />
           </div>
-          <!-- Botones -->
+          <div class="validation">
+            <div>
+              <Icon :icon="icon_validacion0" width="16" height="16" :color='estilo_validacion0'/>
+              <p :class='confirmacion0'>Las contraseñas deben ser iguales</p>
+            </div>            
+            <div>
+              <Icon :icon="icon_validacion1" width="16" height="16" :color='estilo_validacion1'/>
+              <p :class='confirmacion1'>La contraseña debe ser de al menos 8 caracteres</p>
+            </div>
+            <div>
+              <Icon :icon="icon_validacion2" width="16" height="16" :color='estilo_validacion2'/>
+              <p :class='confirmacion2'>La contraseña debe contener al menos una minuscula</p>
+            </div>
+            <div>
+              <Icon :icon="icon_validacion3" width="16" height="16" :color='estilo_validacion3'/>
+              <p :class='confirmacion3'>La contraseña debe contener al menos una mayuscula</p>
+            </div>
+            <div>
+              <Icon :icon="icon_validacion4" width="16" height="16" :color='estilo_validacion4'/>
+              <p :class='confirmacion4'>La contraseña debe contener al menos un caracter especial</p>
+            </div>
+            <div>
+              <Icon :icon="icon_validacion5" width="16" height="16" :color='estilo_validacion5'/>
+              <p :class='confirmacion5'>La contraseña debe contener al menos un numero</p>
+            </div>           
+          </div>
           <div class="button-group">
-            <button type="button" @click="goBack" class="btn btn-secondary">Regresar</button>
-            <input type="submit" value="Continuar" class="btn btn-primary">
+            <button type="button" @click="goBack" class="btn btn-secondary">
+              Regresar
+            </button>
+            <input type="submit" value="Continuar" class="btn btn-primary" />
           </div>
         </form>
         <!-- Mensaje para iniciar sesión -->
-        <p class="login-message">¿Ya tienes una cuenta?
-            <router-link 
-                to="/login"
-                class="nav-link"
-            >Inicia sesión aquí</router-link>
+        <p class="login-message">
+          ¿Ya tienes una cuenta?
+          <router-link to="/login" 
+            >Inicia sesión aquí</router-link
+          >
         </p>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
-import axios from 'axios';
+import axios from "axios";
+import { Icon } from "@iconify/vue";
 
 export default {
-
   data() {
     return {
-      personas:[],
-      nombre: '',
-      apellidoP: '',
-      apellidoM: '',
-      telefono: '',
-      correo: '',
-      password: '',
-      passwordConf: '',
+      personas: [],
+      nombre: "",
+      apellidoP: "",
+      apellidoM: "",
+      telefono: "",
+      correo: "",
+      password: "",
+      passwordConf: "",
+      // para la validacion de la contraseña
+      // validacion de igualdad
+      icon_validacion0:"fluent:error-circle-20-regular",
+      estilo_validacion0:'red',
+      confirmacion0:'validation_error',
+      // validacion de longitud
+      icon_validacion1:"fluent:error-circle-20-regular",
+      estilo_validacion1:'red',
+      confirmacion1:'validation_error',
+      // validacion de minuscula
+      icon_validacion2:"fluent:error-circle-20-regular",
+      estilo_validacion2:'red',
+      confirmacion2:'validation_error',
+      // validacion de mayuscula
+      icon_validacion3:"fluent:error-circle-20-regular",
+      estilo_validacion3:'red',
+      confirmacion3:'validation_error',
+      // validacion de caracter especial
+      icon_validacion4:"fluent:error-circle-20-regular",
+      estilo_validacion4:'red',
+      confirmacion4:'validation_error',
+      // validacion de numero
+      icon_validacion5:"fluent:error-circle-20-regular",
+      estilo_validacion5:'red',
+      confirmacion5:'validation_error',
     };
   },
   methods: {
-    async createPersona(){
+    async createPersona() {
       try {
         // Validar contraseña
         if (this.password !== this.passwordConf) {
           console.error("Las contraseñas no coinciden");
           // window.alert("Las contraseñas no coinciden");
-          this.mostrarError("Las contraseñas no coinciden","error");
+          this.mostrarError("Las contraseñas no coinciden", "error");
           return;
         }
 
@@ -85,61 +180,70 @@ export default {
           console.error("La contraseña no cumple con los requisitos mínimos");
           // window.alert("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos," +
           //     "mayusculas y minusculas");
-          this.mostrarError("La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos, mayusculas y minusculas","error");
+          this.mostrarError(
+            "La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos, mayusculas y minusculas",
+            "error"
+          );
           return;
         }
 
         // Enviar solicitud para crear una persona
-        const response = await axios.post('http://localhost:9999/api/v1/persona/create',{
-          nombre: this.nombre,
-          apellidoP: this.apellidoP,
-          apellidoM: this.apellidoM,
-          telefono: this.telefono,
-        });
+        const response = await axios.post(
+          "http://localhost:9999/api/v1/persona/create",
+          {
+            nombre: this.nombre,
+            apellidoP: this.apellidoP,
+            apellidoM: this.apellidoM,
+            telefono: this.telefono,
+          }
+        );
 
         const nuevaPersona = response.data.data;
         console.log("Persona created");
 
         // Enviar solicitud para obtener el id de la última persona creada
-        const response2 = await axios.get('http://localhost:9999/api/v1/persona/lastId');
+        const response2 = await axios.get(
+          "http://localhost:9999/api/v1/persona/lastId"
+        );
         const lastPersona = response2.data.result;
-        console.log("Last persona",lastPersona);
+        console.log("Last persona", lastPersona);
 
         // Enviar solicitud para crear una cuenta
-        const response3 = await axios.post('http://localhost:9999/api/v1/cliente/create',{
-          correo: this.correo,
-          password: this.password,
-          estadoCuenta: 'Activa',
-          idPersona: lastPersona,
-        });
+        const response3 = await axios.post(
+          "http://localhost:9999/api/v1/cliente/create",
+          {
+            correo: this.correo,
+            password: this.password,
+            estadoCuenta: "Activa",
+            idPersona: lastPersona,
+          }
+        );
 
         const nuevaCuenta = response3.data.data;
         console.log("Cuenta created");
         this.toastTopEnd();
 
-
         // Limpiar campos
-        this.nombre = '';
-        this.apellidoP = '';
-        this.apellidoM = '';
-        this.telefono = '';
-        this.correo = '';
-        this.password = '';
-        this.passwordConf = '';
+        this.nombre = "";
+        this.apellidoP = "";
+        this.apellidoM = "";
+        this.telefono = "";
+        this.correo = "";
+        this.password = "";
+        this.passwordConf = "";
 
-        this.$router.push('/'); // Redirige a la ruta de Login
-
-      } catch (error){
-        console.error("Error al crear la persona",error)
+        this.$router.push("/"); // Redirige a la ruta de Login
+      } catch (error) {
+        console.error("Error al crear la persona", error);
       }
     },
     goBack() {
-      this.$router.push('/');
+      this.$router.push("/");
     },
     // Función para validar la complejidad de la contraseña
     validatePassword(password) {
       // Al menos 8 caracteres
-      if (password.length < 8) return false;
+      if (password.length > 8)return false;
       // Al menos un número
       if (!/\d/.test(password)) return false;
       // Al menos una letra minúscula
@@ -150,32 +254,126 @@ export default {
       if (!/[^a-zA-Z0-9]/.test(password)) return false;
       return true;
     },
-    mostrarError (message){
+    validaciones(password, passwordConf) {
+      // Restablecer estados de validación
+      this.icon_validacion0 = 'fluent:error-circle-20-regular';
+      this.estilo_validacion0 = 'red';
+      this.confirmacion0 = 'validation_error';
+      this.icon_validacion1 = 'fluent:error-circle-20-regular';
+      this.estilo_validacion1 = 'red';
+      this.confirmacion1 = 'validation_error';
+      this.icon_validacion2 = 'fluent:error-circle-20-regular';
+      this.estilo_validacion2 = 'red';
+      this.confirmacion2 = 'validation_error';
+      this.icon_validacion3 = 'fluent:error-circle-20-regular';
+      this.estilo_validacion3 = 'red';
+      this.confirmacion3 = 'validation_error';
+      this.icon_validacion4 = 'fluent:error-circle-20-regular';
+      this.estilo_validacion4 = 'red';
+      this.confirmacion4 = 'validation_error';
+      this.icon_validacion5 = 'fluent:error-circle-20-regular';
+      this.estilo_validacion5 = 'red';
+      this.confirmacion5 = 'validation_error';
+
+      if (password.length > 0 || passwordConf.length > 0) {
+        if (password === passwordConf) {
+          this.icon_validacion0 = 'lets-icons:check-fill';
+          this.estilo_validacion0 = 'green';
+          this.confirmacion0 = 'validation_check';
+          
+          if (password.length >= 8) {
+            this.icon_validacion1 = 'lets-icons:check-fill';
+            this.estilo_validacion1 = 'green';
+            this.confirmacion1 = 'validation_check';
+          }
+          
+          if (/[a-z]/.test(password)) {
+            this.icon_validacion2 = 'lets-icons:check-fill';
+            this.estilo_validacion2 = 'green';
+            this.confirmacion2 = 'validation_check';
+          }
+          
+          if (/[A-Z]/.test(password)) {
+            this.icon_validacion3 = 'lets-icons:check-fill';
+            this.estilo_validacion3 = 'green';
+            this.confirmacion3 = 'validation_check';
+          }
+          
+          if (/[^a-zA-Z0-9]/.test(password)) {
+            this.icon_validacion4 = 'lets-icons:check-fill';
+            this.estilo_validacion4 = 'green';
+            this.confirmacion4 = 'validation_check';
+          }
+          
+          if (/\d/.test(password)) {
+            this.icon_validacion5 = 'lets-icons:check-fill';
+            this.estilo_validacion5 = 'green';
+            this.confirmacion5 = 'validation_check';
+          }
+        }
+      }
+    },
+    mostrarError(message) {
       this.$swal({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         timer: 2000,
         text: message,
       });
     },
 
-    toastTopEnd () {
+    toastTopEnd() {
       this.$swal({
         toast: true,
-        position: 'top-end',
+        position: "top-end",
         showConfirmButton: false,
         timer: 3000,
-        icon: 'success',
-        title: 'Felicidades',
-        text: 'Su registro se realizo correctamente, ahora puede iniciar sesion en la pagina',
+        icon: "success",
+        title: "Felicidades",
+        text: "Su registro se realizo correctamente, ahora puede iniciar sesion en la pagina",
       });
+    },
+  },
+  watch:{
+    password(newPassword) {
+      this.validaciones(newPassword, this.passwordConf);
+    },
+    passwordConf(newPasswordConf) {
+      this.validaciones(this.password, newPasswordConf);
     }
-  }
+  },
+  components: {
+      Icon,
+  },
 };
 </script>
 
-
 <style scoped>
+/* Estilos de la validacion */
+.validation {
+  padding: 8px;
+  border: 1px solid black ;
+  border-radius: 15px;
+}
+.validation div {
+  display: flex;
+  align-items: center;
+}
+.validation_error{
+  margin-left: 8px;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  color: red;
+}
+.validation_check{
+  margin-left: 8px;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  color: green;
+}
+
 /* Estilos generales */
 .app {
   display: flex;
@@ -209,12 +407,10 @@ export default {
   padding: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 80%; /* Ancho del formulario */
-  max-width: 400px; /* Ancho máximo del formulario */
+  max-width: 550px; /* Ancho máximo del formulario */
 }
-
 /* Título del formulario */
 .form-title {
-  margin-bottom: 20px;
   color: #333;
   font-size: 24px;
   text-align: center;
@@ -222,7 +418,7 @@ export default {
 
 /* Estilos para los campos de entrada */
 .form-group {
-  margin-bottom: 20px;
+  width: 75%;
 }
 
 .form-control {
@@ -243,13 +439,14 @@ export default {
 
 /* Botones */
 .button-group {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
 
 .btn {
-  padding: 15px 30px;
+  padding: 8px 20px;
+  margin: 0px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -277,10 +474,11 @@ export default {
 
 /* Mensaje para iniciar sesión */
 .login-message {
-  margin-top: 20px;
+  margin-top: 5px;
   text-align: center;
   color: #666;
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 /* Estilos responsivos */
