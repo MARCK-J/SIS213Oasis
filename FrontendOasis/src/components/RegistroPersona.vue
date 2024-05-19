@@ -223,18 +223,29 @@ export default {
         console.log("Cuenta created");
         this.toastTopEnd();
 
-        // Limpiar campos
-        this.nombre = "";
-        this.apellidoP = "";
-        this.apellidoM = "";
-        this.telefono = "";
-        this.correo = "";
-        this.password = "";
-        this.passwordConf = "";
+        this.nombre = '';
+        this.apellidoP = '';
+        this.apellidoM = '';
+        this.telefono = '';
+        this.correo = '';
+        this.password = '';
+        this.passwordConf = '';
 
-        this.$router.push("/"); // Redirige a la ruta de Login
-      } catch (error) {
-        console.error("Error al crear la persona", error);
+        this.$router.push('/'); // Redirige a la ruta de Login
+
+      } catch (error){
+        console.error("Error al crear la persona",error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: "Error al crear la persona",
+          showClass: {
+            popup: 'animate_animated animate_bounceIn'
+          },
+          hideClass: {
+            popup: 'animate_animated animate_fadeOut'
+          }
+        });
       }
     },
     goBack() {
@@ -452,6 +463,7 @@ export default {
   font-size: 16px;
   text-transform: uppercase;
   transition: all 0.3s ease; /* Transición suave */
+  margin: 0 10px; /* Espacio entre los botones */
 }
 
 .btn-secondary {
@@ -479,6 +491,25 @@ export default {
   color: #666;
   font-size: 14px;
   margin-bottom: 5px;
+}
+
+/* Estilos para las alertas */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.alert-success {
+  background-color: #c6dbcb;
+  border: 1px solid #c3e6cb;
+  color: #155724;
 }
 
 /* Estilos responsivos */
