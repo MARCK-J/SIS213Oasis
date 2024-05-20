@@ -34,6 +34,11 @@
           </ul>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+              <router-link to="/Autos" class="nav-link">Autos</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
               <router-link to="/quienes_somos" class="nav-link">Quienes Somos</router-link>
             </li>
           </ul>
