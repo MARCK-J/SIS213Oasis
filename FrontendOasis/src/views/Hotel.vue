@@ -10,7 +10,7 @@ export default {
     NavBar,
     InicioHotel,
     CarrilHotel,
-    FooterHotel
+    FooterHotel,
   }
 };
 
