@@ -15,4 +15,6 @@ public interface ClienteDao extends JpaRepository<Cliente, Long> {
     List<Cliente> findLabelsByUserId(Long userId);
 
     public Cliente findByCorreo(String correo);
+
+
 }

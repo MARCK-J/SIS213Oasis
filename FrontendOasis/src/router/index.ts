@@ -8,9 +8,11 @@ import RegistroAdmin from "../components/RegistroAdmin.vue";
 
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Hotel from "../views/Hotel.vue";
 import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
+import Autos from "../views/Autos.vue";
 
 
 
@@ -48,6 +50,11 @@ export function createRouter(app: App): Router {
         component: Dashboard
       },
       {
+        path: "/Hotel",
+        name: "hotel",
+        component: Hotel
+      },
+      {
         path: "/Verificacion",
         name: "verificacion",
         component: Verificacion
@@ -62,6 +69,13 @@ export function createRouter(app: App): Router {
         name: "restablecerContrasenia",
         component: RestablecerContrasenia
       },
+
+      {
+        path: "/Autos",
+        name: "Autos",
+        component: Autos
+      },
+
     ],
     history: createWebHashHistory()
   })
