@@ -36,7 +36,7 @@ export default defineComponent({
     const verificacionCodigo = () => {
       if (verificacion.value === codigo) { 
         toastTopEnd();
-        router.push("/RestablecerContraseña");
+        router.push("/RestablecerContrasenia");
       } else {
         mostrarError("El código de verificación ingresado es incorrecto. Por favor, inténtelo de nuevo.");
       }
@@ -46,6 +46,7 @@ export default defineComponent({
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
+        timer: 2000,
         text: message,
       });
     };
