@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/GenerativeAIController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatAssistant.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatLogic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/generativeAI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/BDD/BD_OASIS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/BDD/BD_OASIS.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/BDD/datos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/BDD/datos.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +95,7 @@
       <workItem from="1716343041105" duration="3884000" />
       <workItem from="1716407586800" duration="201000" />
       <workItem from="1716430200208" duration="8713000" />
-      <workItem from="1716467974813" duration="1001000" />
+      <workItem from="1716467974813" duration="3088000" />
     </task>
     <servers />
   </component>
