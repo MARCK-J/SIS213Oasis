@@ -39,23 +39,24 @@ INSERT INTO CategoriaHotel (categoria) VALUES ('Alojamiento');
 
 select * from CategoriaHotel
 
-    INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot, totalhabitaciones)
+    INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot, totalHabitaciones, descripcion, imagenes, ubicacion)
 VALUES
-    ('Hotel Plaza', 4, 1, 1,120),  -- Categoría: Hotel - Ciudad: La Paz
-    ('Hostal del Lago', 3, 2, 2,150),  -- Categoría: Hostal - Ciudad: Santa Cruz de la Sierra
-    ('Hotel Camino Real', 5, 3, 3,160),  -- Categoría: Hotel de lujo - Ciudad: Cochabamba
-    ('Hotel Los Tajibos', 4, 4, 4,100),  -- Categoría: Hotel de negocios - Ciudad: Sucre
-    ('Hotel Rosario', 4, 5, 5,95),  -- Categoría: Hotel resort - Ciudad: Oruro
-    ('Hotel Las Palmas', 3, 6, 6,140),  -- Categoría: Hotel Familiar - Ciudad: Potosí
-    ('Alojamiento Samay', 5, 7, 7,130),  -- Categoría: Alojamiento - Ciudad: Tarija
-    ('Hotel La Siesta', 4, 8, 1,160),  -- Categoría: Hotel - Ciudad: Beni
-    ('Hostal Maya', 3, 9, 2,180),  -- Categoría: Hostal - Ciudad: Pando
-    ('Hotel Alcala', 5, 1, 3,160),  -- Categoría: Hotel de lujo - Ciudad: La Paz
-    ('Hotel Regina', 4, 2, 4,200),  -- Categoría: Hotel de negocios - Ciudad: Santa Cruz de la Sierra
-    ('Hotel Colonial', 4, 4, 5,165),  -- Categoría: Hotel resort - Ciudad: Cochabamba
-    ('Hostal San Francisco', 3, 4, 6,170),  -- Categoría: Hotel Familiar - Ciudad: Sucre
-    ('Hotel Europa', 5, 5, 7,210),  -- Categoría: Alojamiento - Ciudad: Oruro
-    ('Hotel Real', 4, 6, 1,130);  -- Categoría: Hotel - Ciudad: Potosí
+    ('Hotel Plaza', 4, 1, 1, 120, 'Un lugar acogedor en el centro de la ciudad.', 'https://example.com/hotel_plaza.jpg', 'Calle Principal 123, La Paz'),
+    ('Hostal del Lago', 3, 2, 2, 150, 'Ideal para mochileros y viajeros de presupuesto ajustado.', 'https://example.com/hostal_del_lago.jpg', 'Avenida Lago 456, Santa Cruz de la Sierra'),
+    ('Hotel Camino Real', 5, 3, 3, 160, 'Lujo y confort en el corazón de la ciudad.', 'https://example.com/hotel_camino_real.jpg', 'Calle Real 789, Cochabamba'),
+    ('Hotel Los Tajibos', 4, 4, 4, 100, 'El mejor hotel de negocios con todas las comodidades.', 'https://example.com/hotel_los_tajibos.jpg', 'Avenida Empresarial 101, Sucre'),
+    ('Hotel Rosario', 4, 5, 5, 95, 'Resort con vistas espectaculares y servicios exclusivos.', 'https://example.com/hotel_rosario.jpg', 'Calle Vista Hermosa 202, Oruro'),
+    ('Hotel Las Palmas', 3, 6, 6, 140, 'Ambiente familiar y acogedor para toda la familia.', 'https://example.com/hotel_las_palmas.jpg', 'Avenida Familiar 303, Potosí'),
+    ('Alojamiento Samay', 5, 7, 7, 130, 'Alojamiento tranquilo y confortable para una estadía perfecta.', 'https://example.com/alojamiento_samay.jpg', 'Calle Tranquila 404, Tarija'),
+    ('Hotel La Siesta', 4, 8, 1, 160, 'Un hotel perfecto para descansar y relajarse.', 'https://example.com/hotel_la_siesta.jpg', 'Avenida Relax 505, Beni'),
+    ('Hostal Maya', 3, 9, 2, 180, 'Hostal económico con excelente servicio.', 'https://example.com/hostal_maya.jpg', 'Calle Económica 606, Pando'),
+    ('Hotel Alcala', 5, 1, 3, 160, 'Lujo y elegancia en cada rincón del hotel.', 'https://example.com/hotel_alcala.jpg', 'Calle Lujosa 707, La Paz'),
+    ('Hotel Regina', 4, 2, 4, 200, 'Hotel de negocios con todas las facilidades modernas.', 'https://example.com/hotel_regina.jpg', 'Avenida Modernidad 808, Santa Cruz de la Sierra'),
+    ('Hotel Colonial', 4, 4, 5, 165, 'Resort con estilo colonial y servicios de alta calidad.', 'https://example.com/hotel_colonial.jpg', 'Calle Colonial 909, Cochabamba'),
+    ('Hostal San Francisco', 3, 4, 6, 170, 'Hostal familiar con ambiente acogedor y seguro.', 'https://example.com/hostal_san_francisco.jpg', 'Avenida Familiar 1010, Sucre'),
+    ('Hotel Europa', 5, 5, 7, 210, 'Alojamiento europeo con todos los servicios necesarios.', 'https://example.com/hotel_europa.jpg', 'Calle Europea 1111, Oruro'),
+    ('Hotel Real', 4, 6, 1, 130, 'Hotel céntrico con todas las comodidades.', 'https://example.com/hotel_real.jpg', 'Avenida Central 1212, Potosí');
+
 
 select * from Hotel;
 
