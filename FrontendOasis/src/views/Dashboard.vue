@@ -1,7 +1,7 @@
 <template>
   <nav-bar/>
     <div class="DashboardContainer">
-      <SideBar class="barralateral" @optionSelected="optionSelected"/>
+      <side-bar class="barralateral" @optionSelected="optionSelected"/>
       <div class="content">
         <component :is="currentComponent" />
       </div>

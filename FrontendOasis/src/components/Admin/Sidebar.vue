@@ -1,6 +1,5 @@
-<!-- Sidebar.vue -->
 <template>
-	<div>
+	
 	  <div class="hamburger" @click="toggleSidebar">☰</div>
 	  <div :class="['sidebar', { 'sidebar-hidden': !isSidebarVisible, 'sidebar-visible': isSidebarVisible }]">
 		<ul>
@@ -9,7 +8,6 @@
 		  <li @click="selectOption('hotels')">Hoteles</li>
 		  <li @click="selectOption('cars')">Autos</li>
 		</ul>
-	  </div>
 	</div>
   </template>
   
@@ -34,9 +32,11 @@
   }
   </script>
   
-  <style scoped>
+  <style >
   .sidebar {
 	width: 100%;
+	
+	background-color: aqua;
 	transition: transform 0.3s ease;
   }
   
@@ -57,6 +57,8 @@
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
+	border: 1px solid black;
+	padding: 10px 0px;
   }
   
   .hamburger {
