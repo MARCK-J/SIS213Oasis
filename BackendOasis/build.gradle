@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-	//para la implementacion de email
+	// Para la implementación de email
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
@@ -36,4 +36,8 @@ dependencies {
 
 	implementation platform('com.google.cloud:libraries-bom:26.29.0')
 	implementation 'com.google.cloud:google-cloud-vertexai'
+}
+
+tasks.withType(JavaCompile) {
+	options.compilerArgs << "-parameters"
 }

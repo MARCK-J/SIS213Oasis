@@ -36,15 +36,14 @@ public class HotelAPI {
         return new ResponseDTO(hotelList);
     }
 
-    // Endpoint to get a hotel by its id
     @GetMapping("/{id}")
-    public ResponseDTO getHotelById(@PathVariable Long id) {
+    public ResponseDTO getHotelById(@PathVariable("id") Long id) {
         Hotel hotel;
         try {
             hotel = hotelBl.getHotelById(id);
-            LOGGER.info("Hotel found");
-        } catch (RuntimeException e) {
-            LOGGER.error("Error fetching hotel", e);
+            LOGGER.info("Hotel found: {}", hotel);
+        } catch (Exception e) {
+            LOGGER.error("Error fetching hotel with id: {}", id, e);
             return new ResponseDTO("TASK-1000", e.getMessage());
         }
         return new ResponseDTO(hotel);
