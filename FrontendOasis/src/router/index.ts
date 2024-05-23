@@ -12,7 +12,9 @@ import Hotel from "../views/Hotel.vue";
 import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
-
+import Autos from "../views/Auto/Autos.vue";
+import PantallaOrdenar from "../views/Auto/PantallaOrdenar.vue";
+import PantalaExplorar from "../views/Auto/PantalaExplorar.vue";
 
 
 export function createRouter(app: App): Router {
@@ -68,6 +70,23 @@ export function createRouter(app: App): Router {
         name: "restablecerContrasenia",
         component: RestablecerContrasenia
       },
+
+      {
+        path: "/Autos",
+        name: "Autos",
+        component: Autos
+      },
+      {
+        path: "/Auto_Ordenar",
+        name: "AutoOrdenar",
+        component:PantallaOrdenar
+      },
+      {
+        path: "/Auto_Explorar",
+        name: "AutoExplorar",
+        component:PantalaExplorar
+      },
+
     ],
     history: createWebHashHistory()
   })
