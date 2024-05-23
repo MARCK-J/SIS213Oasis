@@ -20,12 +20,12 @@ const app = createApp(App);
 library.add(faLink, faUser, faPowerOff);
 
 app
-  .use(hljsVuePlugin)
-  .use(VueSweetalert2)
-  .use(createRouter(app))
-  .use(store)
-  .use(vue3GoogleLogin, {
-    clientId: '373256834880-m25tqbs62fuguij99hlhc4rv6qbv3ne9.apps.googleusercontent.com'
-  })
-  .component("font-awesome-icon", FontAwesomeIcon)
-  .mount("#app");
+    .use(hljsVuePlugin)
+    .use(VueSweetalert2)
+    .use(createRouter(app))
+    .use(store)
+    .use(vue3GoogleLogin, {
+        clientId: '373256834880-m25tqbs62fuguij99hlhc4rv6qbv3ne9.apps.googleusercontent.com'
+    })
+    .component("font-awesome-icon", FontAwesomeIcon)
+    .mount("#app");
