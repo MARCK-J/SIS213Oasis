@@ -3,14 +3,14 @@
 import NavBar from '../components/NavBar.vue';
 import InicioHotel from "../components/Hoteles/InicioHotel.vue";
 import FooterHotel from "../components/Hoteles/FooterHotel.vue";
-import CarrilHotel from "../components/Hoteles/CarrilHotel.vue";
+import PopularHotels from "../components/Hoteles/PopularHotels.vue";
 export default {
   name: "hotel",
   components: {
     NavBar,
     InicioHotel,
-    CarrilHotel,
     FooterHotel,
+    PopularHotels
   }
 };
 
@@ -19,10 +19,9 @@ export default {
 <template>
   <div>
     <NavBar/>
-    <InicioHotel> </InicioHotel>
-    <CarrilHotel/>
+    <InicioHotel/>
     <FooterHotel/>
-
+    <PopularHotels/>
   </div>
 </template>
 
