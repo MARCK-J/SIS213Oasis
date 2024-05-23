@@ -9,6 +9,7 @@
     <Team/>
     <Contactanos/>
     <Ubicacion/>
+    <ChatAssistant />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import Ubicacion from "../components/Home/Ubicacion.vue";
 import NavBar from "../components/NavBar.vue";
 import Carusel from '../components/Home/Carusel.vue'
 import Informacion from "../components/Home/Informacion.vue";
+import ChatAssistant from '../components/Chatbot/ChatAssistant.vue';
 
 export default {
   name: "home-view",
@@ -35,6 +37,7 @@ export default {
     Ubicacion,
     Carusel,
     Informacion,
+    ChatAssistant,
   },
 };
 </script>

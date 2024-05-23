@@ -14,6 +14,9 @@ public class Hotel {
        Ciudad_idCiudad int  NOT NULL,
        CategoriaHotel_idCatHot int  NOT NULL,
        totalHabitaciones int  NOT NULL,
+       descripcion varchar(255)  NOT NULL,
+       imagenes text NOT NULL,
+       ubicacion varchar(255)  NOT NULL,
        CONSTRAINT Hotel_pk PRIMARY KEY (idHotel)
     );
      */
@@ -37,6 +40,15 @@ public class Hotel {
 
     @Column(name = "totalhabitaciones")
     private int totalHabitaciones;
+
+    @Column(name = "descripcion")
+    private String descripcion;
+
+    @Column(name = "imagenes")
+    private String imagenes;
+
+    @Column(name = "ubicacion")
+    private String ubicacion;
 
     // Getters and Setters
 
@@ -88,6 +100,30 @@ public class Hotel {
         this.totalHabitaciones = totalHabitaciones;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(String imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
@@ -97,6 +133,9 @@ public class Hotel {
                 ", idCiudad=" + idCiudad +
                 ", idCatHot=" + idCatHot +
                 ", totalHabitaciones=" + totalHabitaciones +
+                ", descripcion='" + descripcion + '\'' +
+                ", imagenes='" + imagenes + '\'' +
+                ", ubicacion='" + ubicacion + '\'' +
                 '}';
     }
 }

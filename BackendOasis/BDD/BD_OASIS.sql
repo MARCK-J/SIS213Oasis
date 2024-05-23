@@ -1,6 +1,4 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-05-02 18:14:42.997
-
 -- Crear la base de datos 'Oasis' en PgAdmin
 
 -- tables
@@ -47,15 +45,15 @@ CREATE TABLE Atraccion (
 
 -- Table: Auditoria
 CREATE TABLE Auditoria (
-                           idAudit serial NOT NULL,
+                           idAudit serial  NOT NULL,
                            actividad varchar(250)  NOT NULL,
                            fecha date  NOT NULL,
                            hora time  NOT NULL,
-                           fechaInicio timestamp,
-                           fechaFin timestamp,
-                           ip varchar(50),
-                           admin_idAdmin int,
-                           Cliente_idCliente int,
+                           fechaInicio timestamp  NULL,
+                           fechaFin timestamp  NULL,
+                           ip varchar(50)  NOT NULL,
+                           admin_idAdmin int  NOT NULL DEFAULT Null,
+                           Cliente_idCliente int  NOT NULL DEFAULT Null,
                            CONSTRAINT Auditoria_pk PRIMARY KEY (idAudit)
 );
 
@@ -141,6 +139,9 @@ CREATE TABLE Hotel (
                        Ciudad_idCiudad int  NOT NULL,
                        CategoriaHotel_idCatHot int  NOT NULL,
                        totalHabitaciones int  NOT NULL,
+                       descripcion varchar(255)  NOT NULL,
+                       imagenes text  NOT NULL,
+                       ubicacion varchar(255)  NOT NULL,
                        CONSTRAINT Hotel_pk PRIMARY KEY (idHotel)
 );
 
@@ -171,7 +172,7 @@ CREATE TABLE ReservaHotel (
                               Hotel_idHotel int  NOT NULL,
                               NroReservaHotel varchar(45)  NOT NULL,
                               habitaciones int  NOT NULL,
-                              Detalle int  NOT NULL,
+                              Detalle varchar(255)  NOT NULL,
                               CONSTRAINT ReservaHotel_pk PRIMARY KEY (idReservaHotel)
 );
 
@@ -448,4 +449,3 @@ ALTER TABLE admin ADD CONSTRAINT admin_Persona
 ;
 
 -- End of file.
-

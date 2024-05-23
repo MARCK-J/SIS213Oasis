@@ -24,7 +24,7 @@ public class HotelBl {
     public Hotel getHotelById(Long id) {
         Hotel hotel = hotelDao.findById(id).orElse(null);
         if (hotel == null) {
-            throw new RuntimeException("Hotel does not exist");
+            throw new RuntimeException("Hotel with id " + id + " does not exist");
         }
         return hotel;
     }
@@ -43,6 +43,9 @@ public class HotelBl {
         currentHotel.setIdCiudad(hotel.getIdCiudad());
         currentHotel.setIdCatHot(hotel.getIdCatHot());
         currentHotel.setTotalHabitaciones(hotel.getTotalHabitaciones());
+        currentHotel.setDescripcion(hotel.getDescripcion());
+        currentHotel.setImagenes(hotel.getImagenes());
+        currentHotel.setUbicacion(hotel.getUbicacion());
         return hotelDao.save(currentHotel);
     }
 
