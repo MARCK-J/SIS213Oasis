@@ -5,14 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/GenerativeAIController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatAssistant.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatLogic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Chatbot/generativeAI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/BDD/BD_OASIS.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/BDD/BD_OASIS.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/BDD/datos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/BDD/datos.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Composition API Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -40,8 +60,19 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\maxpa\\Desktop\\Max Pasten\\Ingenieria de sistemas\\7mo Semestre\\Ingenieria de Software\\Proyecto\\SIS213Oasis\\FrontendOasis\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
+    ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\components\Chatbot" />
+      <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="serve" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -72,6 +103,13 @@
       <workItem from="1715617582101" duration="1207000" />
       <workItem from="1715652906266" duration="1298000" />
       <workItem from="1715729455675" duration="32000" />
+      <workItem from="1716234418763" duration="926000" />
+      <workItem from="1716296235081" duration="39000" />
+      <workItem from="1716296304839" duration="38000" />
+      <workItem from="1716343041105" duration="3884000" />
+      <workItem from="1716407586800" duration="201000" />
+      <workItem from="1716430200208" duration="8713000" />
+      <workItem from="1716467974813" duration="1001000" />
     </task>
     <servers />
   </component>
