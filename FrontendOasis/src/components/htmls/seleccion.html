@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoteles Populares</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .hotel-list {
+            max-width: 1500px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .hotel-item {
+            display: flex;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .hotel-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hotel-info {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hotel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .hotel-rank {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .hotel-name {
+            flex: 1;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        .favorite-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .hotel-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hotel-description {
+            flex: 1;
+            font-size: 14px;
+            color: #666;
+            text-align: justify;
+            margin-right: 10px;
+        }
+
+        .price-button {
+            background-color: #ffa500;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            align-self: flex-end; /* Alinea el botón hacia abajo */
+        }
+
+        .price-button:hover {
+            background-color: #ff8c00;
+        }
+
+        .hotel-review {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pagination button {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pagination button.active {
+            background-color: #ffa500;
+            color: white;
+            border-color: #ffa500;
+        }
+
+        .pagination button:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        .country-info {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .country-flag {
+            width: 30px;
+            height: auto;
+        }
+
+        .country-name {
+            margin-left: 10px;
+            font-size: 16px;
+            font-weight: normal;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="hotel-list">
+        <div class="hotel-item">
+            <img src="hotel17.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">1.</span>
+                    <h2 class="hotel-name">Alvear Palace Hotel</h2>
+                </div>
+                <div class="country-info">
+                    <img src="argentina.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">BUENOS AIRES</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">De estilo francés moderno, este hotel es sinónimo de lujo en Buenos Aires y en el mundo desde su apertura en 1932. En once pisos y cinco subsuelos el hotel ofrece diversos ambientes y privacidad para todo tipo de reuniones.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel18.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">2.</span>
+                    <h2 class="hotel-name">Baruk Hotel de Autor</h2>
+                </div>
+                <div class="country-info">
+                    <img src="mexico.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">GUADALAJARA</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">Esta propiedad se presenta como un 'hotel de autor', pero lo cierto es que representa una pequeña explosión de lo ecléctico que Guadalajara y su zona metropolitana pueden ser. Fundado por empresarios con raíces libanesas, el Baruk se ha convertido a pocos años de su apertura en un spot para muchos ejecutivos de empresas con presencia en el llamado 'Silicon Valley mexicano'. Lo mismo directivos que vienen a supervisar las operaciones de sus centros de diseño avanzado o las sofisticadas armadoras de equipo tecnológico, el Baruk se presenta como opción para estos ejecutivos.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel19.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">3.</span>
+                    <h2 class="hotel-name">Four Seasons México City</h2>
+                </div>
+                <div class="country-info">
+                    <img src="mexico.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">CIUDAD DE MEXICO</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">Aparte de que muchos visitantes consideran al Four Seasons un 'oasis dentro de la ciudad', uno de los activos de esta propiedad es su ubicación. El hotel está construido como una especie de palacio con un patio central con un exuberante jardín. Ya sea por sus salones para conferencias, restaurantes, o su concurrido café Pan Dulce o su bar Fifty Mils, el Four Seaons atrae una mezcla de viajeros de negocios y de placer. Asimismo, el lugar concentra muchos eventos lanzados por venture capitalists, a donde llegan no sólo inversionistas y fundadores, sino a una comunidad de nómadas digitales que ha tomado a Ciudad de México como una de sus capitales globales.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel20.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">4.</span>
+                    <h2 class="hotel-name">Gran Hotel Costa Rica, Curio Collection by Hilton</h2>
+                </div>
+                <div class="country-info">
+                    <img src="costarica.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">SAN JOSE</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">Gran Hotel Costa Rica se encuentra en el corazón de San José. Con más de 90 años de historia, hoy es parte de la cadena Elite Hotels and Resorts de Costa Rica y pertenece a la marca Curio Collection by Hilton. Es el único hotel en el país declarado como un monumento histórico-arquitectónico por el gobierno. En el cuarto nivel se ubica la Suite Presidencial que lleva el nombre del presidente estadounidense John F. Kennedy, quien se hospedó allí en marzo de 1963. La habitación, a pesar de haber sido acondicionada para adaptarla a las nuevas necesidades de los huéspedes, conserva el mobiliario intacto para dar ese aire del San José del pasado conectado con el presente.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel21.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">5.</span>
+                    <h2 class="hotel-name">Grand Hyatt</h2>
+                </div>
+                <div class="country-info">
+                    <img src="brasil.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">SAO PAULO</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">Inaugurado en 2002, el hotel fue el primero de la cadena Hyatt en Brasil. Está situado a las márgenes del río Pinheiros, con vistas a la Puente Atirantado, en una región comercial de la zona sur de São Paulo, cerca de oficinas de multinacionales y centros comerciales. Suele acoger a artistas que dan conciertos en el Estadio Morumbi, relativamente cerca del hotel, como Madonna, Bono Vox y Elton John. También ha acogido a celebridades como Dalai Lama.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>...</button>
+    </div>
+</body>
+</html>
