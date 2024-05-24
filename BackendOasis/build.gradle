@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-	//para la implementacion de email
+	// Para la implementación de email
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
@@ -28,4 +28,16 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.postgresql:postgresql'
 	implementation 'org.springframework.security:spring-security-crypto'
+
+	implementation 'org.json:json:20210307'
+	implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+
+	implementation platform('com.google.cloud:libraries-bom:26.29.0')
+	implementation 'com.google.cloud:google-cloud-vertexai'
+}
+
+tasks.withType(JavaCompile) {
+	options.compilerArgs << "-parameters"
 }
