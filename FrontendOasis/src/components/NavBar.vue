@@ -38,16 +38,6 @@
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link to="/quienes_somos" class="nav-link">Quienes Somos</router-link>
-            </li>
-          </ul>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link to="/contactanos" class="nav-link">Contactanos</router-link>
-            </li>
-          </ul>
-          <ul class="navbar-nav mr-auto">
             <li v-if="!isAuthenticated" class="nav-item">
               <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
             </li>

@@ -1,13 +1,15 @@
 <template>
-	
-	  <div class="hamburger" @click="toggleSidebar">☰</div>
-	  <div :class="['sidebar', { 'sidebar-hidden': !isSidebarVisible, 'sidebar-visible': isSidebarVisible }]">
+	<div>
+	  <div class="hamburger" @click="toggleMySidebar">☰</div>
+	  <div :class="['MySidebar', { 'MySidebar-hidden': !isMySidebarVisible, 'MySidebar-visible': isMySidebarVisible }]">
+		<h4>Bienvenido Administrador</h4>
 		<ul>
 		  <li @click="selectOption('admin')">Administrador</li>
 		  <li @click="selectOption('flights')">Vuelos</li>
 		  <li @click="selectOption('hotels')">Hoteles</li>
 		  <li @click="selectOption('cars')">Autos</li>
 		</ul>
+	  </div>
 	</div>
   </template>
   
@@ -15,50 +17,52 @@
   export default {
 	data() {
 	  return {
-		isSidebarVisible: true
+		isMySidebarVisible: true
 	  }
 	},
 	methods: {
-	  toggleSidebar() {
-		this.isSidebarVisible = !this.isSidebarVisible;
+	  toggleMySidebar() {
+		this.isMySidebarVisible = !this.isMySidebarVisible;
 	  },
 	  selectOption(option) {
 		this.$emit('optionSelected', option);
 		if (window.innerWidth < 760) {
-		  this.isSidebarVisible = false;
+		  this.isMySidebarVisible = false;
 		}
 	  }
 	}
   }
   </script>
   
-  <style >
-  .sidebar {
+  <style scoped>
+  .MySidebar {
 	width: 100%;
-	
-	background-color: aqua;
+	background-color: wheat;
 	transition: transform 0.3s ease;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
   }
   
-  .sidebar-hidden {
+  .MySidebar-hidden {
 	transform: translateX(-100%);
   }
   
-  .sidebar-visible {
+  .MySidebar-visible {
 	transform: translateX(0);
   }
   
-  .sidebar ul {
+  .MySidebar ul {
 	list-style-type: none;
 	padding: 0;
   }
   
-  .sidebar li {
+  .MySidebar li {
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	border: 1px solid black;
-	padding: 10px 0px;
+	padding: 10px 10px;
   }
   
   .hamburger {
@@ -68,5 +72,14 @@
 	padding: 10px;
   }
   
+  @media (max-width: 760px) {
+	.hamburger {
+	  display: block;
+	}
+	
+	.MySidebar {
+	  width: 100%;
+	}
+  }
   </style>
   
