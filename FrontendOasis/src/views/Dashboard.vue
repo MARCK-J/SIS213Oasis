@@ -40,6 +40,9 @@ export default {
         case 'cars':
           this.currentComponent = 'Cars';
           break;
+        case 'configurations':
+          this.currentComponent = 'configurations';
+          break;  
         default:
           this.currentComponent = 'TableAudit';
       }

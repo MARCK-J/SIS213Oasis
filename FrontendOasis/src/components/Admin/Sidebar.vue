@@ -1,85 +1,121 @@
 <template>
 	<div>
-	  <div class="hamburger" @click="toggleMySidebar">☰</div>
-	  <div :class="['MySidebar', { 'MySidebar-hidden': !isMySidebarVisible, 'MySidebar-visible': isMySidebarVisible }]">
-		<h4>Bienvenido Administrador</h4>
-		<ul>
-		  <li @click="selectOption('admin')">Administrador</li>
-		  <li @click="selectOption('flights')">Vuelos</li>
-		  <li @click="selectOption('hotels')">Hoteles</li>
-		  <li @click="selectOption('cars')">Autos</li>
-		</ul>
+	  <button
+		id="custom-button"
+		class="navbar-toggler d-md-none"
+		type="button"
+		@click="isSidebarOpen = !isSidebarOpen"
+	  >
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div :class="['sidebar-container', { 'collapsed': !isSidebarOpen }]">
+		<nav class="sidebar">
+		  <ul class="nav flex-column">
+			<li class="nav-item">
+			  <div class="nav-link" @click="selectOption('admin')">Administrador</div>
+			</li>
+			<li class="nav-item">
+			  <div class="nav-link" @click="selectOption('hotels')">Hoteles</div>
+			</li>
+			<li class="nav-item">
+			  <div class="nav-link" @click="selectOption('flights')">Vuelos</div>
+			</li>
+			<li class="nav-item">
+			  <div class="nav-link" @click="selectOption('cars')">Autos</div>
+			</li>
+			<li class="nav-item">
+			  <div class="nav-link" @click="selectOption('configurations')">Configuraciones</div>
+			</li>
+		  </ul>
+		</nav>
 	  </div>
 	</div>
   </template>
   
-  <script>
-  export default {
-	data() {
-	  return {
-		isMySidebarVisible: true
-	  }
-	},
-	methods: {
-	  toggleMySidebar() {
-		this.isMySidebarVisible = !this.isMySidebarVisible;
-	  },
-	  selectOption(option) {
-		this.$emit('optionSelected', option);
-		if (window.innerWidth < 760) {
-		  this.isMySidebarVisible = false;
+  <script lang="ts">
+  import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue';
+  
+  export default defineComponent({
+	name: "Sidebar",
+	emits: ['optionSelected'],
+	setup(props, { emit }) {
+	  const isSidebarOpen = ref(false);
+  
+	  const handleResize = () => {
+		if (window.innerWidth >= 768) {
+		  isSidebarOpen.value = true;
+		} else {
+		  isSidebarOpen.value = false;
 		}
-	  }
-	}
-  }
+	  };
+  
+	  const selectOption = (option) => {
+		emit('optionSelected', option);
+		if (window.innerWidth < 768) {
+		  isSidebarOpen.value = false;
+		}
+	  };
+  
+	  onMounted(() => {
+		window.addEventListener('resize', handleResize);
+		handleResize();
+	  });
+  
+	  onBeforeUnmount(() => {
+		window.removeEventListener('resize', handleResize);
+	  });
+  
+	  return {
+		isSidebarOpen,
+		selectOption,
+	  };
+	},
+  });
   </script>
   
   <style scoped>
-  .MySidebar {
-	width: 100%;
-	background-color: wheat;
-	transition: transform 0.3s ease;
+  .sidebar-container {
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
+	width: 250px;
+	height: 100vh;
+	background-color: black;
+	transition: transform 0.3s ease;
+	position: fixed;
+	z-index: 1000;
   }
-  
-  .MySidebar-hidden {
+  .sidebar-container.collapsed {
 	transform: translateX(-100%);
   }
-  
-  .MySidebar-visible {
-	transform: translateX(0);
-  }
-  
-  .MySidebar ul {
-	list-style-type: none;
-	padding: 0;
-  }
-  
-  .MySidebar li {
-	cursor: pointer;
+  .sidebar {
 	display: flex;
-	justify-content: center;
-	border: 1px solid black;
-	padding: 10px 10px;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
   }
-  
-  .hamburger {
-	display: none;
-	font-size: 30px;
+  .sidebar-header {
+	margin-bottom: 20px;
+  }
+  .nav {
+	width: 100%;
+  }
+  .nav-item {
+	width: 100%;
+  }
+  .nav-link {
+	color: #fff;
+	padding: 10px 15px;
+	width: 100%;
+	text-align: left;
 	cursor: pointer;
-	padding: 10px;
   }
-  
-  @media (max-width: 760px) {
-	.hamburger {
-	  display: block;
-	}
-	
-	.MySidebar {
-	  width: 100%;
-	}
+  .nav-link:hover {
+	color: #939292;
+  }
+  #custom-button {
+	background-color: rgb(84, 84, 239);
+    border: 1px solid black;
+    margin: 10px 20px;
   }
   </style>
   
