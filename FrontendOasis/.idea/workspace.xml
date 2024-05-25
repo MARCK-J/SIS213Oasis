@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/ReservaViaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chatbot/ChatAssistant.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatAssistant.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +99,7 @@
       <workItem from="1716407586800" duration="201000" />
       <workItem from="1716430200208" duration="8713000" />
       <workItem from="1716467974813" duration="3088000" />
-      <workItem from="1716479111532" duration="8859000" />
+      <workItem from="1716479111532" duration="13085000" />
     </task>
     <servers />
   </component>
