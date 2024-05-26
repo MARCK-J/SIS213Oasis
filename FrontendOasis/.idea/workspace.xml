@@ -5,10 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/http/Auto.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AutoAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/AutoBl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/AutoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/AlquilerAutoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ReservaHotelDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/VueloDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/Auto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_AlquilerAutos/EditAlquilerAu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_AlquilerAutos/RegisterAlquilerAu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_AlquilerAutos/TableAlquilerAu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/EditResHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/RegisterResHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/TableResHotel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Vuelos/EditVuelo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Vuelos/RegisterVuelo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Vuelos/TableVuelo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/AlquilerAuto.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/AlquilerAuto.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/ReservaHotel.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/ReservaHotel.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Vuelo.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Vuelo.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AlquilerAutoAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AlquilerAutoAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ReservaHotelAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ReservaHotelAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/VueloAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/VueloAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Hoteles/RegisterResHotel.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Hoteles/TableResHotel.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +103,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
       </set>
     </attachedChunks>
   </component>
@@ -100,6 +126,7 @@
       <workItem from="1716430200208" duration="8713000" />
       <workItem from="1716467974813" duration="3088000" />
       <workItem from="1716479111532" duration="13085000" />
+      <workItem from="1716641334523" duration="26785000" />
     </task>
     <servers />
   </component>

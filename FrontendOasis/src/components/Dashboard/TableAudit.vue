@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div class="dashboardTitle">
-      <h1>Dashboard</h1>
+      <h1 style="font-size: 34px">Dashboard</h1>
       <button>
         <router-link to="/RegistroAdmin" class="enlacerouter"> Registrar Administrador</router-link>
       </button>

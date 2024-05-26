@@ -10,15 +10,22 @@
 
 <script>
 import NavBar from "../components/NavBar.vue";
+//import TableAudit from "../components/Dashboard/TableAudit.vue";
+import TableResHotel from "../components/Dashboard/CRUD_ResHoteles/TableResHotel.vue";
 import SideBar from "../components/Admin/SideBar.vue";
 import TableAudit from "../components/Dashboard/TableAudit.vue";
-
+import TableVuelo from "../components/Dashboard/CRUD_Vuelos/TableVuelo.vue";
+import TableAlquilerAu from "../components/Dashboard/CRUD_AlquilerAutos/TableAlquilerAu.vue";
 
 export default {
   components: {
     NavBar,
     SideBar,
     TableAudit,
+    TableResHotel,
+    TableVuelo,
+    TableAlquilerAu,
+
   },
   data() {
     return {
@@ -32,17 +39,17 @@ export default {
           this.currentComponent = 'TableAudit';
           break;
         case 'flights':
-          this.currentComponent = 'Flights';
+          this.currentComponent = 'TableVuelo';
           break;
         case 'hotels':
-          this.currentComponent = 'Hotels';
+          this.currentComponent = 'TableResHotel';
           break;
         case 'cars':
-          this.currentComponent = 'Cars';
+          this.currentComponent = 'TableAlquilerAu';
           break;
         case 'configurations':
           this.currentComponent = 'configurations';
-          break;  
+          break;
         default:
           this.currentComponent = 'TableAudit';
       }
