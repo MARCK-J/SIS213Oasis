@@ -1,6 +1,8 @@
 package com.ucb.SIS213.Oasis.api;
 
+import com.ucb.SIS213.Oasis.dto.AlquilerAutoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 import com.ucb.SIS213.Oasis.bl.AlquilerAutoBl;
 import com.ucb.SIS213.Oasis.dto.ResponseDTO;
@@ -16,10 +18,12 @@ public class AlquilerAutoAPI {
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(AlquilerAutoAPI.class);
 
     AlquilerAutoBl alquilerAutoBl;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public AlquilerAutoAPI(AlquilerAutoBl alquilerAutoBl) {
+    public AlquilerAutoAPI(AlquilerAutoBl alquilerAutoBl, JdbcTemplate jdbcTemplate) {
         this.alquilerAutoBl = alquilerAutoBl;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     // Endpoint para obtener todos los alquileres de auto
@@ -90,5 +94,33 @@ public class AlquilerAutoAPI {
             return new ResponseDTO("TASK-1000", e.getMessage());
         }
         return new ResponseDTO("Alquiler de auto eliminado");
+    }
+
+    @GetMapping("/alquierAutos")
+    public List<AlquilerAutoDTO> obtenerVuelos() {
+        String sql = "select aa.*, au.modelo, au.marca, au.tipo, c.ciudad, p.pais\n" +
+                "from alquilerauto aa, auto au, ciudad c, pais p\n" +
+                "where aa.auto_idauto = au.idauto\n" +
+                "and aa.ciudad_idciudad = c.idciudad\n" +
+                "and c.pais_idpais = p.idpais";
+
+        List<AlquilerAutoDTO> alquilerAutos = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            AlquilerAutoDTO alquilerAuto = new AlquilerAutoDTO();
+            alquilerAuto.setIdAlquiler(rs.getLong("idalquiler"));
+            alquilerAuto.setPrecio(rs.getDouble("precio"));
+            alquilerAuto.setDias(rs.getInt("dias"));
+            alquilerAuto.setEmpresa(rs.getString("empresa"));
+            alquilerAuto.setIdAuto(rs.getLong("auto_idauto"));
+            alquilerAuto.setIdCiudad(rs.getLong("ciudad_idciudad"));
+            alquilerAuto.setModelo(rs.getString("modelo"));
+            alquilerAuto.setMarca(rs.getString("marca"));
+            alquilerAuto.setTipo(rs.getString("tipo"));
+            alquilerAuto.setCiudad(rs.getString("ciudad"));
+            alquilerAuto.setPais(rs.getString("pais"));
+
+            return alquilerAuto;
+        });
+
+        return alquilerAutos;
     }
 }

@@ -19,6 +19,11 @@ GET http://localhost:9999/api/v1/reservahotel
 Content-Type: application/json
 Accept: application/json
 
+### View all reservas details
+GET http://localhost:9999/api/v1/reservahotel/reservas
+Content-Type: application/json
+Accept: application/json
+
 ### View a reserva by id
 GET http://localhost:9999/api/v1/reservahotel/1
 Content-Type: application/json
