@@ -143,7 +143,7 @@ body {
 
 .dashboard {
   width: 95%;
-  margin: 20px auto;
+  margin: 10px;
   text-align: left;
 }
 

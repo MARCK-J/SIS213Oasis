@@ -5,35 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/http/Auto.http" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AutoAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/AutoBl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/AutoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/AlquilerAutoDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ReservaHotelDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/VueloDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/Auto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_AlquilerAutos/EditAlquilerAu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_AlquilerAutos/RegisterAlquilerAu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_AlquilerAutos/TableAlquilerAu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/EditResHotel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/RegisterResHotel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/TableResHotel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Vuelos/EditVuelo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Vuelos/RegisterVuelo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Vuelos/TableVuelo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/AlquilerAuto.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/AlquilerAuto.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/ReservaHotel.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/ReservaHotel.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Vuelo.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Vuelo.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AlquilerAutoAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AlquilerAutoAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ReservaHotelAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ReservaHotelAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/VueloAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/VueloAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/CarList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/ClientForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FlightList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/HotelList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/Modal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Hoteles/RegisterResHotel.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/CRUD_Hoteles/TableResHotel.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/TableResHotel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/CRUD_ResHoteles/TableResHotel.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,6 +64,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\components\Dashboard\ReservaViaje" />
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\components\Chatbot" />
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src" />
     </key>
@@ -127,6 +108,7 @@
       <workItem from="1716467974813" duration="3088000" />
       <workItem from="1716479111532" duration="13085000" />
       <workItem from="1716641334523" duration="26785000" />
+      <workItem from="1716729116231" duration="7801000" />
     </task>
     <servers />
   </component>

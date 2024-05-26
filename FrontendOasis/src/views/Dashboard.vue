@@ -16,6 +16,7 @@ import SideBar from "../components/Admin/SideBar.vue";
 import TableAudit from "../components/Dashboard/TableAudit.vue";
 import TableVuelo from "../components/Dashboard/CRUD_Vuelos/TableVuelo.vue";
 import TableAlquilerAu from "../components/Dashboard/CRUD_AlquilerAutos/TableAlquilerAu.vue";
+import FormRegisterVue from "../components/Dashboard/ReservaViaje/FormRegisterVue.vue";
 
 export default {
   components: {
@@ -25,6 +26,7 @@ export default {
     TableResHotel,
     TableVuelo,
     TableAlquilerAu,
+    FormRegisterVue,
 
   },
   data() {
@@ -46,6 +48,9 @@ export default {
           break;
         case 'cars':
           this.currentComponent = 'TableAlquilerAu';
+          break;
+        case 'register_flight':
+          this.currentComponent = 'FormRegisterVue';
           break;
         case 'configurations':
           this.currentComponent = 'configurations';
