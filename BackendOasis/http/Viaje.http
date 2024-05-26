@@ -4,6 +4,12 @@ GET http://localhost:9999/api/v1/viaje
 Content-Type: application/json
 Accept: application/json
 
+### Vista del untimo viaje de un cliente
+GET http://localhost:9999/api/v1/viaje/find/1
+Content-Type: application/json
+Accept: application/json
+
+
 ### Vista de una reserva de viaje
 GET http://localhost:9999/api/v1/viaje/1
 Content-Type: application/json

@@ -1,9 +1,11 @@
 package com.ucb.SIS213.Oasis.api;
 
 import com.ucb.SIS213.Oasis.bl.ReservaHotelBl;
+import com.ucb.SIS213.Oasis.dto.ReservaHotelDTO;
 import com.ucb.SIS213.Oasis.dto.ResponseDTO;
 import com.ucb.SIS213.Oasis.entity.ReservaHotel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +20,12 @@ public class ReservaHotelAPI {
     private final ReservaHotelBl reservaHotelBl;
 
     @Autowired
-    public ReservaHotelAPI(ReservaHotelBl reservaHotelBl) {
+    public ReservaHotelAPI(ReservaHotelBl reservaHotelBl, JdbcTemplate jdbcTemplate) {
         this.reservaHotelBl = reservaHotelBl;
+        this.jdbcTemplate = jdbcTemplate;
     }
+
+    private final JdbcTemplate jdbcTemplate;
 
     // Endpoint to get all reservas
     @GetMapping
@@ -89,5 +94,33 @@ public class ReservaHotelAPI {
             return new ResponseDTO("TASK-1000", e.getMessage());
         }
         return new ResponseDTO("Reserva deleted");
+    }
+
+    @GetMapping("/reservas")
+    public List<ReservaHotelDTO> obtenerReservasHotel() {
+        String sql = "SELECT rh.*, h.hotel, c.ciudad, p.pais " +
+                "FROM reservahotel rh, hotel h, ciudad c, pais p " +
+                "WHERE rh.hotel_idhotel = h.idhotel " +
+                "AND h.ciudad_idciudad = c.idciudad " +
+                "AND c.pais_idpais = p.idpais";
+
+        List<ReservaHotelDTO> reservas = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            ReservaHotelDTO reserva = new ReservaHotelDTO();
+            reserva.setIdReservaHotel(rs.getLong("idreservahotel"));
+            reserva.setFechaInicio(rs.getDate("fechainicio"));
+            reserva.setFechaFin(rs.getDate("fechafin"));
+            reserva.setPrecio(rs.getBigDecimal("precio"));
+            reserva.setPersonas(rs.getInt("personas"));
+            reserva.setIdHotel(rs.getInt("hotel_idhotel"));
+            reserva.setNroReservaHotel(rs.getString("nroreservahotel"));
+            reserva.setHabitaciones(rs.getInt("habitaciones"));
+            reserva.setDetalle(rs.getString("detalle"));
+            reserva.setHotel(rs.getString("hotel"));
+            reserva.setCiudad(rs.getString("ciudad"));
+            reserva.setPais(rs.getString("pais"));
+            return reserva;
+        });
+
+        return reservas;
     }
 }

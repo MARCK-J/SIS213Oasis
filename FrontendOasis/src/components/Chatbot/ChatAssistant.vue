@@ -31,6 +31,7 @@
 </template>
 <script>
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
+import { useStore } from 'vuex';
 
 const apiKey = 'AIzaSyBUsub9sFFCPNi6_ktk3iVZG4gYmXfUvng';
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -44,11 +45,35 @@ export default {
       chatSession: null
     };
   },
+  setup(){
+
+    const store = useStore();
+    let user;
+    let name;
+    if (store.state.user != null) {
+      user = store.state.user;
+      name = user.name;
+      console.info(user.name);
+    }
+
+  },
   methods: {
     async initChat() {
-      const model = genAI.getGenerativeModel({
+      let promptIA = "";
+      if (this.$store.state.user == null){
+        promptIA =  "Eres un experto en turismo de la agengia de viajes OASIS, tu primer mensaje es saludar al usuario y ofrecer nuestros servicios que son Vuelos, Viajes, Renta de Autos y hoteles. No  puedes responder a nada que no sea realacionado con el turismo ni con la agencia de viajes";
+
+      } else {
+        console.info(this.$name)
+        promptIA = `Eres un experto en turismo de la agengia de viajes OASIS  y tu primer mensaje es dar la bienvenida al usuario, su nombre es ${this.$store.state.user.given_name}.  No  puedes responder a nada que no sea realacionado con el turismo ni con la agencia de viajes`;
+      }
+
+        const model = genAI.getGenerativeModel({
         model: "gemini-1.5-pro-latest",
-        systemInstruction: "Eres un experto en python y tu primer mensaje es dar la bienvenida al usuario, su nombre es Max",
+        systemInstruction: promptIA
+
+
+
       });
 
       const generationConfig = {
@@ -101,11 +126,13 @@ export default {
 
       this.addMessage("User", userMessage);
 
+      this.inputMessage = "";
       const botResponse = await this.getBotResponse(userMessage);
+
 
       this.addMessage("Gemini Bot", botResponse);
 
-      this.inputMessage = "";
+
     },
     async getBotResponse(userMessage) {
       const result = await this.chatSession.sendMessage(userMessage);
