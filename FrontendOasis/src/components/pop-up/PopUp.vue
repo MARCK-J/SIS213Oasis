@@ -1,28 +1,63 @@
-<script>
-export default {
-    methods: {
-        close(){
-            this.$emit('close')
-        }
-    },
-}
-</script>
 <template>
-  <div class="pop-up">
+  <div v-if="loading" class="loading-panel">
+    <p>Cargando...</p>
+  </div>
+  <div v-else class="pop-up">
     <div class="pop-up-inner">
-      <div class="pop-up-close" @click=close()>&times;</div>
+      <div class="pop-up-close" @click="close">&times;</div>
       <h1>Explora tu destino!</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis a
-        iste ducimus necessitatibus similique, dolore modi possimus maxime
-        adipisci, laboriosam ratione nam alias praesentium, eius facilis
-        commodi. Corporis, nisi dolor?
-      </p>
-      <button @click=close()>Cerrar</button>
+      <a-scene embedded style="width: 100%; height: 400px;">
+        <a-sky :src="panoramaImage" rotation="0 -90 0"></a-sky>
+      </a-scene>
+      <div class="pop-up-button">
+        <button @click="close">Cerrar</button>
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+import 'aframe';
+
+export default {
+  data() {
+    return {
+      panoramaImage: '',
+      loading: true
+    };
+  },
+  mounted() {
+    const img = new Image();
+    img.src = 'src/assets/img_360/España.jpg';
+    img.onload = () => {
+      this.panoramaImage = img.src;
+      this.loading = false;
+    };
+  },
+  methods: {
+    close() {
+      this.$emit('close');
+    }
+  }
+};
+</script>
+
 <style>
+.loading-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
 .pop-up {
   position: fixed;
   top: 0;
@@ -34,6 +69,24 @@ export default {
   background-color: rgba(144, 216, 214, 0.5);
   display: grid;
   place-items: center;
+}
+.pop-up h1{
+  display: flex;
+  justify-content: center;
+}
+.pop-up button{
+  background-color: rgb(164, 227, 200);
+  color: #000;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 20px;
+  margin: 19px 0px 0px 0px;
+}
+.pop-up-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 .pop-up-close {
   position: absolute;
@@ -49,7 +102,6 @@ export default {
   cursor: pointer;
 }
 .pop-up-inner {
-    /* background del popup */
   background-color: #fff;
   color: #000;
   position: relative;
@@ -60,18 +112,14 @@ export default {
   transition: all 250ms ease-in-out;
 }
 .fade-enter,
-.fade-leave-to{
-    opacity: 0;
-    .pop-up-inner{
-        opacity: 0;
-        transform: translateY(-32px);
-    }
+.fade-leave-to {
+  opacity: 0;
 }
 .fade-enter-active,
-.fade-leave-active{
-    transition: all 250ms ease-in-out;
+.fade-leave-active {
+  transition: all 250ms ease-in-out;
 }
-.fade-leave-active{
-    transition-delay: 250ms;
+.fade-leave-active {
+  transition-delay: 250ms;
 }
 </style>
