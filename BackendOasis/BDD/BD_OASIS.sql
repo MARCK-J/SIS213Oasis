@@ -134,7 +134,7 @@ CREATE TABLE FormaPago (
 -- Table: Hotel
 CREATE TABLE Hotel (
                        idHotel serial  NOT NULL,
-                       hotel varchar(45)  NOT NULL,
+                       hotel varchar(255)  NOT NULL,
                        puntuacion int  NOT NULL,
                        Ciudad_idCiudad int  NOT NULL,
                        CategoriaHotel_idCatHot int  NOT NULL,
