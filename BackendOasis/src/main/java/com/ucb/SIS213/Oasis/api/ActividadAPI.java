@@ -1,6 +1,8 @@
 package com.ucb.SIS213.Oasis.api;
 
+import com.ucb.SIS213.Oasis.dto.ActividadDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 import com.ucb.SIS213.Oasis.bl.ActividadBl;
 import com.ucb.SIS213.Oasis.dto.ResponseDTO;
@@ -16,10 +18,12 @@ public class ActividadAPI {
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(ActividadAPI.class);
 
     ActividadBl actividadBl;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public ActividadAPI(ActividadBl actividadBl) {
+    public ActividadAPI(ActividadBl actividadBl, JdbcTemplate jdbcTemplate) {
         this.actividadBl = actividadBl;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     // Endpoint para obtener todas las actividades
@@ -90,5 +94,32 @@ public class ActividadAPI {
             return new ResponseDTO("TASK-1000", e.getMessage());
         }
         return new ResponseDTO("Actividad eliminada");
+    }
+
+    @GetMapping("/actividades")
+    public List<ActividadDTO> obtenerActividades() {
+        String sql = "select ac.*, ca.categoria, cd.ciudad, p.pais\n" +
+                "from actividad ac, categoriaatraccion ca, ciudad cd, pais p\n" +
+                "where ac.categoriaactividad_idcatacti = ca.idcatatrac\n" +
+                "and ac.ciudad_idciudad = cd.idciudad\n" +
+                "and cd.pais_idpais = p.idpais;";
+
+        List<ActividadDTO> actividades = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            ActividadDTO actividad = new ActividadDTO();
+            actividad.setIdActividad(rs.getLong("idactividad"));
+            actividad.setActividad(rs.getString("actividad"));
+            actividad.setIdCiudad(rs.getLong("ciudad_idciudad"));
+            actividad.setIdCatActi(rs.getLong("categoriaactividad_idcatacti"));
+            actividad.setFecha(rs.getDate("fecha"));
+            actividad.setPrecio(rs.getDouble("precio"));
+            actividad.setDetalle(rs.getString("detalle"));
+            actividad.setCategoria(rs.getString("categoria"));
+            actividad.setCiudad(rs.getString("ciudad"));
+            actividad.setPais(rs.getString("pais"));
+
+            return actividad;
+        });
+
+        return actividades;
     }
 }
