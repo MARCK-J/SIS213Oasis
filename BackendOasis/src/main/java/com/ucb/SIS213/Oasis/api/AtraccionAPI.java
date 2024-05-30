@@ -1,6 +1,8 @@
 package com.ucb.SIS213.Oasis.api;
 
+import com.ucb.SIS213.Oasis.dto.AtraccionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 import com.ucb.SIS213.Oasis.bl.AtraccionBl;
 import com.ucb.SIS213.Oasis.dto.ResponseDTO;
@@ -16,10 +18,12 @@ public class AtraccionAPI {
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(AtraccionAPI.class);
 
     AtraccionBl atraccionBl;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public AtraccionAPI(AtraccionBl atraccionBl) {
+    public AtraccionAPI(AtraccionBl atraccionBl, JdbcTemplate jdbcTemplate) {
         this.atraccionBl = atraccionBl;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     // Endpoint para obtener todas las atracciones
@@ -91,5 +95,31 @@ public class AtraccionAPI {
             return new ResponseDTO("TASK-1000", e.getMessage());
         }
         return new ResponseDTO("Atraccion eliminada");
+    }
+
+    @GetMapping("/atracciones")
+    public List<AtraccionDTO> obtenerVuelos() {
+        String sql = "select at.*, ca.categoria, cd.ciudad, p.pais\n" +
+                "from atraccion at, categoriaatraccion ca, ciudad cd, pais p\n" +
+                "where at.categoriaatraccion_idcatatrac = ca.idcatatrac\n" +
+                "and at.ciudad_idciudad = cd.idciudad\n" +
+                "and cd.pais_idpais = p.idpais;";
+
+        List<AtraccionDTO> atracciones = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            AtraccionDTO atraccion = new AtraccionDTO();
+            atraccion.setIdAtraccion(rs.getLong("idatraccion"));
+            atraccion.setAtraccion(rs.getString("atraccion"));
+            atraccion.setIdCatAtrac(rs.getLong("categoriaatraccion_idcatatrac"));
+            atraccion.setIdCiudad(rs.getLong("ciudad_idciudad"));
+            atraccion.setPrecio(rs.getDouble("precio"));
+            atraccion.setDetalle(rs.getString("detalle"));
+            atraccion.setCategoria(rs.getString("categoria"));
+            atraccion.setCiudad(rs.getString("ciudad"));
+            atraccion.setPais(rs.getString("pais"));
+
+            return atraccion;
+        });
+
+        return atracciones;
     }
 }

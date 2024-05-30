@@ -5,7 +5,7 @@
         <span v-if="isCollapsed">☰</span>
         <span v-else>☰</span>
       </button>
-      <nav class="sidebar" :style="{ width: isCollapsed ? '60px' : '250px' }">
+      <nav class="sidebar" :style="{ width: isCollapsed ? '5%' : '20%' }">
         <ul class="nav flex-column">
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('admin')">
@@ -26,17 +26,24 @@
             </div>
           </li>
           <li class="nav-item">
-            <div class="nav-link" @click="selectOption('register_flight')">
-              <span v-if="isCollapsed">🌍</span>
-              <span v-else>Viajes</span>
-            </div>
-          </li>
-          <li class="nav-item">
             <div class="nav-link" @click="selectOption('cars')">
               <span v-if="isCollapsed">🚗</span>
               <span v-else>Autos</span>
             </div>
           </li>
+          <li class="nav-item">
+            <div class="nav-link" @click="selectOption('register_flight')">
+              <span v-if="isCollapsed">🌍</span>
+              <span v-else>Registro Viaje</span>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link" @click="selectOption('registers_flights')">
+              <span v-if="isCollapsed">🌍</span>
+              <span v-else>Viajes</span>
+            </div>
+          </li>
+
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('configurations')">
               <span v-if="isCollapsed">⚙️</span>
