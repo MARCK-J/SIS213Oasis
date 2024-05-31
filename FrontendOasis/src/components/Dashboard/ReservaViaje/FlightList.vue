@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="FlightList-container">
     <h2>Lista de Vuelos</h2>
     <table>
       <thead>
@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style>
+.FlightList-container{
+  overflow-x: auto; /* Agregar desplazamiento horizontal en pantallas pequeñas */
+}
 table {
   width: 100%;
   border-collapse: collapse;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="HotelList-Container">
     <h3>Selecciona una Reserva de Hotel</h3>
     <table>
       <thead>
@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+.HotelList-Container{
+  overflow-x: auto; /* Agregar desplazamiento horizontal en pantallas pequeñas */
+}
 table {
   width: 100%;
   border-collapse: collapse;

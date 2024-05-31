@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="FormRegisterVue">
     <h1>Formulario de Agencia de Viajes</h1>
 
     <div class="date-input">
@@ -464,5 +464,9 @@ export default {
   border: none;
   box-shadow: 0 9px #999;
 }
-
+@media (max-width: 600px) {
+  .FormRegisterVue{
+    margin-left: 10%;
+  }
+}
 </style>

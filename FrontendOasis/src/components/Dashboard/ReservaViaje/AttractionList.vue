@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="AttractionList-container">
     <h2>Lista de Atracciones</h2>
     <table>
       <thead>
@@ -37,6 +37,9 @@ export default {
 </script>
 
 <style>
+.AttractionList-container{
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;
