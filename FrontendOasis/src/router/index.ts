@@ -15,6 +15,7 @@ import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
 import Autos from "../views/Auto/Autos.vue";
 import PantallaOrdenar from "../views/Auto/PantallaOrdenar.vue";
 import PantalaExplorar from "../views/Auto/PantalaExplorar.vue";
+import Vuelos from "../views/Vuelos.vue";
 
 
 export function createRouter(app: App): Router {
@@ -85,6 +86,11 @@ export function createRouter(app: App): Router {
         path: "/Auto_Explorar",
         name: "AutoExplorar",
         component:PantalaExplorar
+      },
+      {
+        path: "/Vuelos",
+        name: "Vuelos",
+        component:Vuelos
       },
 
     ],
