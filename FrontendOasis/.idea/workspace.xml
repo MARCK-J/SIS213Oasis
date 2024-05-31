@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ActividadDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/AtraccionDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ClienteDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ReservaViajeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/ActivityList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/AttractionList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/ClientList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/EditViaje.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/InsuranceList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/TableViaje.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Actividad.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Actividad.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Atraccion.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Atraccion.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Cliente.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Cliente.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ActividadAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ActividadAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AtraccionAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AtraccionAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ViajeAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ViajeAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/AuditoriaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AuditoriaAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AuditoriaAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +108,8 @@
       <workItem from="1717023336276" duration="10748000" />
       <workItem from="1717039984079" duration="4712000" />
       <workItem from="1717079239136" duration="1244000" />
-      <workItem from="1717105535481" duration="2255000" />
+      <workItem from="1717105535481" duration="10416000" />
+      <workItem from="1717167610782" duration="33000" />
     </task>
     <servers />
   </component>
