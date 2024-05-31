@@ -13,6 +13,7 @@ import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
 import Autos from "../views/Autos.vue";
+import HotelSeleccionado from "../components/Hoteles/HotelSeleccionado.vue";
 
 
 
@@ -75,6 +76,12 @@ export function createRouter(app: App): Router {
         name: "Autos",
         component: Autos
       },
+            {
+        path: '/hotel/:id', // Utilizamos un parámetro dinámico para el ID del hotel
+        name: 'HotelDetails',
+        component: HotelSeleccionado,
+        props: true
+    }
 
     ],
     history: createWebHashHistory()
