@@ -1,21 +1,23 @@
-/*carruselauto*/
-<!-- src/components/Carousel.vue -->
-<!-- src/components/Carousel.vue -->
+
 <template>
-  <div ref="carouselDom" class="carousel" v-if="carouselItems.length">
+  <div ref="carouselDom" class="carousel">
     <div ref="listItemDom" class="list">
-      <div class="item" v-for="(item, index) in carouselItems" :key="index">
-        <img :src="item.src" :alt="item.alt">
+      <div class="item" v-for="(image, index) in images" :key="index">
+        <img :src="image.src" :alt="image.alt">
         <div class="content">
-          <div class="author">{{ item.author }}</div>
-          <div class="title">{{ item.title }}</div>
-          <div class="topic">{{ item.topic }}</div>
-          <div class="des">{{ item.des }}</div>
+          <div class="author">{{ image.author }}</div>
+          <div class="title">{{ image.title }}</div>
+          <div class="topic">{{ image.topic }}</div>
+          <div class="des">{{ image.des }}</div>
+          <div class="buttons">
+
+          </div>
         </div>
       </div>
     </div>
+
     <div ref="thumbnailDom" class="thumbnail">
-      <div class="item" v-for="(thumbnail, index) in carouselItems" :key="index">
+      <div class="item" v-for="(thumbnail, index) in thumbnails" :key="index">
         <img :src="thumbnail.src" :alt="thumbnail.alt">
         <div class="content">
           <div class="title">{{ thumbnail.title }}</div>
@@ -23,31 +25,31 @@
         </div>
       </div>
     </div>
+
     <div class="arrows">
       <button ref="prevDom" @click="showSlider('prev')">&lt;</button>
       <button ref="nextDom" @click="showSlider('next')">&gt;</button>
     </div>
     <time class="time"></time>
   </div>
-  <div v-else>No hay datos disponibles</div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
-import { useCountryStore } from '../../store/country';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-const store = useCountryStore();
+const images = [
+  { src: 'https://i.pinimg.com/originals/c9/b5/6e/c9b56e1c8c4a7199cd83b27e34be219f.jpg', alt: 'Auto1', author: 'OASIS', title: 'DESING SLIDER', topic: 'AUTOS', des: 'Autos para toda la ciudad' },
+  { src: 'https://wallpaper.forfun.com/fetch/90/90091e333f2aa9ee8e35642c93cf6752.jpeg', alt: 'Auto2', author: 'OASIS', title: 'DESING SLIDER', topic: 'AUTOS', des: 'Autos para camino peligrosos' },
+  { src: 'https://arblatinamerica.com/wp-content/uploads/2021/07/Salar-de-Uyuni-1.jpg', alt: 'Auto3', author: 'OASIS', title: 'DESING SLIDER', topic: 'AUTOS', des: 'Autos para acampar con tu familia' },
+  { src: 'https://www.chevrolet.com.ec/content/dam/chevrolet/south-america/ecuador/espanol/index/index-subcontent/mh-scroller/abril-2024/mhs/2024-masthead-home-trailblazer-xl.jpg?imwidth=960', alt: 'Auto4', author: 'OASIS', title: 'Autos para todo terreno', topic: 'Exclusivos', des: 'Lorem esta es una descripcion para hacer en slider' },
+];
 
-const carouselItems = ref([]);
-
-watch(
-    () => store.carCarousel,
-    (newData) => {
-      carouselItems.value = newData || [];
-      console.log('Datos del carrusel actualizados:', newData);
-    },
-    { immediate: true } // This ensures the watcher runs immediately and sets the initial value
-);
+const thumbnails = [
+  { src: 'https://i.pinimg.com/originals/c9/b5/6e/c9b56e1c8c4a7199cd83b27e34be219f.jpg', alt: 'Thumb1', title: 'Nissan', des: 'Descripcion' },
+  { src: 'https://wallpaper.forfun.com/fetch/90/90091e333f2aa9ee8e35642c93cf6752.jpeg', alt: 'Thumb2', title: 'Toyota', des: 'Descripcion' },
+  { src: 'https://arblatinamerica.com/wp-content/uploads/2021/07/Salar-de-Uyuni-1.jpg', alt: 'Thumb3', title: 'Ford', des: 'Descripcion' },
+  { src: 'https://www.chevrolet.com.ec/content/dam/chevrolet/south-america/ecuador/espanol/index/index-subcontent/mh-scroller/abril-2024/mhs/2024-masthead-home-trailblazer-xl.jpg?imwidth=960', alt: 'Thumb4', title: 'Chevrolet', des: 'Descripcion' },
+];
 
 const nextDom = ref<HTMLButtonElement | null>(null);
 const prevDom = ref<HTMLButtonElement | null>(null);
@@ -56,32 +58,24 @@ const listItemDom = ref<HTMLDivElement | null>(null);
 const thumbnailDom = ref<HTMLDivElement | null>(null);
 
 const timeRunning = 3000;
-const timeAutoNext = 15000;
+const timeAutoNext = 9000;
 let runTimeOut: ReturnType<typeof setTimeout>;
 let runAutoRun: ReturnType<typeof setTimeout>;
 
 const showSlider = (type: 'next' | 'prev') => {
   if (!listItemDom.value || !thumbnailDom.value || !carouselDom.value) return;
 
-  const itemSlider = Array.from(listItemDom.value.querySelectorAll('.item'));
-  const itemThumbnail = Array.from(thumbnailDom.value.querySelectorAll('.item'));
+  const itemSlider = listItemDom.value.querySelectorAll('.item');
+  const itemThumbnail = thumbnailDom.value.querySelectorAll('.item');
 
   if (type === 'next') {
-    if (itemSlider.length > 0 && itemSlider[0] instanceof Node) {
-      listItemDom.value.appendChild(itemSlider[0]);
-    }
-    if (itemThumbnail.length > 0 && itemThumbnail[0] instanceof Node) {
-      thumbnailDom.value.appendChild(itemThumbnail[0]);
-    }
+    listItemDom.value.appendChild(itemSlider[0]);
+    thumbnailDom.value.appendChild(itemThumbnail[0]);
     carouselDom.value.classList.add('next');
   } else {
     const positionLastItem = itemSlider.length - 1;
-    if (positionLastItem >= 0 && itemSlider[positionLastItem] instanceof Node) {
-      listItemDom.value.prepend(itemSlider[positionLastItem]);
-    }
-    if (positionLastItem >= 0 && itemThumbnail[positionLastItem] instanceof Node) {
-      thumbnailDom.value.prepend(itemThumbnail[positionLastItem]);
-    }
+    listItemDom.value.prepend(itemSlider[positionLastItem]);
+    thumbnailDom.value.prepend(itemThumbnail[positionLastItem]);
     carouselDom.value.classList.add('prev');
   }
 
@@ -112,9 +106,14 @@ onBeforeUnmount(() => {
 
 
 
+
+
+
+
+
 <style scoped>
 .carousel {
-  width: 98.9vw;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -124,8 +123,6 @@ onBeforeUnmount(() => {
 .carousel .list .item {
   position: absolute;
   inset: 0 0 0 0;
-
-
 }
 
 .carousel .list .item img {
@@ -427,140 +424,29 @@ onBeforeUnmount(() => {
   }
 
 }
-.buttons .nav-link {
+
+@media screen and (max-width: 670px) {
+
+  .carousel .list .item .content{
+    padding-right: 0;
+  }
+  .carousel .list .item .content .title{
+    font-size: 30px;
+  }
+
+}
+
+.buttons .nav-link{
   border: none;
   background-color: white;
   letter-spacing: 3px;
   font-family: Poppins;
   font-weight: 500;
   color: black;
-}/* Estilos responsivos para dispositivos móviles */
-@media screen and (max-width: 480px) {
 
 
 
-  .carousel .list .item .content {
-    top: 15%;
-    width: 90%;
-    max-width: none;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-right: 10%;
-    box-sizing: border-box;
-    color: white;
-    text-shadow: 0 5px 10px #0004;
-  }
-
-  .carousel .list .item .content .author {
-    font-weight: bold;
-    letter-spacing: 5px;
-    margin-left: 10px;
-    font-size: 0.8em;
-  }
-
-  .carousel .list .item .content .title,
-  .carousel .list .item .content .topic {
-    font-weight: bold;
-    font-size: 2em;
-    line-height: 1.2em;
-    margin-left: 10px;
-  }
-
-  .carousel .list .item .content .topic {
-    color: orange;
-  }
-
-  .carousel .list .item .content .des {
-    color: #eee;
-    margin-left: 10px;
-    font-size: 0.8em;
-  }
-
-  .carousel .list .item .content .buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 100px);
-    grid-template-rows: 30px;
-    gap: 5px;
-    margin-top: 20px;
-    margin-left: -50px;
-    font-size: 0.7em;
-  }
-
-  .thumbnail {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    z-index: 100;
-  }
-
-  .thumbnail .item {
-    width: 150px;
-    height: auto;
-    flex-shrink: 0;
-    position: relative;
-  }
-
-  .thumbnail .item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-  }
 }
 
 
-/* Media query para pantallas medianas (tablet) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .carousel .list .item .content .title {
-    font-size: 4em; /* Tamaño de fuente para títulos en pantallas medianas */
-    margin-left: -200px;
-  }
-
-  .carousel .list .item .content .topic {
-    font-size: 3em; /* Tamaño de fuente para temas en pantallas medianas */
-  }
-
-  .carousel .list .item .content .des {
-    font-size: 2em; /* Tamaño de fuente para descripciones en pantallas medianas */
-  }
-
-  .thumbnail .item {
-    width: 140px; /* Ajustar el ancho de los thumbnails en pantallas medianas */
-    height: 200px; /* Ajustar el alto de los thumbnails en pantallas medianas */
-  }
-
-  .thumbnail .item img {
-    border-radius: 8px; /* Reducir el radio de borde de las imágenes en pantallas medianas */
-  }
-}
-
-/* Media query para pantallas grandes (desktop) */
-@media screen and (min-width: 1025px) {
-  .carousel .list .item .content .title {
-    font-size: 5em; /* Tamaño de fuente para títulos en pantallas grandes */
-  }
-
-  .carousel .list .item .content .topic {
-    font-size: 4em; /* Tamaño de fuente para temas en pantallas grandes */
-  }
-
-  .carousel .list .item .content .des {
-    font-size: 2.5em; /* Tamaño de fuente para descripciones en pantallas grandes */
-  }
-
-  .thumbnail .item {
-    width: 160px; /* Ajustar el ancho de los thumbnails en pantallas grandes */
-    height: 240px; /* Ajustar el alto de los thumbnails en pantallas grandes */
-  }
-
-  .thumbnail .item img {
-    border-radius: 10px; /* Reducir el radio de borde de las imágenes en pantallas grandes */
-  }
-}
 </style>

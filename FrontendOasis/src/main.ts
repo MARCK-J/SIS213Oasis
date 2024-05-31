@@ -12,10 +12,14 @@ import vue3GoogleLogin from "vue3-google-login";
 import store from "./functions/store";
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+/*agregacion de pinia*/
+import {createPinia} from "pinia";
 
 hljs.registerLanguage('json', json);
 
+const pinia = createPinia()
 const app = createApp(App);
+
 
 library.add(faLink, faUser, faPowerOff);
 
@@ -28,4 +32,5 @@ app
         clientId: '373256834880-m25tqbs62fuguij99hlhc4rv6qbv3ne9.apps.googleusercontent.com'
     })
     .component("font-awesome-icon", FontAwesomeIcon)
+    .use(pinia)
     .mount("#app");

@@ -8,13 +8,14 @@ import RegistroAdmin from "../components/RegistroAdmin.vue";
 
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
-import Hotel from "../views/Hotel.vue";
+import Hotel from "../views/Hotel/Hotel.vue";
 import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
 import Autos from "../views/Auto/Autos.vue";
 import PantallaOrdenar from "../views/Auto/PantallaOrdenar.vue";
-import PantalaExplorar from "../views/Auto/PantalaExplorar.vue";
+
+import ordenarHotel from "../views/Hotel/OrdenarHotel.vue";
 
 
 export function createRouter(app: App): Router {
@@ -82,10 +83,12 @@ export function createRouter(app: App): Router {
         component:PantallaOrdenar
       },
       {
-        path: "/Auto_Explorar",
-        name: "AutoExplorar",
-        component:PantalaExplorar
+        path: "/Hotel_Ordenar",
+        name: "HotelOrdenar",
+        component:ordenarHotel
       },
+
+
 
     ],
     history: createWebHashHistory()

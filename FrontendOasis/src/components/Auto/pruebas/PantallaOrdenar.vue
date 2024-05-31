@@ -1,84 +1,97 @@
 <template>
-  <div v-if="selectedCar" class="product-details">
-    <div class="product-image">
-      <img :src="selectedCar.images[currentImageIndex]" class="car-image" alt="Car Image">
-      <div class="carousel-buttons">
-        <button @click="prevImage">&#10094;</button>
-        <button @click="nextImage">&#10095;</button>
-      </div>
-    </div>
-    <div class="product-info">
-      <div class="header">
-        <div class="logo-container">
-          <img :src="selectedCar.companyLogo" class="logo" alt="Company Logo">
-        </div>
-        <div class="title-info">
-          <div class="title">{{ selectedCar.name }}</div>
-          <div class="model">{{ selectedCar.model }}</div>
-          <div class="price">{{ selectedCar.pricePerDay }} <span>el día</span></div>
-        </div>
-      </div>
-      <div class="info">
-        <div class="rental-details">
-          <h3>Datos de Renta</h3>
-          <div class="detail"><strong>Marca:</strong> {{ selectedCar.brand }}</div>
-          <div class="detail"><strong>Modelo:</strong> {{ selectedCar.model }}</div>
-          <div class="detail"><strong>Tipo:</strong> {{ selectedCar.type }}</div>
 
-          <ul v-if="showCities" class="city-list">
-            <li v-for="city in selectedCar.cities" :key="city" class="city-item">{{ city }}</li>
-          </ul>
-          <div class="detail"><strong>Disponible en:</strong> {{ selectedCar.availability }}</div>
-        </div>
-        <div class="buttons">
-          <button class="add-btn" @click="addToCart">
-            Agregar <i class="fas fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
+<div class="product-details">
+<div class="product-image">
+  <img :src="images[currentImageIndex]" class="car-image" alt="Car Image">
+  <div class="carousel-buttons">
+    <button @click="prevImage">&#10094;</button>
+    <button @click="nextImage">&#10095;</button>
+  </div>
+</div>
+<div class="product-info">
+  <div class="header">
+    <div class="logo-container">
+      <img :src="logoImage" class="logo" alt="Company Logo">
+    </div>
+    <div class="title-info">
+      <div class="title">{{ rentalData.title }}</div>
+      <div class="model">{{ rentalData.model }}</div>
+      <div class="price">{{ rentalData.pricePerDay }} <span>el dia </span></div>
     </div>
   </div>
-  <div v-if="selectedCar" class="product-description-grid">
-    <div class="description">
-      <h2>Descripción del Auto</h2>
-      <p>{{ selectedCar.description }}</p>
+  <div class="info">
+    <div class="rental-details">
+      <h3>Datos de Renta</h3>
+      <div class="detail"><strong>Marca:</strong> {{ rentalData.brand }}</div>
+      <div class="detail"><strong>Modelo:</strong> {{ rentalData.model }}</div>
+      <div class="detail"><strong>Tipo:</strong> {{ rentalData.type }}</div>
+
+      <ul v-if="showCities" class="city-list">
+        <li v-for="city in rentalData.cities" :key="city" class="city-item">{{ city }}</li>
+      </ul>
+      <div class="detail"><strong>Disponible en:</strong> {{ rentalData.availability }}</div>
     </div>
-    <div class="map-container">
-      <iframe
-          width="100%"
-          height="100%"
-          frameborder="0"
-          style="border:0"
-          :src="mapSrc"
-          allowfullscreen
-      ></iframe>
+    <div class="buttons">
+      <button class="add-btn" @click="addToCart">
+        Agregar <i class="fas fa-shopping-cart"></i>
+      </button>
     </div>
   </div>
-</template>
+</div>
+</div>
+<div class="product-description-grid">
+<div class="description">
+  <h2>Descripción del Auto</h2>
+  <p>
+    Este es un vehículo de alta gama disponible para alquiler en todo el país. Ofrece un rendimiento excepcional, comodidad y las últimas tecnologías para una experiencia de conducción inigualable.
+  </p>
+</div>
+<div class="map-container">
+  <iframe
+      width="100%"
+      height="100%"
+      frameborder="0"
+      style="border:0"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247917.06217277436!2d-68.26904767966284!3d-16.507451398070098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910f86768f0b5f75%3A0xc0e314ee8b76d558!2sLa%20Paz%2C%20Bolivia!5e0!3m2!1sen!2sus!4v1620050525371!5m2!1sen!2sus"
+      allowfullscreen
+  ></iframe>
+</div>
+</div>
+
+></template>
 
 <script>
-import { computed } from 'vue';
-import { useCountryStore } from '../../store/country';
-
 export default {
   data() {
     return {
+      rentalData: {
+        title: 'Auto en alquiler',
+        brand: 'Marca',
+        model: '',
+        type: 'Tipo',
+        pricePerDay: '300 bs',
+        availability: 'LA PAZ',
+        cities: ['La Paz', 'Cochabamba', 'Santa Cruz'],
+        company: 'NISSAN'
+      },
       showCities: false,
+      images: [
+        'https://focus.belfasttelegraph.co.uk/thumbor/Nyyf7H_RQKHly7Sq1kSPURnDzPw=/960x640/smart/prod-mh-ireland/d1d08534-9b73-11ed-b69a-0210609a3fe2',
+        'https://www.quadisllansa.es/wp-content/uploads/sites/61/2021/03/Nissan_Qashqai_Premiere_Edition_07.jpg',
+      ],
       currentImageIndex: 0,
+      map: null // Variable para almacenar el mapa de Google Maps
     };
   },
   computed: {
-    selectedCar() {
-      const store = useCountryStore();
-      return store.selectedCar;
-    },
-    mapSrc() {
-      if (this.selectedCar) {
-        const city = encodeURIComponent(this.selectedCar.city);
-        return `https://www.google.com/maps/embed/v1/place?key=AIzaSyA5QOAw0WGt17M2S0K-4rkMtu1fDil4t08&q=${city}`;
-      }
-      return '';
+    logoImage() {
+      // Lógica para obtener la imagen del logo
+      return 'https://i.pinimg.com/736x/f8/d1/7b/f8d17baba349db2c958bd2d075a8d32e.jpg'; // Logo de ejemplo
     }
+  },
+  mounted() {
+    // Inicializar el mapa cuando el componente está montado
+    this.initMap();
   },
   methods: {
     toggleCities() {
@@ -88,19 +101,28 @@ export default {
       alert('El auto ha sido añadido al carrito.');
     },
     prevImage() {
-      if (this.selectedCar) {
-        this.currentImageIndex = (this.currentImageIndex - 1 + this.selectedCar.images.length) % this.selectedCar.images.length;
-      }
+      this.currentImageIndex =
+          (this.currentImageIndex - 1 + this.images.length) % this.images.length;
     },
     nextImage() {
-      if (this.selectedCar) {
-        this.currentImageIndex = (this.currentImageIndex + 1) % this.selectedCar.images.length;
-      }
+      this.currentImageIndex =
+          (this.currentImageIndex + 1) % this.images.length;
     },
-  },
+    initMap() {
+      if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+        // Si la API de Google Maps no está definida, salir de la función
+        return;
+      }
+
+      // Inicializar el mapa de Google Maps
+      this.map = new google.maps.Map(this.$refs.map, {
+        center: { lat: -16.500, lng: -68.150 }, // Coordenadas de Bolivia
+        zoom: 6 // Zoom inicial
+      });
+    }
+  }
 };
 </script>
-
 
 <style>
 body {

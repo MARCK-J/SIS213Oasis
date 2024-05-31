@@ -1,8 +1,7 @@
 <template>
   <div>
     <NavBar/>
-    <ExplorarNissan/>
-
+    <HotelSeleccionado/>
 
 
 
@@ -12,8 +11,8 @@
 <script>
 
 
-import ExplorarNissan from "../../components/Auto/Empresas/Nissan/ExplorarNissan.vue";
 
+import HotelSeleccionado from "../../components/Hoteles/HotelSeleccionado.vue";
 import NavBar from "../../components/NavBar.vue";
 
 
@@ -21,7 +20,8 @@ export default {
   name: "Autos",
   components: {
     NavBar,
-    ExplorarNissan,
+    HotelSeleccionado,
+
   },
 };
 </script>

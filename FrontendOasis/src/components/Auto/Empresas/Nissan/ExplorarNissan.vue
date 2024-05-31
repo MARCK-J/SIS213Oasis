@@ -1,18 +1,15 @@
 <template>
   <div>
     <!-- Sección del encabezado con la imagen grande y el texto -->
-    <div class="header">
-      <!-- Aquí puedes cambiar la URL de la imagen del encabezado -->
-      <img src="https://i.ytimg.com/vi/c4mMrRMdaw8/maxresdefault.jpg" alt="">
-      <div class="content">
-        <h1></h1>
-        <p></p>
-        <!-- Enlace del botón "Descúbrela" -->
-        <router-link to="/Auto_ordenar" class="btn">Descúbrela</router-link>
-      </div>
+
+
     </div>
+       <div class="titulo">
+         <h1>dsfa</h1>
+       </div>
     <!-- Cuadrícula de autos -->
     <div class="car-grid">
+
       <!-- Iteración sobre cada auto usando Vue.js -->
       <div class="car" v-for="car in cars" :key="car.name">
         <!-- Cada imagen de auto es un enlace -->
@@ -26,7 +23,7 @@
         </router-link>
       </div>
     </div>
-  </div>
+
 </template>
 
 
