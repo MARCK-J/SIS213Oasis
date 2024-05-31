@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoteles Populares</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .hotel-list {
+            max-width: 1500px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .hotel-item {
+            display: flex;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .hotel-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hotel-info {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hotel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .hotel-rank {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .hotel-name {
+            flex: 1;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        .favorite-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .hotel-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hotel-description {
+            flex: 1;
+            font-size: 14px;
+            color: #666;
+            text-align: justify;
+            margin-right: 10px;
+        }
+
+        .price-button {
+            background-color: #ffa500;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            align-self: flex-end; /* Alinea el botón hacia abajo */
+        }
+
+        .price-button:hover {
+            background-color: #ff8c00;
+        }
+
+        .hotel-review {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pagination button {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pagination button.active {
+            background-color: #ffa500;
+            color: white;
+            border-color: #ffa500;
+        }
+
+        .pagination button:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        .country-info {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .country-flag {
+            width: 30px;
+            height: auto;
+        }
+
+        .country-name {
+            margin-left: 10px;
+            font-size: 16px;
+            font-weight: normal;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="hotel-list">
+        <div class="hotel-item">
+            <img src="hotel22.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">6.</span>
+                    <h2 class="hotel-name">Habita Monterrey</h2>
+                </div>
+                <div class="country-info">
+                    <img src="mexico.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">MONTERREY</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">El Habita Monterrey conjuga el estilo minimalista del grupo hotelero con sede en Ciudad de México y el empuje de la capital industrial del país. Esta propiedad se ubica en San Pedro Garza García, el municipio con el mayor ingreso económico de América Latina. Ahí, el Habita Monterrey se presenta como una torre de cemento y cristal que para muchos representa un ícono de modernidad con paisajes agrestes como es el norte de México. Una obra de Agustín Landa, ofrece en el interior el diseño del francés Joseph Dirand. Aunque el Habita concentra una llegada de visitantes del ambiente del modelaje y las artes, los viajeros de negocios son abrazados por todas las posibilidades de conectividad que ofrece.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel23.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">7.</span>
+                    <h2 class="hotel-name">Hotel Hilton Colón Guayaquil</h2>
+                </div>
+                <div class="country-info">
+                    <img src="ecuador.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">GUAYAQUIL</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">Desde sus inicios en 1997, el Hotel Hilton Colón Guayaquil se constituyó en uno de los complejos hoteleros más grandes y uno de los más modernos de América Latina. En 2016 fue ampliamente remodelado, aunque permanentemente está innovando.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel24.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">8.</span>
+                    <h2 class="hotel-name">Hotel Real Intercontinental Guatemala</h2>
+                </div>
+                <div class="country-info">
+                    <img src="guatemala.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">GUATEMALA</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">El Hotel Real Intercontinental Guatemala se caracteriza por su propuesta de valor "The Place To Be", que incluye un centro de entretenimiento, gastronomía y negocios, a través de restaurantes, bares y áreas sociales, donde residentes y visitantes puedan convivir, reunirse y disfrutar en un lugar seguro, moderno y accesible.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel25.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">9.</span>
+                    <h2 class="hotel-name">Hotel Unique</h2>
+                </div>
+                <div class="country-info">
+                    <img src="brasil.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">SAO PAULO</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">Diseñado por el arquitecto Ruy Othake, Unique es uno de los edificios más emblemáticos de São Paulo, con arquitectura en forma de barco. El hotel abrió sus puertas en 2002. Fue concebido por el empresario farmacéutico Victor Siaulys, fundador de Laboratórios Aché, y actualmente lo gestiona la familia. Sus salones suelen acoger grandes eventos del mercado financiero, con participación de autoridades.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+        <div class="hotel-item">
+            <img src="hotel26.jpg" alt="Ritz Apart Hotel" class="hotel-image">
+            <div class="hotel-info">
+                <div class="hotel-header">
+                    <span class="hotel-rank">10.</span>
+                    <h2 class="hotel-name">Hyatt Place San Pedro Sula</h2>
+                </div>
+                <div class="country-info">
+                    <img src="honduras.png" alt="Argentina Flag" class="country-flag">
+                    <span class="country-name">SAN PEDRO SULA</span>
+                </div>
+                <div class="hotel-body">
+                    <p class="hotel-description">El Hyatt Place San Pedro Sula es un hotel de siete plantas contemporáneo y con mucho estilo ubicado en una de las zonas de más plusvalía de la Capital Industrial, la segunda ciudad más grande del país. Abrió sus puertas en julio de 2018 con una inversión de US$22 millones de Hyatt Hotels Corporation, conjuntamente con Latam Hotel Corporation y GHL Hotels. El recinto ofrece 138 espaciosas habitaciones y la opción de disfrutar del café nacional, cervezas premium o una copa de vino en el bar.</p>
+                </div>
+                <button class="price-button">Más información</button> <!-- Mueve el botón aquí -->
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button>1</button>
+        <button class="active">2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>...</button>
+    </div>
+</body>
+</html>
