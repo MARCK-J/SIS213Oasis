@@ -2,7 +2,9 @@ package com.ucb.SIS213.Oasis.api;
 
 import java.util.List;
 
+import com.ucb.SIS213.Oasis.dto.ClienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 import com.ucb.SIS213.Oasis.bl.ClienteBl;
 import com.ucb.SIS213.Oasis.dto.LoginRequestDTO;
@@ -18,10 +20,12 @@ public class ClienteAPI {
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(ClienteAPI.class);
 
     ClienteBl clienteBl;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public ClienteAPI(ClienteBl clienteBl) {
+    public ClienteAPI(ClienteBl clienteBl, JdbcTemplate jdbcTemplate) {
         this.clienteBl = clienteBl;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     // Endpoint para obtener todos los clientes
@@ -77,5 +81,29 @@ public class ClienteAPI {
             return new ResponseDTO("TASK-1000", e.getMessage());
         }
         return new ResponseDTO(cliente);
+    }
+
+    @GetMapping("/clientes")
+    public List<ClienteDTO> obtenerVuelos() {
+        String sql = "select cl.*, pe.nombre, pe.apellidop, pe.apellidom, pe.telefono\n" +
+                "from cliente cl, persona pe\n" +
+                "where cl.persona_idpersona = pe.idpersona;";
+
+        List<ClienteDTO> clientes = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            ClienteDTO cliente = new ClienteDTO();
+            cliente.setIdCliente(rs.getLong("idcliente"));
+            cliente.setCorreo(rs.getString("correo"));
+            cliente.setEstadoCuenta(rs.getString("estadocuenta"));
+            cliente.setIdPersona(rs.getLong("persona_idpersona"));
+
+            cliente.setNombre(rs.getString("nombre"));
+            cliente.setApellidoP(rs.getString("apellidop"));
+            cliente.setApellidoM(rs.getString("apellidom"));
+            cliente.setTelefono(rs.getString("telefono"));
+
+            return cliente;
+        });
+
+        return clientes;
     }
 }

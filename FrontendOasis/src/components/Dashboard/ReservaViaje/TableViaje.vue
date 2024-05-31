@@ -1,109 +1,100 @@
 <template>
   <div class="dashboard">
     <div class="dashboardTitle">
-      <h1  style="font-size: 34px">Reservas de Hoteles</h1>
+      <h1  style="font-size: 34px">Vuelos</h1>
     </div>
     <div class="total-registros">
-      <div style="text-align: left;">
-        <button class="create-button" @click="abrirModalCrear">Agregar Reserva de Hotel</button>
-      </div>
-
       <table>
         <thead>
         <tr>
           <th>ID</th>
-          <th>Número Reserva</th>
-          <th>Fecha Inicio</th>
-          <th>Fecha Fin</th>
-          <th>Hotel</th>
-          <th>Precio</th>
-          <th>Personas</th>
-          <th>Habitaciones</th>
-          <th>Ciudad</th>
-          <th>Pais</th>
-          <th>Detalle</th>
+          <th>Fecha Reserva</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Cliente</th>
+          <th>Correo</th>
+          <th>Fecha de ida</th>
+          <th>Fecha vuelta</th>
           <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(reservaHotel, index) in reservasHotel" :key="index">
-          <td>{{ reservaHotel.idReservaHotel }}</td>
-          <td>{{ reservaHotel.nroReservaHotel }}</td>
-          <td>{{ reservaHotel.fechaInicio }}</td>
-          <td>{{ reservaHotel.fechaFin }}</td>
-          <td>{{ reservaHotel.hotel }}</td>
-          <td>{{ reservaHotel.precio }}</td>
-          <td>{{ reservaHotel.personas }}</td>
-          <td>{{ reservaHotel.habitaciones }}</td>
-          <td>{{ reservaHotel.ciudad }}</td>
-          <td>{{ reservaHotel.pais }}</td>
-          <td>{{ reservaHotel.detalle }}</td>
+        <tr v-for="(viaje, index) in viajes" :key="index">
+          <td>{{ viaje.idReservaViaje }}</td>
+          <td>{{ viaje.fecha }}</td>
+          <td>{{ viaje.ciudadOrigen }} - {{ viaje.paisOrigen }}</td>
+          <td>{{ viaje.ciudadDestino }} - {{ viaje.paisDestino }}</td>
+          <td>{{ viaje.nombrePersona }} {{ viaje.apellidoPaterno }} {{ viaje.apellidoMaterno }}</td>
+          <td>{{ viaje.correoPersona }}</td>
+          <td>{{ viaje.fechaInicioViaje }}</td>
+          <td>{{ viaje.fechaFinViaje }}</td>
           <td style="text-align: center;">
-            <i class="fas fa-edit" @click="abrirModal(reservaHotel)"></i>
-            <i class="fas fa-trash" @click="borrarReserva(reservaHotel.idReservaHotel)"></i>
+            <i class="fas fa-edit" @click="abrirModal(viaje)"></i>
+            <i class="fas fa-trash" @click="borrarViaje(viaje.idViaje)"></i>
           </td>
 
         </tr>
         </tbody>
       </table>
     </div>
+
   </div>
-  <RegisterResHotel :show="showCrearModal" @close="showCrearModal = false" @update="getReservasHotel" />
-  <EditResHotel :show="showModal" :reservation="reservaSeleccionada" @close="showModal = false" @update="getReservasHotel" />
+  <!-- Aquí se agregan los componentes RegisterVuelo y EditVuelo -->
+  <!--<RegisterVuelo :show="showCrearModal" @close="showCrearModal = false" @update="getViajes" /> -->
+  <EditViaje v-if="showModal" :show="showModal" :viaje="viajeSeleccionado" @close="showModal = false" @update="getViajes" />
 </template>
 
 <script>
 import axios from 'axios';
-import RegisterResHotel from "./RegisterResHotel.vue";
-import EditResHotel from "./EditResHotel.vue";
+import EditViaje from "./EditViaje.vue";
 
 export default {
-  name: 'TableResHotel',
+  name: 'TableViaje',
   components: {
-    RegisterResHotel,
-    EditResHotel,
+    //RegisterVuelo,
+    EditViaje,
   },
   data() {
     return {
-      reservasHotel: [],
+      viajes: [],
       showModal: false,
-      reservaSeleccionada: null,
+      viajeSeleccionado: null,
       showCrearModal: false,
     };
   },
   created() {
-    this.getReservasHotel();
+    this.getViajes();
   },
   methods: {
-    async getReservasHotel() {
+    async getViajes() {
       try {
-        const response = await axios.get(`http://localhost:9999/api/v1/reservahotel/reservas`);
-        this.reservasHotel = response.data; // Acceder a la propiedad `result` en la respuesta
-        console.log('Reservas cargadas exitosamente:', this.reservasHotel);
+        const response = await axios.get(`http://localhost:9999/api/v1/viaje/viajes`);
+        this.viajes = response.data; // Acceder a la propiedad `result` en la respuesta
+        console.log('Viajes cargados exitosamente:', this.viajes);
       } catch (error) {
-        console.error('Error al cargar las reservas:', error);
+        console.error('Error al cargar los Viajes:', error);
       }
     },
     abrirModalCrear() {
       this.showCrearModal = true;
     },
-    abrirModal(reserva) {
-      this.reservaSeleccionada = reserva;
-      this.$emit('editar', this.reservaSeleccionada);
+    abrirModal(viaje) {
+      this.viajeSeleccionado = viaje;
+      this.$emit('editar', this.viajeSeleccionado);
       this.showModal = true;
     },
-    async borrarReserva(idReservaHotel) {
+    async borrarViaje(idViaje) {
 
-      const confirmacion = confirm('¿Estás seguro de que quieres eliminar esta reserva?');
+      const confirmacion = confirm('¿Estás seguro de que quieres eliminar este viaje?');
       if (!confirmacion) {
         return;
       }
       try {
-        await axios.delete(`http://localhost:9999/api/v1/reservahotel/delete/${idReservaHotel}`);
-        this.getReservasHotel();
-        console.log('Reserva eliminada:', idReservaHotel);
+        await axios.delete(`http://localhost:9999/api/v1/viaje/delete/${idViaje}`);
+        this.getViajes();
+        console.log('Viaje eliminado:', idViaje);
       } catch (error) {
-        console.error('Error al eliminar la reserva:', error);
+        console.error('Error al eliminar el Viaje:', error);
       }
     },
 
@@ -143,7 +134,7 @@ body {
 
 .dashboard {
   width: 95%;
-  margin: 10px;
+  margin: 20px auto;
   text-align: left;
 }
 
@@ -214,6 +205,8 @@ i.fa-edit {
 i.fa-trash {
   color: #e74c3c;
 }
+
+
 
 /* Media queries para pantallas pequeñas */
 @media (max-width: 768px) {

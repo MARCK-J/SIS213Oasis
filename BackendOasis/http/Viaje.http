@@ -4,6 +4,11 @@ GET http://localhost:9999/api/v1/viaje
 Content-Type: application/json
 Accept: application/json
 
+### Vista detallada de todas reservas de viajes
+GET http://localhost:9999/api/v1/viaje/viajes
+Content-Type: application/json
+Accept: application/json
+
 ### Vista del untimo viaje de un cliente
 GET http://localhost:9999/api/v1/viaje/find/1
 Content-Type: application/json
@@ -21,10 +26,10 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "fecha": "2024-05-19",
+    "fecha": "2024-05-29",
     "idCliente": 1,
     "idViaje": 2,
-    "idSeguro": 2,
+    "idSeguro": 4,
     "idAlquiler": 1,
     "idAtraccion": 1,
     "idActividad": 1,
