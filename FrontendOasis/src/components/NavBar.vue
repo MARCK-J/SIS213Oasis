@@ -33,11 +33,6 @@
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link to="/Autos" class="nav-link">Autos</router-link>
-            </li>
-          </ul>
-          <ul class="navbar-nav mr-auto">
             <li v-if="!isAuthenticated" class="nav-item">
               <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
             </li>

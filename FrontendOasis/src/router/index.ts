@@ -12,6 +12,7 @@ import Hotel from "../views/Hotel.vue";
 import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
+import HotelSeleccionado from "../components/Hoteles/HotelSeleccionado.vue";
 import Autos from "../views/Auto/Autos.vue";
 import PantallaOrdenar from "../views/Auto/PantallaOrdenar.vue";
 import PantalaExplorar from "../views/Auto/PantalaExplorar.vue";
@@ -77,6 +78,12 @@ export function createRouter(app: App): Router {
         name: "Autos",
         component: Autos
       },
+            {
+        path: '/hotel/:id', // Utilizamos un parámetro dinámico para el ID del hotel
+        name: 'HotelDetails',
+        component: HotelSeleccionado,
+        props: true
+    },
       {
         path: "/Auto_Ordenar",
         name: "AutoOrdenar",
