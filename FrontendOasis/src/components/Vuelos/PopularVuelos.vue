@@ -7,7 +7,6 @@
         class="image-container"
         v-for="vuelo in row"
         :key="vuelo.name"
-        @click="goTovueloDetails(vuelo.link)"
       >
         <img :src="vuelo.image" :alt="vuelo.name" />
         <span class="image-name">{{ vuelo.name }}</span>
