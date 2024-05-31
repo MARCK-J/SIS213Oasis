@@ -1,6 +1,6 @@
 <template> 
   <transition name="fade">
-    <pop-up v-show="showPopUp" @close="togglePopUp()"/>
+    <pop-up imageTitle="Bolivia" v-show="showPopUp" @close="togglePopUp()"/>
   </transition>
   <div class="tarjeta-viaje">
     <img :src="imagen" :alt="alt" @click="togglePopUp()"/>
