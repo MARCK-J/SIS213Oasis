@@ -76,9 +76,8 @@ export default {
 }
 
 .barralateral{
-  width: 10%;
+  width: 12%;
   color: black;
-  background-color: black;
 }
 .content{
   width: 85%;

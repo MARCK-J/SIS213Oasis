@@ -5,7 +5,7 @@
   <div v-else class="pop-up">
     <div class="pop-up-inner">
       <div class="pop-up-close" @click="close">&times;</div>
-      <h1>Explora tu destino!</h1>
+      <h1>Explora tu destino! {{ imagenTitle }}</h1>
       <a-scene embedded style="width: 100%; height: 400px;">
         <a-sky :src="panoramaImage" rotation="0 -90 0"></a-sky>
       </a-scene>
@@ -20,21 +20,39 @@
 import 'aframe';
 
 export default {
+  props: {
+    imagenTitle: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       panoramaImage: '',
-      loading: true
+      loading: true,
     };
   },
   mounted() {
-    const img = new Image();
-    img.src = 'src/assets/img_360/España.jpg';
-    img.onload = () => {
-      this.panoramaImage = img.src;
-      this.loading = false;
-    };
+    this.loadImage();
   },
   methods: {
+    loadImage() {
+      if (this.imagenTitle) {
+        const img = new Image();
+        img.src = `src/assets/img_360/${this.imagenTitle}.jpg`;
+        img.onload = () => {
+          this.panoramaImage = img.src;
+          this.loading = false;
+        };
+        img.onerror = () => {
+          console.error(`Failed to load image: src/assets/img_360/${this.imagenTitle}.jpg`);
+          this.loading = false;
+        };
+      } else {
+        console.error('imagenTitle is not defined');
+        this.loading = false;
+      }
+    },
     close() {
       this.$emit('close');
     }
@@ -86,7 +104,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .pop-up-close {
   position: absolute;

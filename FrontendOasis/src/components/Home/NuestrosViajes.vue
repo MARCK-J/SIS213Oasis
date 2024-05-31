@@ -32,7 +32,7 @@
             alt="Viaje a Brasil y Argentina"
             titulo="Brasil y Argentina"
             duracion="Viaje de 15 dias y 7 noches"
-            paises="Argentina y Brasil"
+            paises="Brasil"
             ciudades="Buenos Aires, Rio de Janeiro"
             />
         </div>
