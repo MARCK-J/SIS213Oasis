@@ -88,7 +88,7 @@ export default defineComponent({
   flex-direction: column;
   height: 100vh;
   background-color: black;
-  position: fixed;
+  position: absolute;
   z-index: 1000;
   transition: width 0.3s ease;
 }

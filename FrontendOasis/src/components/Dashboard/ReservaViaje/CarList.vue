@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="CarList-container">
     <h2>Lista de Autos de Alquiler</h2>
     <table>
       <thead>
@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style>
+.CarList-container{
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;

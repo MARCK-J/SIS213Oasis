@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ClientList-container">
     <h2>Lista de Clientes</h2>
     <table>
       <thead>
@@ -41,6 +41,9 @@ export default {
 </script>
 
 <style>
+.ClientList-container{
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;
