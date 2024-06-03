@@ -25,79 +25,95 @@ export function createRouter(app: App): Router {
       {
         path: "/",
         name: "home",
-        component: Home
+        component: Home,
+        meta: { showNavBar: true }
       },
       {
         path: "/profile",
         name: "profile",
         component: Profile,
+        meta: { showNavBar: true }
       },
       {
         path: "/RegistroPersona",
         name: "registroPersona",
-        component: RegistroPersona
+        component: RegistroPersona,
+        meta: { showNavBar: false }
       },
       {
         path: "/RegistroAdmin",
         name: "registroAdmin",
-        component: RegistroAdmin
+        component: RegistroAdmin,
+        meta: { showNavBar: false }
       },
       { 
         path: "/Login",
         name: "Login",
-        component: Login
+        component: Login,
+        meta: { showNavBar: false }
       },
       {
         path: "/Dashboard",
         name: "dashboard",
-        component: Dashboard
+        component: Dashboard,
+        meta: { showNavBar: true }
       },
       {
         path: "/Hotel",
         name: "hotel",
-        component: Hotel
+        component: Hotel,
+        meta: { showNavBar: true }
       },
       {
         path: "/Verificacion",
         name: "verificacion",
-        component: Verificacion
+        component: Verificacion,
+        meta: { showNavBar: false }
+
       },
       {
         path: "/TokenOlvido",
         name: "tokenOlvido",
-        component: TokenOlvido
+        component: TokenOlvido,
+        meta: { showNavBar: false }
       },
       {
         path: "/RestablecerContrasenia",
         name: "restablecerContrasenia",
-        component: RestablecerContrasenia
+        component: RestablecerContrasenia,
+        meta: { showNavBar: false }
       },
 
       {
         path: "/Autos",
         name: "Autos",
-        component: Autos
+        component: Autos,
+        meta: { showNavBar: true }
       },
             {
         path: '/hotel/:id', // Utilizamos un parámetro dinámico para el ID del hotel
         name: 'HotelDetails',
         component: HotelSeleccionado,
-        props: true
+        meta: { showNavBar: true }
     },
       {
         path: "/Auto_Ordenar",
         name: "AutoOrdenar",
-        component:PantallaOrdenar
+        component:PantallaOrdenar,
+        meta: { showNavBar: true }
       },
       {
         path: "/Auto_Explorar",
         name: "AutoExplorar",
-        component:PantalaExplorar
+        component:PantalaExplorar,
+        meta: { showNavBar: true }
+
       },
       {
         path: "/Vuelos",
         name: "Vuelos",
-        component:Vuelos
+        component:Vuelos,
+        meta: { showNavBar: true }
       },
 
     ],

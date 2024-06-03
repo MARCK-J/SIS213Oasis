@@ -6,6 +6,7 @@ interface State {
   rol: any;
   id: any;
   randomCode: string;
+  selectedCity: string;
 }
 
 const store = createStore<State>({
@@ -14,7 +15,8 @@ const store = createStore<State>({
     user: null,
     randomCode: '',
     rol: false,
-    id: null
+    id: null,
+    selectedCity:'all',
   },
   mutations: {
     setLoggedIn(state, value: boolean) {
@@ -40,9 +42,18 @@ const store = createStore<State>({
     },
     setRandomCode(state, code: string) {
       state.randomCode = code;
+    },
+    setSelectedCity(state, city) {
+      state.selectedCity = city;
     }
-
-
+  },
+  actions: {
+    updateSelectedCity({ commit }, city) {
+      commit('setSelectedCity', city);
+    }
+  },
+  getters: {
+    selectedCity: state => state.selectedCity
   }
 });
 

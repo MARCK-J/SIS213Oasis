@@ -1,5 +1,4 @@
 <template>
-  <nav-bar/>
     <div class="DashboardContainer">
       <side-bar class="barralateral" @optionSelected="optionSelected"/>
       <div class="content">

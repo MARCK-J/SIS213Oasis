@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar />
     <CarouselVuelos/>
     <Service/>
     <PopularVuelos/>
