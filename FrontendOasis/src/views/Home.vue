@@ -1,6 +1,5 @@
 <template>
   <div>
-    <nav-bar/>
     <Inicio/>
     <Informacion/>
     <Carusel/>

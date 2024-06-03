@@ -42,6 +42,14 @@
               <router-link to="" class="nav-link" @click.prevent="login">Login</router-link>
             </li>
           </ul>
+          <div class="filtrador">
+            <Icon :icon="`twemoji:flag-bolivia`"  width="30" height="30" />
+            <select id="country-select" v-model="localSelectedCity" @change="updateCity">        
+              <option v-for="city in cities" :key="city" :value="city">
+                {{ city }}
+              </option>
+            </select>
+          </div>
 <ul class="navbar-nav mr-auto d-none d-md-block">
             <li class="nav-item dropdown" v-if="isAuthenticated">
               <a
@@ -107,6 +115,7 @@ import { useStore } from 'vuex';
 import { useRouter } from "vue-router";
 import { googleLogout } from 'vue3-google-login';
 import axios from "axios";
+import { Icon } from '@iconify/vue';  
 
 
 export default defineComponent({
@@ -116,6 +125,7 @@ export default defineComponent({
     const router = useRouter();
     const isAuthenticated = ref(store.state.loggedIn);
     const user = ref(store.state.user);
+    const localSelectedCity = ref(store.state.selectedCity);
 
     const actividad = ref('');
     const fecha = ref('');
@@ -125,6 +135,7 @@ export default defineComponent({
     const ipAddress = ref('');
     const idAdmin = ref('');
     const idCliente = ref('');
+    
 
     const login = () => {
       router.push("/login");
@@ -206,18 +217,30 @@ export default defineComponent({
         console.error('Error al cerrar sesión:', error);
       }
     };
-
+    const updateCity = (event: Event) => {
+      const target = event.target as HTMLSelectElement;
+      const selectedCity = target.value;
+      store.dispatch('updateSelectedCity', selectedCity);
+      console.log(selectedCity);
+    };
+    
     return {
       isAuthenticated,
       user,
       login,
-      logout
+      logout,
+      localSelectedCity,
+      updateCity
     };
   },
   data() {
     return {
       tiempoRestante: 5*3600, 
-      temporizador: null as number | null
+      temporizador: null as number | null,
+      cities: [
+        'all', 'La Paz', 'Santa Cruz de la Sierra', 'Cochabamba', 'Sucre', 
+        'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'
+      ],
     };
   },
   mounted() {
@@ -239,6 +262,9 @@ export default defineComponent({
       clearTimeout(this.temporizador);
     }
   },
+  components:{
+    Icon
+  }
 
 });
 </script>
@@ -265,5 +291,31 @@ export default defineComponent({
 #mobileAuthNavBar {
   min-height: 125px;
   justify-content: space-between;
+}
+#country-select{
+  background: none;
+  color: #fff;
+  padding: 0px;
+  text-align: center;
+  border: 0px;
+  border-radius: 10px;
+}
+#country-select option{
+  color: #fff;
+  background: #939292;
+  border-radius: 10px;
+}
+.filtrador{
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 700px) {
+  .filtrador{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    align-items: center;
+  }
+
 }
 </style>

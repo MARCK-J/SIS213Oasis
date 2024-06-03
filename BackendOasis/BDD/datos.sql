@@ -29,7 +29,7 @@ SELECT setval('idCiudad', 1, false);
 
 select * from Ciudad
 
-    INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel');
+INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hostal');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel de lujo');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel de negocios');
@@ -39,23 +39,23 @@ INSERT INTO CategoriaHotel (categoria) VALUES ('Alojamiento');
 
 select * from CategoriaHotel
 
-    INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot, totalHabitaciones, descripcion, imagenes, ubicacion)
+INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot, totalHabitaciones, descripcion, imagenes, ubicacion)
 VALUES
-    ('Hotel Plaza', 4, 1, 1, 120, 'Un lugar acogedor en el centro de la ciudad.', 'https://example.com/hotel_plaza.jpg', 'Calle Principal 123, La Paz'),
-    ('Hostal del Lago', 3, 2, 2, 150, 'Ideal para mochileros y viajeros de presupuesto ajustado.', 'https://example.com/hostal_del_lago.jpg', 'Avenida Lago 456, Santa Cruz de la Sierra'),
-    ('Hotel Camino Real', 5, 3, 3, 160, 'Lujo y confort en el corazón de la ciudad.', 'https://example.com/hotel_camino_real.jpg', 'Calle Real 789, Cochabamba'),
-    ('Hotel Los Tajibos', 4, 4, 4, 100, 'El mejor hotel de negocios con todas las comodidades.', 'https://example.com/hotel_los_tajibos.jpg', 'Avenida Empresarial 101, Sucre'),
-    ('Hotel Rosario', 4, 5, 5, 95, 'Resort con vistas espectaculares y servicios exclusivos.', 'https://example.com/hotel_rosario.jpg', 'Calle Vista Hermosa 202, Oruro'),
-    ('Hotel Las Palmas', 3, 6, 6, 140, 'Ambiente familiar y acogedor para toda la familia.', 'https://example.com/hotel_las_palmas.jpg', 'Avenida Familiar 303, Potosí'),
-    ('Alojamiento Samay', 5, 7, 7, 130, 'Alojamiento tranquilo y confortable para una estadía perfecta.', 'https://example.com/alojamiento_samay.jpg', 'Calle Tranquila 404, Tarija'),
-    ('Hotel La Siesta', 4, 8, 1, 160, 'Un hotel perfecto para descansar y relajarse.', 'https://example.com/hotel_la_siesta.jpg', 'Avenida Relax 505, Beni'),
-    ('Hostal Maya', 3, 9, 2, 180, 'Hostal económico con excelente servicio.', 'https://example.com/hostal_maya.jpg', 'Calle Económica 606, Pando'),
-    ('Hotel Alcala', 5, 1, 3, 160, 'Lujo y elegancia en cada rincón del hotel.', 'https://example.com/hotel_alcala.jpg', 'Calle Lujosa 707, La Paz'),
-    ('Hotel Regina', 4, 2, 4, 200, 'Hotel de negocios con todas las facilidades modernas.', 'https://example.com/hotel_regina.jpg', 'Avenida Modernidad 808, Santa Cruz de la Sierra'),
-    ('Hotel Colonial', 4, 4, 5, 165, 'Resort con estilo colonial y servicios de alta calidad.', 'https://example.com/hotel_colonial.jpg', 'Calle Colonial 909, Cochabamba'),
-    ('Hostal San Francisco', 3, 4, 6, 170, 'Hostal familiar con ambiente acogedor y seguro.', 'https://example.com/hostal_san_francisco.jpg', 'Avenida Familiar 1010, Sucre'),
-    ('Hotel Europa', 5, 5, 7, 210, 'Alojamiento europeo con todos los servicios necesarios.', 'https://example.com/hotel_europa.jpg', 'Calle Europea 1111, Oruro'),
-    ('Hotel Real', 4, 6, 1, 130, 'Hotel céntrico con todas las comodidades.', 'https://example.com/hotel_real.jpg', 'Avenida Central 1212, Potosí');
+    ('Hotel Plaza', 4, 1, 1, 120, 'Un lugar acogedor en el centro de la ciudad.', 'https://plaza.lapazhotelsweb.com/data/Images/1920x1080w/294/29487/29487794/image-la-paz-plaza-hotel-1.JPEG', 'Calle Principal 123, La Paz'),
+    ('Hostal del Lago', 3, 2, 2, 150, 'Ideal para mochileros y viajeros de presupuesto ajustado.', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/c6/c9/10/hostal-del-lago.jpg?w=700&h=-1&s=1', 'Avenida Lago 456, Santa Cruz de la Sierra'),
+    ('Hotel Camino Real', 5, 3, 3, 160, 'Lujo y confort en el corazón de la ciudad.', 'https://caminorealaparthotel-spa.com/wp-content/uploads/2019/02/slide_001.jpg', 'Calle Real 789, Cochabamba'),
+    ('Hotel Los Tajibos', 4, 4, 4, 100, 'El mejor hotel de negocios con todas las comodidades.', 'https://images.trvl-media.com/lodging/1000000/20000/18800/18758/d1cae807.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill', 'Avenida Empresarial 101, Sucre'),
+    ('Hotel Rosario', 4, 5, 5, 95, 'Resort con vistas espectaculares y servicios exclusivos.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/35666575.jpg?k=0534b7f343da384d651b48f5b195ebf29210cc655adb8e676dda3b9583ec2bb8&o=&hp=1', 'Calle Vista Hermosa 202, Oruro'),
+    ('Hotel Las Palmas', 3, 6, 6, 140, 'Ambiente familiar y acogedor para toda la familia.', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/0b/3c/3f/hotel-las-palmas.jpg?w=700&h=-1&s=1', 'Avenida Familiar 303, Potosí'),
+    ('Alojamiento Samay', 5, 7, 7, 130, 'Alojamiento tranquilo y confortable para una estadía perfecta.', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/47/f2/02/the-hotel.jpg?w=700&h=-1&s=1', 'Calle Tranquila 404, Tarija'),
+    ('Hotel La Siesta', 4, 8, 1, 160, 'Un hotel perfecto para descansar y relajarse.', 'https://www.alexandrehotels.com/dms/multiHotel-AlexandreHotels-New/hoteles/alexandre-la-siesta/hero-hotel-siesta-tenerife-alexandre-hotels.jpg', 'Avenida Relax 505, Beni'),
+    ('Hostal Maya', 3, 9, 2, 180, 'Hostal económico con excelente servicio.', 'https://hostal-maya-inn.lapazhotelsweb.com/data/Images/OriginalPhoto/7794/779458/779458881/image-la-paz-hostal-maya-inn-2.JPEG', 'Calle Económica 606, Pando'),
+    ('Hotel Alcala', 5, 1, 3, 160, 'Lujo y elegancia en cada rincón del hotel.', 'https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_600,q_auto,w_600//hotelier-images/9b/d5/41798dc267d1d63981d14709205ce824cb98c18c91ebe91d89a2d45e668c.jpeg', 'Calle Lujosa 707, La Paz'),
+    ('Hotel Regina', 4, 2, 4, 200, 'Hotel de negocios con todas las facilidades modernas.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/336993491.jpg?k=bfff4260541d1ccc41bca1b79a72c70dd12f5475a0afb218c4f1c8533536f6d5&o=&hp=1', 'Avenida Modernidad 808, Santa Cruz de la Sierra'),
+    ('Hotel Colonial', 4, 4, 5, 165, 'Resort con estilo colonial y servicios de alta calidad.', 'https://www.letsbookhotel.com/img/max300/504/5046347.jpg', 'Calle Colonial 909, Cochabamba'),
+    ('Hostal San Francisco', 3, 4, 6, 170, 'Hostal familiar con ambiente acogedor y seguro.', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/be/51/83/photo0jpg.jpg?w=700&h=-1&s=1', 'Avenida Familiar 1010, Sucre'),
+    ('Hotel Oporto', 5, 5, 7, 210, 'Alojamiento europeo con todos los servicios necesarios.', 'https://boliviamia.net/Images/Hotelpics/Victoria_Hotel_Oruro_01.jpg', 'Calle Europea 1111, Oruro'),
+    ('Hotel Real', 4, 6, 1, 130, 'Hotel céntrico con todas las comodidades.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/102060692.jpg?k=3a3c500707dff48b3719cfeaa682153347a78c74a4b384097651b4d96a4dde72&o=&hp=1', 'Avenida Central 1212, Potosí');
 
 
 select * from Hotel;
@@ -155,42 +155,24 @@ VALUES
     ('Pago en línea');	
 	
 INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot, totalHabitaciones, descripcion, imagenes, ubicacion) VALUES
-('Sumerville All Inclusive Resort', 3, 1, 1, 200, 'Un resort todo incluido en un entorno paradisiaco.', 'sumerville.jpg', 'Sumerville, Brasil'),
-('Salinas Margogi All Inclusive Resort', 4, 2, 2, 150, 'Un resort todo incluido con vistas espectaculares.', 'salinas.jpg', 'Salinas, Brasil'),
-('Japaratinga Lounge Resort', 5, 3, 3, 120, 'Resort con ambiente lounge en la playa.', 'japaratinga.jpg', 'Japaratinga, Brasil'),
-('Fairmont Rio de Janeiro Copacabana', 5, 4, 4, 400, 'Hotel de lujo frente a la playa de Copacabana.', 'fairmont.jpg', 'Río de Janeiro, Brasil'),
-('Four Seasons Buenos Aires', 4, 5, 5, 250, 'Hotel de lujo en el corazón de Buenos Aires.', 'fourseasons_ba.jpg', 'Buenos Aires, Argentina'),
-('Elcielo Colombia', 3, 6, 6, 100, 'Experiencia celestial en Colombia.', 'elcielo.jpg', 'Colombia'),
-('Emiliano Rio de Janeiro Brasil', 4, 7, 7, 80, 'Hotel boutique en Río de Janeiro.', 'emiliano.jpg', 'Río de Janeiro, Brasil'),
-('Hotel Eurobuilding Caracas Venezuela', 4, 8, 8, 300, 'Hotel de negocios en Caracas.', 'eurobuilding.jpg', 'Caracas, Venezuela'),
-('Hotel Fasano Belo Horizonte Brasil', 5, 9, 9, 140, 'Elegante hotel en Belo Horizonte.', 'fasano.jpg', 'Belo Horizonte, Brasil'),
-('Hyatt Centric San Isidro Lima Peru', 4, 10, 10, 160, 'Hotel moderno en el distrito de San Isidro.', 'hyatt_centric.jpg', 'Lima, Perú'),
-('Intercontinental Real Santo Domingo Republica', 5, 11, 11, 220, 'Hotel de lujo en Santo Domingo.', 'intercontinental_real.jpg', 'Santo Domingo, República Dominicana'),
-('Live Aqua Urban Resort Monterrey, Mexico', 4, 12, 12, 180, 'Resort urbano en Monterrey.', 'live_aqua.jpg', 'Monterrey, México'),
-('Los Tajibos, a Tribute Portfolio Hotel Santa Cruz, Bolivia', 3, 13, 13, 200, 'Hotel en Santa Cruz con excelente servicio.', 'los_tajibos.jpg', 'Santa Cruz, Bolivia'),
-('Mandarin Oriental de Santiago Santiago de Chile', 5, 14, 14, 250, 'Hotel de lujo en Santiago de Chile.', 'mandarin_oriental.jpg', 'Santiago de Chile, Chile'),
-('W Bogota Colombia', 4, 15, 15, 150, 'Hotel moderno en Bogotá.', 'w_bogota.jpg', 'Bogotá, Colombia'),
-('Hilton Guadalajara Midtown Mexico', 3, 16, 16, 200, 'Hotel Hilton en el corazón de Guadalajara.', 'hilton_midtown.jpg', 'Guadalajara, México'),
-('Alvear Palace Hotel Buenos Aires Argentina', 5, 17, 17, 250, 'Palacio convertido en hotel de lujo.', 'alvear_palace.jpg', 'Buenos Aires, Argentina'),
-('Baruk Hotel de Autor Guadalajara', 4, 18, 18, 100, 'Hotel boutique de autor en Guadalajara.', 'baruk.jpg', 'Guadalajara, México'),
-('Four Seasons México City Ciudad de México', 5, 19, 19, 300, 'Hotel de lujo en Ciudad de México.', 'fourseasons_mex.jpg', 'Ciudad de México, México'),
-('Gran Hotel Costa Rica, Curio Collection by Hilton San Jose Puerto Rico', 4, 20, 20, 150, 'Hotel histórico en San José.', 'gran_hotel_costa_rica.jpg', 'San José, Puerto Rico'),
-('Grand Hyatt Sao Paulo Brasil', 5, 21, 21, 250, 'Gran hotel en el distrito financiero de Sao Paulo.', 'grand_hyatt_sp.jpg', 'Sao Paulo, Brasil'),
-('Habita Monterrey', 3, 22, 22, 100, 'Hotel moderno en Monterrey.', 'habita.jpg', 'Monterrey, México'),
-('Hotel Hilton Colón Guayaquil', 4, 23, 23, 200, 'Hotel de negocios en Guayaquil.', 'hilton_colon.jpg', 'Guayaquil, Ecuador'),
-('Hotel Real Intercontinental Guatemala', 5, 24, 24, 180, 'Hotel de lujo en Ciudad de Guatemala.', 'intercontinental_gt.jpg', 'Ciudad de Guatemala, Guatemala'),
-('Hotel Unique Sao Paulo', 4, 25, 25, 95, 'Hotel con arquitectura única en Sao Paulo.', 'unique.jpg', 'Sao Paulo, Brasil'),
-('Hyatt Place San Pedro Sula Honduras', 3, 26, 26, 150, 'Hotel moderno en San Pedro Sula.', 'hyatt_place.jpg', 'San Pedro Sula, Honduras'),
-('JW Marriott Hotel Santo Domingo República Dominicana', 5, 27, 27, 200, 'Hotel de lujo en Santo Domingo.', 'jw_marriott.jpg', 'Santo Domingo, República Dominicana'),
-('Live Aqua Urban Resort Monterrey', 4, 12, 12, 180, 'Resort urbano en Monterrey.', 'live_aqua.jpg', 'Monterrey, México'),
-('Palacio Duhau - Park Hyatt Buenos Aires', 5, 28, 28, 150, 'Palacio convertido en hotel de lujo.', 'palacio_duhau.jpg', 'Buenos Aires, Argentina'),
-('Rosewood Sao Paulo', 4, 29, 29, 120, 'Hotel de lujo en el centro de Sao Paulo.', 'rosewood.jpg', 'Sao Paulo, Brasil'),
-('Sheraton Puerto Rico Hotel & Casino Puerto Rico', 4, 30, 30, 220, 'Hotel y casino en Puerto Rico.', 'sheraton.jpg', 'Puerto Rico'),
-('Sofitel Bogotá Victoria Regia', 4, 15, 15, 100, 'Hotel de lujo en Bogotá.', 'sofitel_bogota.jpg', 'Bogotá, Colombia'),
-('Sofitel Mexico City Reforma Ciudad de México', 5, 31, 31, 200, 'Hotel Sofitel en la Ciudad de México.', 'sofitel_mexico.jpg', 'Ciudad de México, México'),
-('Sofitel Montevideo Casino Carrasco & Spa', 4, 32, 32, 140, 'Hotel y casino en Montevideo.', 'sofitel_montevideo.jpg', 'Montevideo, Uruguay'),
-('The Ritz-Carlton Mexico City', 5, 19, 19, 220, 'Hotel de lujo en la Ciudad de México.', 'ritz_mexico.jpg', 'Ciudad de México, México'),
-('The Ritz-Carlton Santiago, Santiago de Chile', 5, 14, 14, 200, 'Hotel de lujo en Santiago de Chile.', 'ritz_santiago.jpg', 'Santiago de Chile, Chile');
+('Hotel Camino Real', 4, 2, 1, 150, 'Un hotel de lujo con todas las comodidades en el centro de Santa Cruz.', 'https://image-tc.galaxy.tf/wijpeg-b0wd83ji9cej534w24trnh898/unknown.jpg?width=1920', 'Santa Cruz de la Sierra, Bolivia'),
+('Los Tajibos Hotel & Convention Center', 5, 2, 2, 200, 'El mejor hotel para convenciones y eventos en Santa Cruz.', 'https://lostajiboshotel.com/sites/default/files/2022-06/lobby.jpg', 'Santa Cruz de la Sierra, Bolivia'),
+('Hotel Presidente', 3, 1, 1, 100, 'Hotel moderno en el corazón de La Paz.', 'https://www.family-travel-secrets.com/wp-content/uploads/2016/05/IMG_3589-1024x682.jpg', 'La Paz, Bolivia'),
+('Gran Hotel Cochabamba', 4, 3, 2, 120, 'Lujoso hotel con vistas panorámicas de la ciudad.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/215675119.jpg?k=d1fe39a797e02f5bcab0d6a9b591c5c75e90fe4751fc7065c18ca0978468be1b&o=&hp=1', 'Cochabamba, Bolivia'),
+('Hotel Parador Santa Maria La Real', 4, 4, 1, 80, 'Un hotel histórico en el centro de Sucre.', 'https://z.cdrst.com/foto/hotel-sf/1260a/granderesp/foto-hotel-1242d7a0.jpg', 'Sucre, Bolivia'),
+('Hotel Eden', 3, 5, 1, 75, 'Confortable hotel en el centro de Oruro.', 'https://www.hoteledenbolivia.com/assets/images/home-1.jpg', 'Oruro, Bolivia'),
+('Hostal Colonial Potosí', 2, 6, 1, 60, 'Acogedor hostal en el casco antiguo de Potosí.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/306345707.jpg?k=6d61b7cc208ea4396c2950ed8f303f4c2a85bc6180b2717d550812155f18a9fa&o=&hp=1', 'Potosí, Bolivia'),
+('Hotel Los Ceibos', 3, 7, 1, 85, 'Cómodo hotel en el centro de Tarija.', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/0d/fd/f0/vista-de-habitacion-al.jpg?w=700&h=-1&s=1', 'Tarija, Bolivia'),
+('Hotel El Pantanal', 3, 8, 1, 70, 'Hotel con encanto en la región del Beni.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/336413792.jpg?k=3f90b5ba07e58b07da9714e9c0f89858975bc5348c10f163e1f45667429feb39&o=&hp=1', 'Beni, Bolivia'),
+('Hotel Casa Grande', 4, 1, 1, 90, 'Moderno hotel en la zona sur de La Paz.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/16198551.jpg?k=dc2b965b142b452c2db33e48dd741cf02264273bcc5d2fd2c9b90e18a60734c1&o=&hp=1', 'La Paz, Bolivia'),
+('Hotel LP Santa Cruz', 3, 2, 1, 110, 'Hotel práctico y moderno en Santa Cruz.', 'https://lphoteles.com/wp-content/uploads/2022/10/Fachada-Hotel-LP-Santa-Cruz.jpg', 'Santa Cruz de la Sierra, Bolivia'),
+('Hotel Diplomat', 4, 3, 2, 100, 'Elegante hotel en el centro de Cochabamba.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/203896151.jpg?k=d30afdd8120084c68720d1a6143ed84f09cf4a690663be8a0e3e1b30319a7069&o=&hp=1', 'Cochabamba, Bolivia'),
+('Hostal Sucre', 2, 4, 1, 45, 'Acogedor hostal en la ciudad blanca de Sucre.', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/43/4c/5d/hostal-sucre.jpg?w=700&h=-1&s=1', 'Sucre, Bolivia'),
+('Hotel Virgen del Socavón', 3, 5, 1, 65, 'Hotel cerca del famoso santuario de Oruro.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/164472585.jpg?k=0b761c7f499d1abf22591bafe9c82a79e986f27f9ef5ebd765ed0d7e710b7bff&o=&hp=1', 'Oruro, Bolivia'),
+('Hotel Cima Argentum', 3, 6, 1, 80, 'Hotel con vistas impresionantes en Potosí.', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/38209154.jpg?k=9876270653a7d390e6f655272d7b56515324a0081376dcea47e6121dccaba02d&o=&hp=1', 'Potosí, Bolivia'),
+('Hotel Victoria Plaza', 3, 7, 1, 70, 'Hotel céntrico en la ciudad de Tarija.', 'https://cf.bstatic.com/xdata/images/hotel/max500/125168201.jpg?k=dbd0cf55f89e3cf2a8ba06b166c50a71e9ce567ef19677ec5a63bef6bbc670c8&o=&hp=1', 'Tarija, Bolivia'),
+('Hotel Oriental', 2, 8, 1, 60, 'Hotel básico y cómodo en Beni.', 'https://media-cdn.tripadvisor.com/media/photo-s/06/b1/ae/eb/hotel-oriental.jpg', 'Beni, Bolivia'),
+('Hotel Gran Paititi', 3, 9, 1, 50, 'Hotel en la zona selvática de Pando.', 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/4c/0c/5d/paititi-hostal.jpg?w=700&h=-1&s=1', 'Pando, Bolivia');
 
 INSERT INTO Aerolinea (aerolinea) VALUES
 ('Boliviana de Aviación'),
