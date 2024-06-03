@@ -12,9 +12,12 @@ import Hotel from "../views/Hotel.vue";
 import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
+import HotelSeleccionado from "../components/Hoteles/HotelSeleccionado.vue";
 import Autos from "../views/Auto/Autos.vue";
 import PantallaOrdenar from "../views/Auto/PantallaOrdenar.vue";
 import PantalaExplorar from "../views/Auto/PantalaExplorar.vue";
+import Vuelos from "../views/Vuelos.vue";
+import HotelSeleccionado1 from "../components/Hoteles/HotelSeleccionado1.vue";
 
 
 export function createRouter(app: App): Router {
@@ -76,6 +79,18 @@ export function createRouter(app: App): Router {
         name: "Autos",
         component: Autos
       },
+            {
+        path: '/hotel/1', // Utilizamos un parámetro dinámico para el ID del hotel
+        name: 'HotelSeleccionado',
+        component: HotelSeleccionado,
+        props: true
+    },
+      {
+        path: '/hotel/2', // Utilizamos un parámetro dinámico para el ID del hotel
+        name: 'HotelSeleccionado1',
+        component: HotelSeleccionado1,
+        props: true
+      },
       {
         path: "/Auto_Ordenar",
         name: "AutoOrdenar",
@@ -85,6 +100,11 @@ export function createRouter(app: App): Router {
         path: "/Auto_Explorar",
         name: "AutoExplorar",
         component:PantalaExplorar
+      },
+      {
+        path: "/Vuelos",
+        name: "Vuelos",
+        component:Vuelos
       },
 
     ],

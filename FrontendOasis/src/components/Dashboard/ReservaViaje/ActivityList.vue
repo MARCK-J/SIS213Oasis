@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ActivityList-container">
     <h2>Lista de Actividades</h2>
     <table>
       <thead>
@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style>
+.ActivityList-container{
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;

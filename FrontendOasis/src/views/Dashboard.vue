@@ -73,15 +73,17 @@ export default {
 .DashboardContainer {
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 
 .barralateral{
-  width: 10%;
-  color: black;
-  background-color: black;
+  width: 12%;
+  height: 100%;
 }
 .content{
   width: 85%;
 }
+
+
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="InsuranceList-container">
     <h2>Lista de Seguros</h2>
     <table>
       <thead>
@@ -33,6 +33,9 @@ export default {
 </script>
 
 <style>
+.InsuranceList-container{
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;

@@ -33,11 +33,6 @@
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link to="/Autos" class="nav-link">Autos</router-link>
-            </li>
-          </ul>
-          <ul class="navbar-nav mr-auto">
             <li v-if="!isAuthenticated" class="nav-item">
               <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
             </li>
@@ -56,7 +51,7 @@
                   data-toggle="dropdown"
               >
                 <img
-                    :src="user.picture ? user.picture : ('/src/assets/deafult.jpeg')"
+                    :src="user.picture ? user.picture : ('/src/assets/deafult_profile.png')"
                     alt="User's profile picture"
                     class="nav-user-profile rounded-circle"
                     width="100"
@@ -221,7 +216,7 @@ export default defineComponent({
   },
   data() {
     return {
-      tiempoRestante: 5*60, // 5 minutos en segundos
+      tiempoRestante: 5*3600, 
       temporizador: null as number | null
     };
   },

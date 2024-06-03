@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="FormRegisterVue">
     <h1>Formulario de Agencia de Viajes</h1>
 
     <div class="date-input">
@@ -10,7 +10,7 @@
     <div class="sections-container">
       <section class="section-item">
         <h2>Hotel</h2>
-        <button @click="showHotelModal = true">Seleccionar Hotel</button>
+        <button class="selection-button" @click="showHotelModal = true">Seleccionar Hotel</button>
         <div v-if="selectedHotel" class="panel">
           <h3>Hotel Seleccionado</h3>
           <div class="info">
@@ -35,7 +35,7 @@
 
       <section class="section-item">
         <h2>Vuelo</h2>
-        <button @click="showFlightModal = true">Seleccionar Vuelo</button>
+        <button class="selection-button" @click="showFlightModal = true">Seleccionar Vuelo</button>
         <div v-if="selectedFlight" class="panel">
           <h3>Vuelo Seleccionado</h3>
           <div class="info">
@@ -58,7 +58,7 @@
 
       <section class="section-item">
         <h2>Alquiler de Auto</h2>
-        <button @click="showCarModal = true">Seleccionar Auto</button>
+        <button class="selection-button" @click="showCarModal = true">Seleccionar Auto</button>
         <div v-if="selectedCar" class="panel">
           <h3>Auto Seleccionado</h3>
           <div class="info">
@@ -81,7 +81,7 @@
 
       <section class="section-item">
         <h2>Atracción</h2>
-        <button @click="showAttractionModal = true">Seleccionar Atracción</button>
+        <button class="selection-button" @click="showAttractionModal = true">Seleccionar Atracción</button>
         <div v-if="selectedAttraction" class="panel">
           <h3>Atracción Seleccionada</h3>
           <div class="info">
@@ -102,7 +102,7 @@
 
       <section class="section-item">
         <h2>Actividad</h2>
-        <button @click="showActivityModal = true">Seleccionar Actividad</button>
+        <button class="selection-button" @click="showActivityModal = true">Seleccionar Actividad</button>
         <div v-if="selectedActivity" class="panel">
           <h3>Actividad Seleccionada</h3>
           <div class="info">
@@ -124,7 +124,7 @@
 
       <section class="section-item">
         <h2>Cliente</h2>
-        <button @click="showClientModal = true">Seleccionar Cliente</button>
+        <button class="selection-button" @click="showClientModal = true">Seleccionar Cliente</button>
         <div v-if="selectedClient" class="panel">
           <h3>Cliente Seleccionado</h3>
           <div class="info">
@@ -146,7 +146,7 @@
 
       <section class="section-item">
         <h2>Seguro</h2>
-        <button @click="showInsuranceModal = true">Seleccionar Seguro</button>
+        <button class="selection-button" @click="showInsuranceModal = true">Seleccionar Seguro</button>
         <div v-if="selectedInsurance" class="panel">
           <h3>Seguro Seleccionado</h3>
           <div class="info">
@@ -385,7 +385,15 @@ export default {
 </script>
 
 <style>
+
+.content {
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
 .date-input {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -397,6 +405,15 @@ export default {
 
 .section-item {
   margin-bottom: 20px;
+  
+}
+
+.selection-button {
+  background-color: #FCEEDA;
+  border-radius: 50px; /* Más redondeado */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 
 .panel {
@@ -447,5 +464,9 @@ export default {
   border: none;
   box-shadow: 0 9px #999;
 }
-
+@media (max-width: 600px) {
+  .FormRegisterVue{
+    margin-left: 10%;
+  }
+}
 </style>

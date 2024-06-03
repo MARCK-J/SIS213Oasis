@@ -1,9 +1,9 @@
-<template> 
+<template>
   <transition name="fade">
-    <pop-up v-show="showPopUp" @close="togglePopUp()"/>
+    <PopUp :imagenTitle="paises" v-show="showPopUp" @close="togglePopUp"/>
   </transition>
   <div class="tarjeta-viaje">
-    <img :src="imagen" :alt="alt" @click="togglePopUp()"/>
+    <img :src="imagen" :alt="alt" @click="togglePopUp"/>
     <div class="tarjeta-viaje-informacion">
       <h4>{{ titulo }}</h4>
       <p>{{ duracion }}</p>
@@ -12,6 +12,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import PopUp from '../pop-up/PopUp.vue';
 
@@ -42,17 +43,18 @@ export default {
       default: "Ciudades visitadas",
     },
   },
-  components:{PopUp},
-  data:()=>({
-    showPopUp: false
+  components: { PopUp },
+  data: () => ({
+    showPopUp: false,
   }),
-  methods:{
-    togglePopUp(){
-      this.showPopUp = !this.showPopUp
-    }
-  }
+  methods: {
+    togglePopUp() {
+      this.showPopUp = !this.showPopUp;
+    },
+  },
 };
 </script>
+
 <style>
 .tarjeta-viaje {
   border: 2px solid #B5B5B5;
@@ -61,9 +63,9 @@ export default {
   flex-direction: column;
 }
 .tarjeta-viaje img {
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20px 20px 0 0;
   width: 100%;
-  cursor:pointer;
+  cursor: pointer;
   height: auto;
 }
 .tarjeta-viaje-informacion {
@@ -71,8 +73,8 @@ export default {
   font-size: 15px;
 }
 @media (max-width: 600px) {
-    .tarjetas-viajes-informacion {
-      font-size: 8px
-    }
+  .tarjeta-viaje-informacion {
+    font-size: 8px;
+  }
 }
 </style>

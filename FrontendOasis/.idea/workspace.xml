@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="" />
+    <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Hoteles/HotelSeleccionado1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hoteles/HotelSeleccionado.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hoteles/HotelSeleccionado.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hoteles/PopularHotels.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hoteles/PopularHotels.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +38,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Max-Branch&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -105,6 +111,7 @@
       <workItem from="1717039984079" duration="4712000" />
       <workItem from="1717079239136" duration="1244000" />
       <workItem from="1717105535481" duration="2255000" />
+      <workItem from="1717419635984" duration="1059000" />
     </task>
     <servers />
   </component>

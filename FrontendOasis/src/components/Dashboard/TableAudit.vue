@@ -103,6 +103,7 @@ body {
   box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   text-align: center;
+  overflow-x: auto; /* Agregar desplazamiento horizontal en pantallas pequeñas */
 }
 
 table {
