@@ -17,6 +17,7 @@ import Autos from "../views/Auto/Autos.vue";
 import PantallaOrdenar from "../views/Auto/PantallaOrdenar.vue";
 import PantalaExplorar from "../views/Auto/PantalaExplorar.vue";
 import Vuelos from "../views/Vuelos.vue";
+import HotelSeleccionado1 from "../components/Hoteles/HotelSeleccionado1.vue";
 
 
 export function createRouter(app: App): Router {
@@ -79,11 +80,17 @@ export function createRouter(app: App): Router {
         component: Autos
       },
             {
-        path: '/hotel/:id', // Utilizamos un parámetro dinámico para el ID del hotel
-        name: 'HotelDetails',
+        path: '/hotel/1', // Utilizamos un parámetro dinámico para el ID del hotel
+        name: 'HotelSeleccionado',
         component: HotelSeleccionado,
         props: true
     },
+      {
+        path: '/hotel/2', // Utilizamos un parámetro dinámico para el ID del hotel
+        name: 'HotelSeleccionado1',
+        component: HotelSeleccionado1,
+        props: true
+      },
       {
         path: "/Auto_Ordenar",
         name: "AutoOrdenar",

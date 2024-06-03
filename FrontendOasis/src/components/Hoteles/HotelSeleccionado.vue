@@ -46,11 +46,7 @@
             </div>
             
           </div>
-          <div class="buttons">
-            <button class="add-btn" @click="addToCart">
-              Agregar <i class="fas fa-shopping-cart"></i>
-            </button>
-          </div>
+
         </div>
       </div>
     </div>
@@ -77,6 +73,7 @@
   
   <script>
   export default {
+    name:"HotelSeleccionado",
     data() {
       return {
         rentalData: {

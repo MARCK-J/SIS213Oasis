@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       hotels: [
-        { name: 'Sumerville All Inclusive Resort', image: 'src/assets/hotel/hotel1.jpg', link: '/hotel/sumerville' },
+        { name: 'Sumerville All Inclusive Resort', image: 'src/assets/hotel/hotel1.jpg', link: '/hotel/HotelSeleccionado' },
         { name: 'Salinas Margogi All Inclusive Resort', image: 'src/assets/hotel/hotel2.jpg', link: '/hotel/sumerville' },
         { name: 'Japaratinga Lounge Resort', image: 'src/assets/hotel/hotel3.jpg', link: '/hotel/sumerville' },
         { name: 'Fairmont Rio de Janeiro Copacabana', image: 'src/assets/hotel/hotel4.jpg', link: '/hotel/sumerville' },
