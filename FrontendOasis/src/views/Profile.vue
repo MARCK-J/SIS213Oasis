@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar/>
     <template v-if="isAuthenticated">
       <div class="container">
         <div class="row align-items-center profile-header">
