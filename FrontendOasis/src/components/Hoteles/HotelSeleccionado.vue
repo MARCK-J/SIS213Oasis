@@ -46,12 +46,18 @@
       <p>{{ hotelData.descripcion }}</p>
     </div>
   </div>
+  <div class="add-to-cart">
+    <button @click="addToCartAction">Añadir al Carrito</button>
+  </div>
+
   <FooterHotel />
 </template>
 
 <script>
 import axios from "axios";
 import FooterHotel from "./FooterHotel.vue";
+import { mapActions } from "vuex";
+import Swal from "sweetalert2";
 
 export default {
   data() {
@@ -74,6 +80,7 @@ export default {
     this.fetchHotelData();
   },
   methods: {
+    ...mapActions(["addToCart"]),
     fetchHotelData() {
       const hotelId = this.getHotelIdFromURL();
       axios
@@ -89,6 +96,35 @@ export default {
       const url = window.location.href;
       const urlParts = url.split("/");
       return urlParts[urlParts.length - 1];
+    },
+    addToCartAction() {
+      const item = {
+        title: this.hotelData.hotel,
+        description: this.hotelData.descripcion,
+        category: "Hotel",
+        location: this.hotelData.ubicacion,
+        image: this.hotelData.imagenes,
+      };
+      if (this.isItemInCart(item)) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "¡Este elemento ya está en tu carrito!",
+        });
+      } else {
+        this.addToCart(item);
+        Swal.fire({
+          icon: "success",
+          title: "¡Añadido al carrito!",
+          text: "El elemento ha sido añadido al carrito correctamente.",
+        });
+      }
+    },
+    isItemInCart(item) {
+      // Verifica si el elemento ya está en el carrito
+      return this.$store.state.cartItems.some(
+        (cartItem) => cartItem.title === item.title
+      );
     },
   },
   components: {
@@ -218,5 +254,23 @@ export default {
 
 .popular-services {
   font-family: Arial, sans-serif;
+}
+
+.add-to-cart {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-to-cart button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart button:hover {
+  background-color: #0056b3;
 }
 </style>

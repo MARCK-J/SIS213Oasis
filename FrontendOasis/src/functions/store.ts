@@ -1,5 +1,12 @@
 import { createStore } from 'vuex';
 
+interface CartItem {
+  title: string;
+  description: string;
+  category: string;
+  location: string;
+  image: string;
+}
 interface State {
   loggedIn: boolean;
   user: any;
@@ -7,7 +14,9 @@ interface State {
   id: any;
   randomCode: string;
   selectedCity: string;
+  cartItems: CartItem[];
 }
+
 
 const store = createStore<State>({
   state: {
@@ -17,6 +26,7 @@ const store = createStore<State>({
     rol: false,
     id: null,
     selectedCity:'all',
+    cartItems: [],
   },
   mutations: {
     setLoggedIn(state, value: boolean) {
@@ -45,15 +55,36 @@ const store = createStore<State>({
     },
     setSelectedCity(state, city) {
       state.selectedCity = city;
-    }
+    },
+    //para el carrito
+    addToCart(state, item: CartItem) {
+      state.cartItems.push(item);
+    },
+    removeFromCart(state, index: number) {
+      state.cartItems.splice(index, 1);
+    },
+    clearCart(state) {
+      state.cartItems = [];
+    },
   },
   actions: {
     updateSelectedCity({ commit }, city) {
       commit('setSelectedCity', city);
-    }
+    },
+    //para el carrito
+    addToCart({ commit }, item: CartItem) {
+      commit('addToCart', item);
+    },
+    removeFromCart({ commit }, index: number) {
+      commit('removeFromCart', index);
+    },
+    clearCart({ commit }) {
+      commit('clearCart');
+    },
   },
   getters: {
-    selectedCity: state => state.selectedCity
+    selectedCity: state => state.selectedCity,
+    cartItems: state => state.cartItems,
   }
 });
 
