@@ -188,7 +188,7 @@ export default defineComponent({
     olvideContrasena() {
       const router = useRouter();
       if (this.correo) {
-        this.randomCode = this.generateCode(); // Llama a la función dentro del componente
+        this.randomCode = this.generateCode(); 
         this.$store.commit("setRandomCode", this.randomCode);
         this.tokenDeOlvido();
         this.$router.push("/TokenOlvido");
@@ -304,7 +304,6 @@ export default defineComponent({
           // Calcular fechas
           this.calcularFecha();
 
-
           // Registrar auditoria:
           this.actividad = "Inicio de Sesion";
           console.info("ID: ", this.$store.state.id);
@@ -329,7 +328,6 @@ export default defineComponent({
             "error"
           );
         }
-
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         // alert("Error al iniciar sesión");
@@ -367,7 +365,7 @@ export default defineComponent({
       this.$swal({
         icon: icon,
         timer: 2000,
-        title: "WOW",
+        title: "Vaya...",
         text: message,
       });
     },
@@ -408,8 +406,18 @@ Max Pasten, Gerente de la agencia de viajes`,
       const response2 = await axios
         .post(url, data)
         .then((response) => {
-          console.log("El correo fue enviado exitosamente:", response.data);
-        })
+          this.$swal({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+
+          icon: "success",
+          title: "Proceso exitoso",
+        text: "Se le envio un codigo de restablecimiento de contraseña",
+      });
+      console.log(response.data);        
+    })
         .catch((error) => {
           console.error("Hubo un problema al enviar el correo:", error);
         });
