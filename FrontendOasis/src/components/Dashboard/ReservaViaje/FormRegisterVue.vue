@@ -7,7 +7,7 @@
       <input type="date" id="date" v-model="selectedDate" required>
     </div>
 
-    <div class="sections-container">
+    <div class="sections-containerF">
       <section class="section-item">
         <h2>Hotel</h2>
         <button class="selection-button" @click="showHotelModal = true">Seleccionar Hotel</button>
@@ -169,6 +169,8 @@
       <button class="create-button" @click="RegistrarReserva">Registrar Reserva de Viaje</button>
     </div>
 
+
+
     <!-- Modales -->
     <modal :isOpen="showHotelModal" @close="showHotelModal = false">
       <hotel-list :reservaHoteles="reservaHoteles" @select-hotel="selectHotel"></hotel-list>
@@ -197,6 +199,19 @@
     <modal :isOpen="showInsuranceModal" @close="showInsuranceModal = false">
       <insurance-list :seguros="seguros" @select-insurance="selectInsurance"></insurance-list>
     </modal>
+
+    <!-- Agregar el botón para mostrar el modal de cotización -->
+    <div style="text-align: center;">
+      <button class="create-button" @click="registrarReserva()">Ver Cotización</button>
+    </div>
+
+    <!-- Modal de Cotización -->
+
+    <modal :isOpen="showQuoteModal" @close="showQuoteModal = false">
+      <quote-modal :quoteInfo="quoteInfo" @close="showQuoteModal = false"></quote-modal>
+    </modal>
+
+
   </div>
 </template>
 
@@ -209,6 +224,7 @@ import ActivityList from './ActivityList.vue';
 import ClientList from './ClientList.vue';
 import InsuranceList from './InsuranceList.vue';
 import Modal from './Modal.vue';
+import QuoteModal from './QuoteModal.vue';
 import axios from "axios";
 
 export default {
@@ -220,7 +236,8 @@ export default {
     ActivityList,
     ClientList,
     InsuranceList,
-    Modal
+    Modal,
+    QuoteModal,
   },
   data() {
     return {
@@ -245,11 +262,14 @@ export default {
       selectedActivity: null,
       selectedClient: null,
       selectedInsurance: null,
-      selectedDate: null
+      selectedDate: null,
+      showQuoteModal: false,
+      quoteInfo: {} // Aquí almacenaremos la información de facturación para pasar al modal de cotización
     };
   },
 
   async created() {
+    this.quoteInfo = {};
     try {
       const response1 = await axios.get('http://localhost:9999/api/v1/reservahotel/reservas');
       this.reservaHoteles = response1.data;
@@ -335,6 +355,48 @@ export default {
       this.selectedInsurance = insurance;
       this.showInsuranceModal = false;
     },
+    async registrarReserva() {
+      console.log("ENTRA");
+      // Verificar si todas las selecciones están hechas
+      if (
+          this.selectedDate &&
+          this.selectedHotel &&
+          this.selectedFlight &&
+          this.selectedCar &&
+          this.selectedAttraction &&
+          this.selectedActivity &&
+          this.selectedClient &&
+          this.selectedInsurance
+      ) {
+        console.log("Se ingresan datos");
+
+        // Llenar la información de la cotización
+        this.quoteInfo = {
+          fecha: this.selectedDate,
+          hotel: this.selectedHotel,
+          vuelo: this.selectedFlight,
+          auto: this.selectedCar,
+          atraccion: this.selectedAttraction,
+          actividad: this.selectedActivity,
+          cliente: this.selectedClient,
+          seguro: this.selectedInsurance
+        };
+        console.log("quoteInfo", this.quoteInfo.fecha);
+        console.log("quoteInfo", this.quoteInfo.hotel);
+        console.log("quoteInfo", this.quoteInfo.vuelo);
+        console.log("quoteInfo", this.quoteInfo.auto);
+        console.log("quoteInfo", this.quoteInfo.atraccion);
+        console.log("quoteInfo", this.quoteInfo.actividad);
+        console.log("quoteInfo", this.quoteInfo.cliente);
+        console.log("quoteInfo", this.quoteInfo.seguro);
+
+        this.showQuoteModal = true;
+      } else {
+        // Mostrar mensaje de error o manejar de otra manera si no se han seleccionado todos los datos
+        alert('Por favor, complete todas las selecciones antes de continuar.');
+      }
+    },
+
     async RegistrarReserva() {
 
       // Imprimir id de seleciones
@@ -397,7 +459,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.sections-container {
+.sections-containerF {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -405,7 +467,7 @@ export default {
 
 .section-item {
   margin-bottom: 20px;
-  
+
 }
 
 .selection-button {
@@ -469,4 +531,73 @@ export default {
     margin-left: 10%;
   }
 }
+.FormRegisterVue {
+
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.date-input {
+  margin-bottom: 20px;
+}
+
+
+
+.section-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.section-item h2 {
+  margin-top: 0;
+}
+
+.selection-button {
+  background-color: #f48f00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.panel {
+  margin-top: 10px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+}
+
+.create-button {
+  background-color: #f48f00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-button:hover {
+  background-color: #f3b05f;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
 </style>

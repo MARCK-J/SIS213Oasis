@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/http/FormaPago.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/FacturacionAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/FormaPagoAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/FacturacionBl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/FormaPagoBl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/FacturacionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/FormaPagoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/Facturacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/FormaPago.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/QuoteModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chatbot/ChatAssistant.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatAssistant.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chatbot/ChatComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chatbot/ChatComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,28 +45,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Max-Branch",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.serve.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\maxpa\\Desktop\\Max Pasten\\Ingenieria de sistemas\\7mo Semestre\\Ingenieria de Software\\Proyecto\\SIS213Oasis\\FrontendOasis\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Max-Branch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Internet de las cosas/Proyecto FInal/Asistencia_NFC_IoT&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.serve.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\maxpa\\Desktop\\Max Pasten\\Ingenieria de sistemas\\7mo Semestre\\Ingenieria de Software\\Proyecto\\SIS213Oasis\\FrontendOasis\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\maxpa\Desktop\Max Pasten\Ingenieria de sistemas\7mo Semestre\Ingenieria de Software\Proyecto\SIS213Oasis\FrontendOasis\src\components\Dashboard\ReservaViaje" />
@@ -79,7 +89,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17890.13" />
       </set>
     </attachedChunks>
   </component>
@@ -112,6 +122,12 @@
       <workItem from="1717079239136" duration="1244000" />
       <workItem from="1717105535481" duration="2255000" />
       <workItem from="1717419635984" duration="1059000" />
+      <workItem from="1717548207898" duration="608000" />
+      <workItem from="1718057414178" duration="16090000" />
+      <workItem from="1718110635375" duration="5377000" />
+      <workItem from="1718200086290" duration="657000" />
+      <workItem from="1718202795763" duration="136000" />
+      <workItem from="1718223455637" duration="1748000" />
     </task>
     <servers />
   </component>
