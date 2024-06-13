@@ -23,9 +23,12 @@
       </div>
     </template>
     <template v-else>
-      <div class="container">
-        <h2>¡Bienvenido a nuestra aplicación!</h2>
-        <p>Inicia sesión para ver tu perfil.</p>
+      <div class="administrador">
+        <div class="tarjeta">
+          <h1>Debe ingresar a su perfil</h1>
+          <p>Puede volver a la pagina principal</p>
+          <router-link to="/" class="ruteo">Home</router-link>
+        </div>
       </div>
     </template>
   </div>
@@ -53,13 +56,14 @@ export default {
     const router = useRouter();
     return {
       isAuthenticated: store.state.loggedIn,
+      isAdmin: store.state.admin,
       user: store.state.user,
     }
   },
   mounted(){
     console.log("imprimir el usuario: ",this.user);
     if(this.user!=null){
-      if(this.user.result.idAdmin == 2){
+      if(this.isAdmin == true){
         this.fetchAdminData();
       }else{
         this.fetchClienteData();
@@ -163,5 +167,33 @@ export default {
   background-color: antiquewhite;
   padding: 20px;
   height: auto;
+}
+.administrador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: white;
+}
+.tarjeta {
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color:#FCEEDA;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ruteo{
+  background-color: #ff9800;
+  color: white;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  width: 30%;
 }
 </style>

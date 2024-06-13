@@ -15,6 +15,7 @@ interface State {
   randomCode: string;
   selectedCity: string;
   cartItems: CartItem[];
+  admin:boolean;
 }
 
 
@@ -27,10 +28,14 @@ const store = createStore<State>({
     id: null,
     selectedCity:'all',
     cartItems: [],
+    admin: false,
   },
   mutations: {
     setLoggedIn(state, value: boolean) {
       state.loggedIn = value;
+    },
+    setAdmin(state, value: boolean) {
+      state.admin = value;
     },
     setUser(state, user: any) {
       state.user = user;

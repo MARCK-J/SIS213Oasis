@@ -267,6 +267,7 @@ export default defineComponent({
 
           //router.push("/");
           this.$router.push("/Verificacion");
+          console.log("CLIENTE:",user)
         } else {
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error("Error al iniciar sesión:", response.data.message);
@@ -298,6 +299,7 @@ export default defineComponent({
         if (user.code === '200-OK') {
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit('setLoggedIn', true);
+          this.$store.commit('setAdmin', true);
           this.$store.commit('setUser', user);
           console.info("ID: ", response.data.result["idAdmin"]);
           this.$store.commit('setId', response.data.result["idAdmin"]);
@@ -322,6 +324,7 @@ export default defineComponent({
             "Felicidades acceso aceptado Administrador",
             "success"
           );
+          console.log("ADMINISTRADOR:",user)
         } else {
           // Si el inicio de sesión no es exitoso, muestra un mensaje de error
           console.error("Error al iniciar sesión:", response.data.message);

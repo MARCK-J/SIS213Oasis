@@ -212,6 +212,7 @@ export default defineComponent({
           idCliente.value = '';
           console.info("Id Cliente: ", idCliente.value);
           console.info("Id Admin: ", idAdmin.value);
+          store.commit('setAdmin', false);
         } else if (store.state.rol === 'Cliente') {
           idCliente.value = store.state.id;
           idAdmin.value = '';
