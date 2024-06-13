@@ -38,7 +38,7 @@
         </div>
         <div>
           <label for="price">Precio:</label>
-          <input type="number" id="price" v-model="reservation.precio">
+          <input type="number" id="price" min="1" v-model="reservation.precio">
         </div>
         <button class="cart-button" type="button" @click="closeModal">Cancelar</button>
         <button class="cart-button" type="submit">

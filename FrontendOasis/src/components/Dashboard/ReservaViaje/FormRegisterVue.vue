@@ -229,6 +229,7 @@ import InsuranceList from './InsuranceList.vue';
 import Modal from './Modal.vue';
 import QuoteModal from './QuoteModal.vue';
 import RegistroReserva from "./RegistroReserva.vue";
+import Swal from "sweetalert2";
 import axios from "axios";
 
 export default {
@@ -402,7 +403,12 @@ export default {
         this.showRegistroModal = true;
       } else {
         // Mostrar mensaje de error o manejar de otra manera si no se han seleccionado todos los datos
-        alert('Por favor, complete todas las selecciones antes de continuar.');
+        await Swal.fire({
+          icon: "error",
+          title: "Incompleto",
+          text: "Por favor, complete todas las selecciones antes de continuar.",
+        });
+
       }
     },
     async registrarReserva() {

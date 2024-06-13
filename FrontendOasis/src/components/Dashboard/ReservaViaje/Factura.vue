@@ -9,9 +9,9 @@
           </div>
           <div class="company-info" style="color: black">
             <h2>Agencia de Viajes OASIS</h2>
-            <p>Dirección: Universidad Catolica Boliviana</p>
-            <p>Teléfono: (123) 456-7890</p>
-            <p>Email: info@empresa.xyz</p>
+            <p>Dirección: Av. 14 de Septiembre Nº 4807 esquina, La Paz</p>
+            <p>Teléfono: (+591) 68171114</p>
+            <p>Email: agencia.viajes.oasis@gmail.com</p>
           </div>
           <div class="invoice-info" style="color: black">
             <h2>Factura  </h2>
