@@ -106,4 +106,31 @@ public class ClienteAPI {
 
         return clientes;
     }
+
+    // Endpoint para modificar un cliente por su id
+    @PutMapping("/update/{id}")
+    public ResponseDTO updateCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
+        Cliente clienteActualizado;
+        try{
+            clienteActualizado = clienteBl.updateCliente(id, cliente);
+            LOGGER.info("Cliente actualizado");
+        } catch (RuntimeException e){
+            LOGGER.error("Error al actualizar el cliente", e);
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO(clienteActualizado);
+    }
+
+    // Endpoint para eliminar un cliente
+    @DeleteMapping("/delete/{id}")
+    public ResponseDTO deleteCliente(@PathVariable Long id) {
+        try{
+            clienteBl.deleteCliente(id);
+            LOGGER.info("Cliente eliminado");
+        } catch (RuntimeException e){
+            LOGGER.error("Error al eliminar el cliente", e);
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO("Cliente eliminado");
+    }
 }

@@ -79,6 +79,33 @@ public class PersonaAPI {
         return new ResponseDTO(id);
     }
 
+    // Endpoint para modificar una persona por su id
+    @PutMapping("/update/{id}")
+    public ResponseDTO updatePersona(@PathVariable Long id, @RequestBody Persona persona) {
+        Persona personaActualizada;
+        try{
+            personaActualizada = personaBl.updatePersona(id, persona);
+            LOGGER.info("Persona actualizada");
+        } catch (RuntimeException e){
+            LOGGER.error("Error al actualizar la persona");
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO(personaActualizada);
+    }
+
+    // Endpoint para eliminar una persona
+    @DeleteMapping("/delete/{id}")
+    public ResponseDTO deletePersona(@PathVariable Long id) {
+        try{
+            personaBl.deletePersona(id);
+            LOGGER.info("Persona eliminada");
+        } catch (RuntimeException e){
+            LOGGER.error("Error al eliminar la persona");
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO("Persona eliminada");
+    }
+
 
 }
 

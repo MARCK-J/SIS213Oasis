@@ -57,4 +57,8 @@ public class ViajeBl {
         }
         viajeDao.delete(viaje);
     }
+
+    public Long getLastIdViaje () {
+        return viajeDao.getLastIdViaje();
+    }
 }

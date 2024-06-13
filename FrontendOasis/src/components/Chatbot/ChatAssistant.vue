@@ -2,19 +2,36 @@
   <div>
     <div v-if="showChat" class="chat-container">
       <div class="chat-header">
-        <h6>Chat Assistant</h6>
+        <h6>Chat Asistente de OASIS</h6>
         <span style="cursor: pointer;" @click="toggleChat">
           {{ showChat ? '–' : '+' }}
         </span>
       </div>
-      <div class="chat-messages">
+      <div class="chat-messages" ref="chatMessages">
         <div v-for="(message, index) in chatMessages" :key="index" class="message-container">
           <div v-if="message.sender === 'User'" class="user-message-container">
-            <div class="user-message">{{ message.text }}</div>
+            <div class="user-message">
+              <div class="message-meta">
+                <strong>{{ message.sender }}</strong> - <small>{{ formatDate(message.timestamp) }}</small>
+              </div>
+              <div>
+                <p v-html="formatMessage(message.text)"></p>
+              </div>
+            </div>
           </div>
           <div v-else class="bot-message-container">
-            <div class="bot-message">{{ message.text }}</div>
+            <div class="bot-message">
+              <div class="message-meta">
+                <strong>Asistente OASIS</strong> - <small>{{ formatDate(message.timestamp) }}</small>
+              </div>
+              <div>
+                <p v-html="formatMessage(message.text)"></p>
+              </div>
+            </div>
           </div>
+        </div>
+        <div v-if="isTyping" class="typing-indicator">
+          <em>Asistente OASIS está escribiendo...</em>
         </div>
       </div>
       <div class="chat-input">
@@ -29,6 +46,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
 import { useStore } from 'vuex';
@@ -39,14 +57,14 @@ const genAI = new GoogleGenerativeAI(apiKey);
 export default {
   data() {
     return {
-      showChat: false, // Estado inicial del chat
+      showChat: false,
       chatMessages: [],
       inputMessage: "",
-      chatSession: null
+      chatSession: null,
+      isTyping: false
     };
   },
-  setup(){
-
+  setup() {
     const store = useStore();
     let user;
     let name;
@@ -55,25 +73,19 @@ export default {
       name = user.name;
       console.info(user.name);
     }
-
   },
   methods: {
     async initChat() {
       let promptIA = "";
-      if (this.$store.state.user == null){
-        promptIA =  "Eres un experto en turismo de la agengia de viajes OASIS, tu primer mensaje es saludar al usuario y ofrecer nuestros servicios que son Vuelos, Viajes, Renta de Autos y hoteles. No  puedes responder a nada que no sea realacionado con el turismo ni con la agencia de viajes";
-
+      if (this.$store.state.user == null) {
+        promptIA = "Eres un experto en turismo de la agencia de viajes OASIS, tu primer mensaje es saludar al usuario y ofrecer nuestros servicios que son Vuelos, Viajes, Renta de Autos y hoteles. No puedes responder a nada que no sea relacionado con el turismo ni con la agencia de viajes, para mejor comprencion del usuario solo una indices no numeros en listas. Realiza las respuestas agradables y amistosas para el usuario con emojis.";
       } else {
-        console.info(this.$name)
-        promptIA = `Eres un experto en turismo de la agengia de viajes OASIS  y tu primer mensaje es dar la bienvenida al usuario, su nombre es ${this.$store.state.user.given_name}.  No  puedes responder a nada que no sea realacionado con el turismo ni con la agencia de viajes`;
+        promptIA = `Eres un experto en turismo de la agencia de viajes OASIS y tu primer mensaje es dar la bienvenida al usuario, su nombre es ${this.$store.state.user.given_name}. No puedes responder a nada que no sea relacionado con el turismo ni con la agencia de viajes, para mejor comprencion del usuario solo una indices no numeros en listas. Realiza las respuestas agradables y amistosas para el usuario con emojis.`;
       }
 
-        const model = genAI.getGenerativeModel({
+      const model = genAI.getGenerativeModel({
         model: "gemini-1.5-pro-latest",
         systemInstruction: promptIA
-
-
-
       });
 
       const generationConfig = {
@@ -112,7 +124,7 @@ export default {
       const result = await this.chatSession.sendMessage("INSERT_INPUT_HERE");
       const initialMessage = result.response.text();
 
-      this.addMessage("Gemini Bot", initialMessage);
+      this.addMessage("Gemini Bot", initialMessage, true);
     },
     async toggleChat() {
       this.showChat = !this.showChat;
@@ -127,23 +139,50 @@ export default {
       this.addMessage("User", userMessage);
 
       this.inputMessage = "";
+      this.isTyping = true;
       const botResponse = await this.getBotResponse(userMessage);
+      this.isTyping = false;
 
-
-      this.addMessage("Gemini Bot", botResponse);
-
-
+      this.addMessage("Gemini Bot", botResponse, true);
+      this.scrollToBottom();
     },
     async getBotResponse(userMessage) {
       const result = await this.chatSession.sendMessage(userMessage);
       return result.response.text();
     },
     addMessage(sender, text) {
-      this.chatMessages.push({sender, text});
-    }
-  },
+      const timestamp = new Date();
+      const message = { sender, text: text, timestamp };
+      this.chatMessages.push(message);
+    },
+    formatDate(date) {
+      return date.toLocaleTimeString();
+    },
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const chatMessages = this.$refs.chatMessages;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      });
+    },
+    formatMessage(text) {
+      // Convert double asterisks to bold tags
+      text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+      text = text = text.replace(/\* (\n|$)/g, '<br>');
+      // Convert * items into list items
+      text = text.replace(/\* (.*?)(\n|$)/g, '<br><li>$1</li>');
+
+
+
+      // Wrap list items in unordered list tags
+      text = text.replace(/(<li>.*<\/li>)+/g, '<ul>$&</ul>');
+
+      return text;
+    },
+  }
 };
 </script>
+
 
 <style scoped>
 .chat-container {
@@ -158,7 +197,7 @@ export default {
 }
 
 .chat-header {
-  background-color: #007bff;
+  background-color: #232323;
   color: white;
   padding: 10px;
   border-top-left-radius: 10px;
@@ -171,20 +210,28 @@ export default {
   height: 400px;
   overflow-y: auto;
   padding: 10px;
-
 }
 
 .message-container {
   margin-bottom: 10px;
 }
 
+.user-message-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .user-message {
-  background-color: #007bff;
+  background-color: #373737;
   color: white;
   padding: 10px;
   border-radius: 10px;
   max-width: 70%;
-  align-self: flex-end;
+}
+
+.bot-message-container {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .bot-message {
@@ -193,6 +240,18 @@ export default {
   padding: 10px;
   border-radius: 10px;
   max-width: 70%;
+}
+
+.message-meta {
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  color: #9e9e9e;
+}
+
+.typing-indicator {
+  text-align: center;
+  font-style: italic;
+  color: #c6c6c6;
 }
 
 .chat-input {
@@ -214,11 +273,11 @@ export default {
 }
 
 .chat-input button {
-  background-color: #007bff;
+  background-color: #dd8b49;
   color: white;
   border: none;
   padding: 8px;
-  border-radius: 50%; /* Hace que el botón sea un círculo */
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -229,39 +288,11 @@ export default {
 }
 
 .chat-button {
-  background-color: #007bff;
+  background-color: #232323;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-}
-.user-message-container {
-  display: flex;
-  justify-content: flex-end; /* Alinea a la derecha */
-  margin-bottom: 10px;
-}
-
-.user-message {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
-}
-
-/* Estilos para los mensajes del bot */
-.bot-message-container {
-  display: flex;
-  justify-content: flex-start; /* Alinea a la izquierda */
-  margin-bottom: 10px;
-}
-
-.bot-message {
-  background-color: #f0f0f0;
-  color: #333;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
 }
 </style>
