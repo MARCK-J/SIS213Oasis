@@ -89,7 +89,7 @@ export function createRouter(app: App): Router {
         meta: { showNavBar: true }
       },
             {
-        path: '/hotel/1', // Utilizamos un parámetro dinámico para el ID del hotel
+        path: '/hotel/:id', // Utilizamos un parámetro dinámico para el ID del hotel
         name: 'HotelSeleccionado',
         component: HotelSeleccionado,
         meta: { showNavBar: true }

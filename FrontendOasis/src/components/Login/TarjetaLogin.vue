@@ -406,18 +406,6 @@ Agencia de Viajes Oasis
 Max Pasten, Gerente de la agencia de viajes`,
       };
       const response2 = await axios.post(url, data)
-        .then((response) => {
-          this.$swal({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-
-          icon: "success",
-          title: "Proceso exitoso",
-        text: "Se le envio un codigo de restablecimiento de contraseña",
-      });
-    })
         .catch((error) => {
           console.error("Hubo un problema al enviar el correo:", error);
         });

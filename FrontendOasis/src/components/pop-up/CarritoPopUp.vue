@@ -56,6 +56,7 @@ export default {
         emailContent += `
           <li>
             <h2>${item.title}</h2>
+            <img src="${item.image}" alt="Item image" style="width: 300px; heigth:300px;">
             <p><strong>Descripción:</strong> ${item.description}</p>
             <p><strong>Categoría:</strong> ${item.category}</p>
             <p><strong>Ubicación:</strong> ${item.location}</p>
@@ -70,6 +71,7 @@ export default {
         <p>Saludos,<br>El equipo de Oasis</p>
       `;
 
+      // Enviar solicitud al backend para enviar el correo
       try {
         const url = "http://localhost:9999/mail/send/" + correoUsuario;
         await axios.post(url, {
@@ -77,6 +79,7 @@ export default {
           message: emailContent,
         });
 
+        // Mostrar notificación de éxito
         Swal.fire({
           icon: "success",
           title: "Correo enviado",
@@ -85,6 +88,7 @@ export default {
 
       } catch (error) {
         console.error("Error enviando correo:", error);
+        // Mostrar notificación de error
         Swal.fire({
           icon: "error",
           title: "Error",
@@ -101,12 +105,13 @@ export default {
 </script>
 
 
+
 <style>
 .pop-up {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1000;
   padding: 32px 16px 120px;
   height: 100vh;
   width: 100%;

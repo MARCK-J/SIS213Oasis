@@ -38,7 +38,7 @@
           </div>
           </div>
           </div>
-            <div class="add-to-cart">
+            <div class="add-to-cart" v-if="isAuthenticated">
               <button @click="addToCartAction">Añadir al Carrito</button>
             </div>
     </div>
@@ -141,6 +141,9 @@ export default {
         { length: 5 - this.hotelData.puntuacion },
         (_, index) => index
       );
+    },
+    isAuthenticated() {
+      return this.$store.state.loggedIn; // Asumiendo que loggedIn es el estado de autenticación en Vuex
     },
   },
 };
