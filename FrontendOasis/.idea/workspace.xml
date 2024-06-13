@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/http/Comentarios.http" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ComentariosAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ComentariosBl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/ComentariosDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/Comentarios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/Factura.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/RegistroReserva.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Facturacion.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Facturacion.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/FacturacionAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/FacturacionAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ViajeAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ViajeAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/FacturacionBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/FacturacionBl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ViajeBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ViajeBl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/FacturacionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/FacturacionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/ViajeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/ViajeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/QuoteModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/QuoteModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/TableAudit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +118,7 @@
       <workItem from="1718202795763" duration="136000" />
       <workItem from="1718223455637" duration="3040000" />
       <workItem from="1718228071468" duration="14136000" />
+      <workItem from="1718283891187" duration="7972000" />
     </task>
     <servers />
   </component>

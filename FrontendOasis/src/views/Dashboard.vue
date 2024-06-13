@@ -1,15 +1,16 @@
 <template>
-    <div class="DashboardContainer">
-      <side-bar class="barralateral" @optionSelected="optionSelected"/>
-      <div class="content">
-        <component :is="currentComponent" />
-      </div>
+  <div class="DashboardContainer">
+    <div class="barralateral" style="background-color: black">
+      <side-bar @optionSelected="optionSelected"/>
     </div>
+    <div class="content">
+      <component :is="currentComponent" />
+    </div>
+  </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
-//import TableAudit from "../components/Dashboard/TableAudit.vue";
 import TableResHotel from "../components/Dashboard/CRUD_ResHoteles/TableResHotel.vue";
 import SideBar from "../components/Admin/SideBar.vue";
 import TableAudit from "../components/Dashboard/TableAudit.vue";
@@ -28,7 +29,6 @@ export default {
     TableAlquilerAu,
     FormRegisterVue,
     TableViaje,
-
   },
   data() {
     return {
@@ -68,21 +68,19 @@ export default {
 </script>
 
 <style scoped>
-
 .DashboardContainer {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 100vh;
 }
 
-.barralateral{
-  width: 12%;
-  height: 100%;
+.barralateral {
+  width: 15%;
+  height: 100vh;
+  background-color: black;
 }
-.content{
+
+.content {
   width: 85%;
 }
-
-
-
 </style>

@@ -10,37 +10,37 @@
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('admin')">
               <span v-if="isCollapsed">👤</span>
-              <span v-else>Administrador</span>
+              <span v-else>📊 Administrador</span>
             </div>
           </li>
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('hotels')">
               <span v-if="isCollapsed">🏨</span>
-              <span v-else>Hoteles</span>
+              <span v-else>🏨 Reservas Hoteles</span>
             </div>
           </li>
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('flights')">
               <span v-if="isCollapsed">✈️</span>
-              <span v-else>Vuelos</span>
+              <span v-else>✈️️ Reservas Vuelos</span>
             </div>
           </li>
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('cars')">
               <span v-if="isCollapsed">🚗</span>
-              <span v-else>Autos</span>
+              <span v-else>🚗 Alquiler Autos</span>
             </div>
           </li>
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('register_flight')">
               <span v-if="isCollapsed">🌍</span>
-              <span v-else>Registro Viaje</span>
+              <span v-else>🧳 Crear Viaje</span>
             </div>
           </li>
           <li class="nav-item">
             <div class="nav-link" @click="selectOption('registers_flights')">
               <span v-if="isCollapsed">🌍</span>
-              <span v-else>Viajes</span>
+              <span v-else>🌍 Reservas Viajes</span>
             </div>
           </li>
 
@@ -88,7 +88,6 @@ export default defineComponent({
   flex-direction: column;
   height: 100vh;
   background-color: black;
-  position: absolute;
   z-index: 1000;
   transition: width 0.3s ease;
 }
