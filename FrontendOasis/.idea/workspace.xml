@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/Comentarios/TableComentarios.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Comentarios.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Comentarios.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/VueloDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/VueloDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/Factura.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/Factura.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/QuoteModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/QuoteModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/RegistroReserva.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/RegistroReserva.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Contactanos.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Contactanos.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
