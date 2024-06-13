@@ -11,18 +11,23 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.ucb.SIS213.Oasis.email.Model.MailStructure;
 import com.ucb.SIS213.Oasis.email.Service.MailService;
 
+import jakarta.mail.MessagingException;
+
 @RestController
 @RequestMapping("/mail")
-@CrossOrigin(origins = "*", allowedHeaders = "*") // Permitir solicitudes desde cualquier origen
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MailController {
-    
+
     @Autowired
     private MailService mailService;
 
     @PostMapping("/send/{mail}")
-    public String sendMail(@PathVariable String mail, @RequestBody MailStructure mailStructure){
-        mailService.sendMail(mail, mailStructure);
-        return "Envio exitoso";
+    public String sendMail(@PathVariable String mail, @RequestBody MailStructure mailStructure) {
+        try {
+            mailService.sendMail(mail, mailStructure);
+            return "Envio exitoso";
+        } catch (MessagingException e) {
+            return "Error al enviar el correo: " + e.getMessage();
+        }
     }
-
 }

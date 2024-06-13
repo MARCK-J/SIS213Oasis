@@ -5,7 +5,7 @@
         <div class="row align-items-center profile-header">
           <div class="col-md-2 mb-3">
             <img
-              :src="user?.picture"
+              :src="user.picture ? user.picture : ('/src/assets/deafult_profile.png')"
               alt="User's profile picture"
               class="rounded-circle img-fluid profile-picture"
             />

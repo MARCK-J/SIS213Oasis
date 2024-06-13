@@ -188,7 +188,7 @@ export default defineComponent({
     olvideContrasena() {
       const router = useRouter();
       if (this.correo) {
-        this.randomCode = this.generateCode(); // Llama a la función dentro del componente
+        this.randomCode = this.generateCode(); 
         this.$store.commit("setRandomCode", this.randomCode);
         this.tokenDeOlvido();
         this.$router.push("/TokenOlvido");
@@ -230,11 +230,13 @@ export default defineComponent({
           password: this.password // Usa el valor de la contraseña del input
         });
 
-        const user = response.data.code;
-        if (user === '200-OK') {
+        const user = response.data;
+        
+        if (user.code === '200-OK') {
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit('setLoggedIn', true);
           this.$store.commit('setUser', user);
+          console.log(user);
           console.info("ID: ", response.data.result["idCliente"]);
           this.$store.commit('setId', response.data.result["idCliente"]);
           this.$store.commit('setRol', "Cliente");
@@ -304,7 +306,6 @@ export default defineComponent({
           // Calcular fechas
           this.calcularFecha();
 
-
           // Registrar auditoria:
           this.actividad = "Inicio de Sesion";
           console.info("ID: ", this.$store.state.id);
@@ -329,7 +330,6 @@ export default defineComponent({
             "error"
           );
         }
-
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         // alert("Error al iniciar sesión");
@@ -367,7 +367,7 @@ export default defineComponent({
       this.$swal({
         icon: icon,
         timer: 2000,
-        title: "WOW",
+        title: "Vaya...",
         text: message,
       });
     },
@@ -405,11 +405,7 @@ Atentamente,
 Agencia de Viajes Oasis
 Max Pasten, Gerente de la agencia de viajes`,
       };
-      const response2 = await axios
-        .post(url, data)
-        .then((response) => {
-          console.log("El correo fue enviado exitosamente:", response.data);
-        })
+      const response2 = await axios.post(url, data)
         .catch((error) => {
           console.error("Hubo un problema al enviar el correo:", error);
         });

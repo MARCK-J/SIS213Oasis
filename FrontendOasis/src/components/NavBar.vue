@@ -1,4 +1,7 @@
 <template>
+  <transition name="fade">
+    <CarritoPopUp v-show="showPopUp" @close="togglePopUp"/>
+  </transition>
   <div class="nav-container">
     <nav class="navbar navbar-expand-md navbar-light custom-navbar-color">
       <div class="container">
@@ -33,6 +36,11 @@
             </li>
           </ul>
           <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link to="/Autos" class="nav-link">Autos</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
             <li v-if="!isAuthenticated" class="nav-item">
               <router-link to="/RegistroPersona" class="nav-link">Registrarse</router-link>
             </li>
@@ -50,6 +58,11 @@
               </option>
             </select>
           </div>
+          <ul class="navbar-nav mr-auto ml-5">
+            <li class="nav-item" v-if="isAuthenticated">
+              <Icon id="carrito" icon="emojione-v1:shopping-bags" width="30" height="30" @click="togglePopUp"/>
+            </li>
+          </ul>
 <ul class="navbar-nav mr-auto d-none d-md-block">
             <li class="nav-item dropdown" v-if="isAuthenticated">
               <a
@@ -116,6 +129,7 @@ import { useRouter } from "vue-router";
 import { googleLogout } from 'vue3-google-login';
 import axios from "axios";
 import { Icon } from '@iconify/vue';  
+import CarritoPopUp from './pop-up/CarritoPopUp.vue';
 
 
 export default defineComponent({
@@ -241,6 +255,7 @@ export default defineComponent({
         'all', 'La Paz', 'Santa Cruz de la Sierra', 'Cochabamba', 'Sucre', 
         'Oruro', 'Potosí', 'Tarija', 'Beni', 'Pando'
       ],
+      showPopUp: false,
     };
   },
   mounted() {
@@ -260,10 +275,14 @@ export default defineComponent({
       this.tiempoRestante = 5*60;
       this.temporizador = setTimeout(this.realizarAccion, this.tiempoRestante * 1000);
       clearTimeout(this.temporizador);
-    }
+    },
+    togglePopUp() {
+      this.showPopUp = !this.showPopUp;
+    },
   },
   components:{
-    Icon
+    Icon,
+    CarritoPopUp
   }
 
 });
@@ -283,6 +302,9 @@ export default defineComponent({
 #custom-button {
   background-color: rgb(184, 178, 178); /* Cambia el color de fondo del botón */
   color: white; /* Cambia el color del texto del botón */
+}
+#carrito{
+  cursor: pointer;
 }
 #logo{
     margin: 4px 30px;
