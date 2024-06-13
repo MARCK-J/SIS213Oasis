@@ -17,6 +17,7 @@ import TableAudit from "../components/Dashboard/TableAudit.vue";
 import TableVuelo from "../components/Dashboard/CRUD_Vuelos/TableVuelo.vue";
 import TableAlquilerAu from "../components/Dashboard/CRUD_AlquilerAutos/TableAlquilerAu.vue";
 import FormRegisterVue from "../components/Dashboard/ReservaViaje/FormRegisterVue.vue";
+import TableComentarios from "../components/Dashboard/Comentarios/TableComentarios.vue";
 import TableViaje from "../components/Dashboard/ReservaViaje/TableViaje.vue";
 
 export default {
@@ -29,6 +30,8 @@ export default {
     TableAlquilerAu,
     FormRegisterVue,
     TableViaje,
+    TableComentarios,
+
   },
   data() {
     return {
@@ -56,8 +59,8 @@ export default {
         case 'registers_flights':
           this.currentComponent = 'TableViaje';
           break;
-        case 'configurations':
-          this.currentComponent = 'configurations';
+        case 'coments':
+          this.currentComponent = 'TableComentarios';
           break;
         default:
           this.currentComponent = 'TableAudit';

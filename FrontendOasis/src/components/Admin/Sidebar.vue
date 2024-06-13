@@ -45,9 +45,9 @@
           </li>
 
           <li class="nav-item">
-            <div class="nav-link" @click="selectOption('configurations')">
+            <div class="nav-link" @click="selectOption('coments')">
               <span v-if="isCollapsed">⚙️</span>
-              <span v-else>Configuraciones</span>
+              <span v-else>Comentarios</span>
             </div>
           </li>
         </ul>
