@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="perfil">
     <template v-if="isAuthenticated">
       <div class="container">
+        <br>
+        <h2>Perfil del Cliente</h2>
         <div class="row align-items-center profile-header">
           <div class="col-md-2 mb-3">
             <img
@@ -10,13 +12,16 @@
               class="rounded-circle img-fluid profile-picture"
             />
           </div>
-          <div class="col-md text-center text-md-left">
-            <h2>{{ user?.name }}</h2>
-            <p class="lead text-muted">{{ user?.email }}</p>
+          <div class="col-md text-center text-md-left ">
+            <h4>Nombre: {{ clienteData.nombre }}</h4>
+            <h4>Apellido Paterno: {{ clienteData.apellidoP }}</h4>
+            <h4>Apellido Materno: {{ clienteData.apellidoM }}</h4>
+            <h4>Telefono: {{ clienteData.telefono }}</h4>
+            <h4>Correo Electronico: {{ user.result.correo }}</h4>
           </div>
+        <div class="eliminar">
+          <button @click="eliminarmicuenta">Eliminar mi cuenta</button>
         </div>
-        <div class="row">
-          <highlightjs language="json" :code="JSON.stringify(user, null, 2)" />
         </div>
       </div>
     </template>
@@ -30,21 +35,119 @@
 </template>
 
 <script lang="ts">
+import axios from "axios";
 import NavBar from '../components/NavBar.vue';
 import { useStore } from 'vuex';
+import { useRouter } from "vue-router";
+import Swal from "sweetalert2";
 
 export default {
   name: "profile-view",
   components:{
     NavBar
   },
+  data(){
+    return{
+      clienteData:{}
+    }
+  },
   setup() {
     const store = useStore();
-    
+    const router = useRouter();
     return {
       isAuthenticated: store.state.loggedIn,
       user: store.state.user,
     }
+  },
+  mounted(){
+    if(this.user!=null){
+      this.fetchClienteData();
+    }else{
+      console.log("nada");
+    }
+  },
+  methods:{
+    fetchClienteData() {
+      const idPersona = this.$store.state.user.result.idPersona;
+      axios
+        .get(`http://localhost:9999/api/v1/persona/${idPersona}`)
+        .then((response) => {
+          this.clienteData = response.data.result;
+          console.log("informacion acerca del cliente:   ",this.clienteData);
+        })
+        .catch((error) => {
+          console.error("Hubo un error al obtener los datos del cliente:", error);
+        });
+    },
+    eliminarmicuenta(){
+      this.fetchEliminarCliente();
+      this.fetchEliminarPersona();
+      const router = useRouter();
+      this.$router.push("/");
+      window.location.reload();
+    },
+    fetchEliminarCliente() {
+      const idPersona = this.$store.state.user.result.idPersona;
+      axios
+        .delete(`http://localhost:9999/api/v1/cliente/delete/${idPersona}`)
+        .then((response) => {
+          console.log("Cliente eliminado con exito");
+          Swal.fire({
+          icon: "success",
+          title: "Cuenta eliminada correctamente",
+          });
+        })
+        .catch((error) => {
+          console.log("Hubo un error al eliminar su cuenta");
+          Swal.fire({
+          icon: "error",
+          title: "Hubo un error al eliminar su cuenta",
+          });
+        });
+    },
+    fetchEliminarPersona() {
+      const idPersona = this.$store.state.user.result.idPersona;
+      axios
+        .delete(`http://localhost:9999/api/v1/persona/delete/${idPersona}`)
+        .then((response) => {
+          console.log("Cliente eliminado con exito");
+          Swal.fire({
+          icon: "success",
+          title: "Cuenta eliminada correctamente",
+          });
+        })
+        .catch((error) => {
+          console.log("Hubo un error al eliminar su cuenta");
+          Swal.fire({
+          icon: "error",
+          title: "Hubo un error al eliminar su cuenta",
+          });
+        });
+    },
   }
 };
 </script>
+<style>
+.eliminar button{
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px 11px;
+  color: white;
+  background-color: rgb(210, 51, 30);
+}
+.eliminar{
+  display: flex;
+  justify-content: center;
+}
+.perfil{
+  background-color: white;
+  height: 100vh;
+}
+.profile-header{
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: antiquewhite;
+  padding: 20px;
+  height: auto;
+}
+</style>
