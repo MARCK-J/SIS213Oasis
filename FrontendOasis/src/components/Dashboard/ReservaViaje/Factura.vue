@@ -5,7 +5,7 @@
       <div id="invoice-contentFac">
         <div class="header">
           <div class="logo">
-            <img src="../../../assets/logoBack.png" alt="Logo de la empresa">
+            <img style="width: 100%" src="../../../assets/logoBack.png" alt="Logo de la empresa">
           </div>
           <div class="company-info" style="color: black">
             <h2>Agencia de Viajes OASIS</h2>
@@ -29,8 +29,8 @@
 
           <div class="section">
             <h3>Información de Facturación</h3>
-            <p><strong>Correo:</strong> {{ nitEn }}</p>
-            <p><strong>Teléfono:</strong> {{ pagoName.formapago }}</p>
+            <p><strong>Nit:</strong> {{ nitEn }}</p>
+            <p><strong>Forma de pago:</strong> {{ pagoName.formapago }}</p>
           </div>
 
           <div class="section">

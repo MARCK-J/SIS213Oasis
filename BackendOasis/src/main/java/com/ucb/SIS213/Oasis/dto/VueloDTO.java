@@ -3,7 +3,7 @@ package com.ucb.SIS213.Oasis.dto;
 import java.util.Date;
 
 public class VueloDTO {
-private Long idViaje;
+    private Long idViaje;
     private Long origen;
     private Long destino;
     private Long idAerolinea;

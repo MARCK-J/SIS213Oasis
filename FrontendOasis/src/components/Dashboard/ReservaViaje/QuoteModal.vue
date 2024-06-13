@@ -3,32 +3,32 @@
     <div class="modal-content">
       <span class="close-button" @click="closeModal">&times;</span>
       <div id="invoice-content">
-        <div class="header">
-          <div class="logo">
+        <div class="headerq">
+          <div class="logoCot">
             <!-- Aquí puedes agregar tu imagen -->
-            <img src="../../../assets/logoBack.png" alt="Logo de la empresa">
+            <img style="width: 100%" src="../../../assets/logoBack.png" alt="Logo de la empresa">
           </div>
-          <div class="company-info" style="color: black">
+          <div class="company-infoq" style="color: black">
             <h2>Agencia de Viajes OASIS</h2>
             <p>Dirección: Universidad Catolica Boliviana</p>
             <p>Teléfono: (123) 456-7890</p>
             <p>Email: info@empresa.xyz</p>
           </div>
-          <div class="invoice-info" style="color: black">
+          <div class="invoice-infoq" style="color: black">
             <h2>Cotizacion</h2>
             <p><strong>Fecha:</strong> {{ quoteInfo.fecha }}</p>
           </div>
         </div>
 
         <div class="quote-info">
-          <div class="section">
+          <div class="sectionq">
             <h3>Cliente</h3>
             <p><strong>Nombre:</strong> {{ quoteInfo.cliente.nombre }} {{ quoteInfo.cliente.apellidoP }}</p>
             <p><strong>Correo:</strong> {{ quoteInfo.cliente.correo }}</p>
             <p><strong>Teléfono:</strong> {{ quoteInfo.cliente.telefono }}</p>
           </div>
 
-          <div class="section">
+          <div class="sectionq">
             <h3>Detalles del Viaje</h3>
             <div class="details">
               <div class="detail-item">
@@ -174,7 +174,7 @@ export default {
   overflow-y: auto;
 }
 
-.header {
+.headerq {
   display: flex;
   justify-content: space-between;
   align-items: center; /* Para alinear verticalmente */
@@ -183,20 +183,16 @@ export default {
   margin-bottom: 20px;
 }
 
-.logo {
+.logoCot {
   width: 20%; /* Ancho del logo */
-  height: 100%;
 }
 
-.company-info {
+.company-infoq {
   width: 30%; /* Ancho de la información de la empresa */
 }
 
-.invoice-info {
-  width: 30%; /* Ancho de la información de la factura */
-}
 
-.invoice-info {
+.invoice-infoq {
   width: 50%;
   text-align: right;
 }
@@ -205,11 +201,11 @@ export default {
   margin-top: 20px;
 }
 
-.section {
+.sectionq {
   margin-bottom: 20px;
 }
 
-.section h3 {
+.sectionq h3 {
   margin-bottom: 10px;
   color: #333;
 }
