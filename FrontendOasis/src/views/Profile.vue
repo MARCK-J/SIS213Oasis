@@ -17,11 +17,8 @@
             <h4>Apellido Paterno: {{ clienteData.apellidoP }}</h4>
             <h4>Apellido Materno: {{ clienteData.apellidoM }}</h4>
             <h4>Telefono: {{ clienteData.telefono }}</h4>
-            <h4>Correo Electronico: {{ user.result.correo }}</h4>
+            <h4>Correo Electronico: {{ user?.result.correo }}</h4>
           </div>
-        <div class="eliminar">
-          <button @click="eliminarmicuenta">Eliminar mi cuenta</button>
-        </div>
         </div>
       </div>
     </template>
@@ -60,8 +57,13 @@ export default {
     }
   },
   mounted(){
+    console.log("imprimir el usuario: ",this.user);
     if(this.user!=null){
-      this.fetchClienteData();
+      if(this.user.result.idAdmin == 2){
+        this.fetchAdminData();
+      }else{
+        this.fetchClienteData();
+      }
     }else{
       console.log("nada");
     }
@@ -71,6 +73,18 @@ export default {
       const idPersona = this.$store.state.user.result.idPersona;
       axios
         .get(`http://localhost:9999/api/v1/persona/${idPersona}`)
+        .then((response) => {
+          this.clienteData = response.data.result;
+          console.log("informacion acerca del cliente:   ",this.clienteData);
+        })
+        .catch((error) => {
+          console.error("Hubo un error al obtener los datos del cliente:", error);
+        });
+    },
+    fetchAdminData() {
+      const idPersona = this.$store.state.user.result.idPersona;
+      axios
+        .get(`http://localhost:9999/api/v1/admin/${idPersona}`)
         .then((response) => {
           this.clienteData = response.data.result;
           console.log("informacion acerca del cliente:   ",this.clienteData);
