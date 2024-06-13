@@ -5,7 +5,6 @@
       <div id="invoice-content">
         <div class="header">
           <div class="logo">
-            <!-- Aquí puedes agregar tu imagen -->
             <img src="../../../assets/logoBack.png" alt="Logo de la empresa">
           </div>
           <div class="company-info" style="color: black">
@@ -15,8 +14,9 @@
             <p>Email: info@empresa.xyz</p>
           </div>
           <div class="invoice-info" style="color: black">
-            <h2>Cotizacion</h2>
-            <p><strong>Fecha:</strong> {{ quoteInfo.fecha }}</p>
+            <h2>Factura  </h2>
+            <p><strong>Fecha:</strong> {{ quoteInfo.fecha }}  </p>
+            <p><strong>Nro Reserva:</strong> {{ quoteInfo.idReservaViaje }}  </p>
           </div>
         </div>
 
@@ -26,6 +26,18 @@
             <p><strong>Nombre:</strong> {{ quoteInfo.cliente.nombre }} {{ quoteInfo.cliente.apellidoP }}</p>
             <p><strong>Correo:</strong> {{ quoteInfo.cliente.correo }}</p>
             <p><strong>Teléfono:</strong> {{ quoteInfo.cliente.telefono }}</p>
+          </div>
+
+          <div class="section">
+            <h3>Información de Facturación</h3>
+            <p><strong>Nit:</strong> <input v-model="nit" type="text" placeholder="Ingrese el Nit"></p>
+            <p><strong>Forma de pago:</strong>
+              <select v-model="formaPagoSeleccionado" required>
+                <option v-for="pago in formasPago" :key="pago.idFormP" :value="pago.idFormP">
+                  {{ pago.formapago }}
+                </option>
+              </select>
+            </p>
           </div>
 
           <div class="section">
@@ -85,19 +97,34 @@
       </div>
 
       <div class="button-container">
-        <button @click="savePDF">Guardar como PDF</button>
+        <button @click="verfactura()">Ver Factura</button>
         <button @click="saveAndClose">Confirmar Reserva de Viaje</button>
         <button @click="closeModal">Cancelar</button>
       </div>
     </div>
+
+    <modal :isOpen="showFacturaModal" @close="showFacturaModal = false">
+      <Factura :quoteInfo="quoteInfo" :nitEn="nitEnvio" :pago="formaPagoSeleccionado" @close="showFacturaModal = false"></Factura>
+    </modal>
   </div>
 </template>
 
 <script>
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import axios from "axios";
+import Factura from "./Factura.vue";
+import Modal from './Modal.vue';
 
 export default {
+  components: {Modal, Factura},
+  data(){
+    return{
+      formasPago:[],
+      formaPagoSeleccionado:"",
+      nit:"",
+      nitEnvio:"",
+      showFacturaModal: false,
+    };
+  },
   props: {
     quoteInfo: Object
   },
@@ -119,6 +146,16 @@ export default {
       return this.subtotal + this.tax;
     }
   },
+  async created() {
+    try {
+      const response = await axios.get('http://localhost:9999/api/v1/formaPago');
+      this.formasPago = response.data.result;
+      console.log('Metodos de pago obtenidos:', this.formasPago);
+    } catch (error) {
+      console.error('Error al obtener metodos de pago:', error);
+    }
+  },
+
   methods: {
     formatCurrency(value) {
       return new Intl.NumberFormat("es-ES", {
@@ -129,25 +166,26 @@ export default {
     closeModal() {
       this.$emit('close');
     },
-    saveAndClose() {
-      // Lógica para guardar la reserva y cerrar el modal
-      this.$emit("save");
+    async saveAndClose() {
+
+      // Enviar solicitud para crear una factura
+      const response3 = await axios.post('http://localhost:9999/api/v1/facturacion/create', {
+
+        fecha: this.quoteInfo.fecha,
+        nit: this.nit,
+        clienteidCliente: this.quoteInfo.cliente.idCliente,
+        reservaViajeidReservaViaja: this.quoteInfo.idReservaViaje,
+        formaPagoidFormP: this.formaPagoSeleccionado,
+
+      });
+      console.log("Factura created");
+      this.$emit("close");
     },
-    async savePDF() {
-      const invoiceContent = document.getElementById("invoice-content");
-      const canvas = await html2canvas(invoiceContent, { scale: 2 });
-      const imgData = canvas.toDataURL("image/png");
 
-      const doc = new jsPDF("p", "mm", "letter");
-      const imgProps = doc.getImageProperties(imgData);
-      const pdfWidth = doc.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-      doc.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      const namefile = `Reserva_${ this.quoteInfo.cliente.nombre }_${ this.quoteInfo.cliente.apellidoP }_${ this.quoteInfo.fecha }.pdf`;
-      console.log(namefile)
-      doc.save(namefile+".pdf");
-    }
+    async verfactura (){
+      this.nitEnvio = this.nit;
+      this.showFacturaModal = true;
+    },
   }
 };
 </script>

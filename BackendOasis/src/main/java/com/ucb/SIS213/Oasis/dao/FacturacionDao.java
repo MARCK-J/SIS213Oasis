@@ -15,4 +15,7 @@ public interface FacturacionDao extends JpaRepository<Facturacion, Long>{
     List<Facturacion> findFacturacionById(Long userId);
 
     public Facturacion findByNIT(String nit);
+
+    @Query(value = "SELECT MAX(idFactura) FROM Facturacion;", nativeQuery = true)
+    Long getLastInsertedPersonaId();
 }

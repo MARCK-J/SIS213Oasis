@@ -165,8 +165,10 @@
     </div>
     <h2></h2>
 
-    <div style="text-align: center;">
-      <button class="create-button" @click="RegistrarReserva">Registrar Reserva de Viaje</button>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <button class="create-button" @click="registrarReserva()">Ver Cotización</button>
+      <button class="create-button" @click="facturacion()">Facturar Reserva de Viaje</button>
+
     </div>
 
 
@@ -200,15 +202,16 @@
       <insurance-list :seguros="seguros" @select-insurance="selectInsurance"></insurance-list>
     </modal>
 
-    <!-- Agregar el botón para mostrar el modal de cotización -->
-    <div style="text-align: center;">
-      <button class="create-button" @click="registrarReserva()">Ver Cotización</button>
-    </div>
+
 
     <!-- Modal de Cotización -->
 
     <modal :isOpen="showQuoteModal" @close="showQuoteModal = false">
       <quote-modal :quoteInfo="quoteInfo" @close="showQuoteModal = false"></quote-modal>
+    </modal>
+
+    <modal :isOpen="showRegistroModal" @close="showRegistroModal = false">
+      <registro-reserva :quoteInfo="quoteInfo" @close="showRegistroModal = false"></registro-reserva>
     </modal>
 
 
@@ -225,6 +228,7 @@ import ClientList from './ClientList.vue';
 import InsuranceList from './InsuranceList.vue';
 import Modal from './Modal.vue';
 import QuoteModal from './QuoteModal.vue';
+import RegistroReserva from "./RegistroReserva.vue";
 import axios from "axios";
 
 export default {
@@ -238,6 +242,8 @@ export default {
     InsuranceList,
     Modal,
     QuoteModal,
+    RegistroReserva,
+
   },
   data() {
     return {
@@ -264,6 +270,7 @@ export default {
       selectedInsurance: null,
       selectedDate: null,
       showQuoteModal: false,
+      showRegistroModal: false,
       quoteInfo: {} // Aquí almacenaremos la información de facturación para pasar al modal de cotización
     };
   },
@@ -355,6 +362,49 @@ export default {
       this.selectedInsurance = insurance;
       this.showInsuranceModal = false;
     },
+
+    async facturacion() {
+
+      // Registrar Reserva de viaje
+      await this.RegistrarReserva();
+
+      // Enviar solicitud para obtener el id del ultimo viaje
+      const response2 = await axios.get(
+          "http://localhost:9999/api/v1/viaje/lastId"
+      );
+      const lastViaje = response2.data.result;
+      console.log("Last viaje", lastViaje);
+
+
+      // Verificar si todas las selecciones están hechas
+      if (
+          this.selectedDate &&
+          this.selectedHotel &&
+          this.selectedFlight &&
+          this.selectedCar &&
+          this.selectedAttraction &&
+          this.selectedActivity &&
+          this.selectedClient &&
+          this.selectedInsurance
+      ) {
+        // Llenar la información de la cotización
+        this.quoteInfo = {
+          fecha: this.selectedDate,
+          hotel: this.selectedHotel,
+          vuelo: this.selectedFlight,
+          auto: this.selectedCar,
+          atraccion: this.selectedAttraction,
+          actividad: this.selectedActivity,
+          cliente: this.selectedClient,
+          seguro: this.selectedInsurance,
+          idReservaViaje: lastViaje,
+        };
+        this.showRegistroModal = true;
+      } else {
+        // Mostrar mensaje de error o manejar de otra manera si no se han seleccionado todos los datos
+        alert('Por favor, complete todas las selecciones antes de continuar.');
+      }
+    },
     async registrarReserva() {
       console.log("ENTRA");
       // Verificar si todas las selecciones están hechas
@@ -437,9 +487,6 @@ export default {
       });
 
       console.log("Reserva created");
-
-
-
 
     }
   }

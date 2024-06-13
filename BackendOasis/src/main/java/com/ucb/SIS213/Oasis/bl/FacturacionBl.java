@@ -59,4 +59,8 @@ public class FacturacionBl {
         facturacionDao.delete(facturacion);
     }
 
+    public Long getLastIdFacturacion () {
+        return facturacionDao.getLastInsertedPersonaId();
+    }
+
 }

@@ -2,10 +2,9 @@
   <div class="quote-modal">
     <div class="modal-content">
       <span class="close-button" @click="closeModal">&times;</span>
-      <div id="invoice-content">
+      <div id="invoice-contentFac">
         <div class="header">
           <div class="logo">
-            <!-- Aquí puedes agregar tu imagen -->
             <img src="../../../assets/logoBack.png" alt="Logo de la empresa">
           </div>
           <div class="company-info" style="color: black">
@@ -15,8 +14,8 @@
             <p>Email: info@empresa.xyz</p>
           </div>
           <div class="invoice-info" style="color: black">
-            <h2>Cotizacion</h2>
-            <p><strong>Fecha:</strong> {{ quoteInfo.fecha }}</p>
+            <h2>Factura  </h2>
+            <p><strong>Fecha:</strong> {{ quoteInfo.fecha }}  </p>
           </div>
         </div>
 
@@ -26,6 +25,12 @@
             <p><strong>Nombre:</strong> {{ quoteInfo.cliente.nombre }} {{ quoteInfo.cliente.apellidoP }}</p>
             <p><strong>Correo:</strong> {{ quoteInfo.cliente.correo }}</p>
             <p><strong>Teléfono:</strong> {{ quoteInfo.cliente.telefono }}</p>
+          </div>
+
+          <div class="section">
+            <h3>Información de Facturación</h3>
+            <p><strong>Correo:</strong> {{ nitEn }}</p>
+            <p><strong>Teléfono:</strong> {{ pagoName.formapago }}</p>
           </div>
 
           <div class="section">
@@ -86,20 +91,32 @@
 
       <div class="button-container">
         <button @click="savePDF">Guardar como PDF</button>
-        <button @click="saveAndClose">Confirmar Reserva de Viaje</button>
-        <button @click="closeModal">Cancelar</button>
+        <button @click="closeModal">Aceptar</button>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import axios from "axios";
+
 
 export default {
+
+  data(){
+    return{
+      formasPago:[],
+      pagoName:"",
+
+    };
+  },
   props: {
-    quoteInfo: Object
+    quoteInfo: Object,
+    pago: Object,
+    nitEn: Object,
   },
   computed: {
     subtotal() {
@@ -119,6 +136,19 @@ export default {
       return this.subtotal + this.tax;
     }
   },
+  async created() {
+
+
+
+    try {
+      const response = await axios.get(`http://localhost:9999/api/v1/formaPago/${this.pago}`);
+      this.pagoName = response.data.result;
+      console.log('Metodos de pago obtenidos:', this.pagoName);
+    } catch (error) {
+      console.error('Error al obtener metodos de pago:', error);
+    }
+  },
+
   methods: {
     formatCurrency(value) {
       return new Intl.NumberFormat("es-ES", {
@@ -130,11 +160,11 @@ export default {
       this.$emit('close');
     },
     saveAndClose() {
-      // Lógica para guardar la reserva y cerrar el modal
-      this.$emit("save");
+
+      //this.$emit("save");
     },
     async savePDF() {
-      const invoiceContent = document.getElementById("invoice-content");
+      const invoiceContent = document.getElementById("invoice-contentFac");
       const canvas = await html2canvas(invoiceContent, { scale: 2 });
       const imgData = canvas.toDataURL("image/png");
 

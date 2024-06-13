@@ -91,6 +91,18 @@ public class FacturacionAPI {
         }
     }
 
-
+    // Endpoint para consegir el id de la ultima facturacion
+    @GetMapping("/lastId")
+    public ResponseDTO getLastInsertedFacturacionId() {
+        Long id;
+        try{
+            id = facturacionBl.getLastIdFacturacion();
+            LOGGER.info("Id de la ultima facturacion encontrada");
+        } catch (RuntimeException e){
+            LOGGER.error("Error al obtener el id de la ultima facturacion");
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO(id);
+    }
 
 }

@@ -14,4 +14,7 @@ public interface ViajeDao extends JpaRepository<Viaje, Long>{
             nativeQuery = true)
     List<Viaje> findViajeById(Long userId);
 
+    @Query(value = "SELECT MAX(idReservaViaja) FROM ReservaViaje;", nativeQuery = true)
+    Long getLastIdViaje();
+
 }
