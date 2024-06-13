@@ -1,11 +1,24 @@
 <template>
-  <div class="DashboardContainer">
-    <div class="barralateral" style="background-color: black">
-      <side-bar @optionSelected="optionSelected"/>
-    </div>
-    <div class="content">
-      <component :is="currentComponent" />
-    </div>
+  <div>
+    <template v-if="isAuthenticated">
+      <div class="DashboardContainer">
+        <div class="barralateral" style="background-color: black">
+          <side-bar @optionSelected="optionSelected" />
+        </div>
+        <div class="content">
+          <component :is="currentComponent" />
+        </div>
+      </div>
+    </template>
+    <template v-else>
+      <div class="administrador">
+        <div class="tarjeta">
+          <h1>Debe ser usuario administrador para ingresar</h1>
+          <p>Puede volver a la pagina principal</p>
+          <router-link to="/" class="ruteo">Home</router-link>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -35,39 +48,44 @@ export default {
   },
   data() {
     return {
-      currentComponent: 'TableAudit'
-    }
+      currentComponent: "TableAudit",
+    };
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.admin;
+    },
   },
   methods: {
     optionSelected(option) {
       switch (option) {
-        case 'admin':
-          this.currentComponent = 'TableAudit';
+        case "admin":
+          this.currentComponent = "TableAudit";
           break;
-        case 'flights':
-          this.currentComponent = 'TableVuelo';
+        case "flights":
+          this.currentComponent = "TableVuelo";
           break;
-        case 'hotels':
-          this.currentComponent = 'TableResHotel';
+        case "hotels":
+          this.currentComponent = "TableResHotel";
           break;
-        case 'cars':
-          this.currentComponent = 'TableAlquilerAu';
+        case "cars":
+          this.currentComponent = "TableAlquilerAu";
           break;
-        case 'register_flight':
-          this.currentComponent = 'FormRegisterVue';
+        case "register_flight":
+          this.currentComponent = "FormRegisterVue";
           break;
-        case 'registers_flights':
-          this.currentComponent = 'TableViaje';
+        case "registers_flights":
+          this.currentComponent = "TableViaje";
           break;
         case 'coments':
           this.currentComponent = 'TableComentarios';
           break;
         default:
-          this.currentComponent = 'TableAudit';
+          this.currentComponent = "TableAudit";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -85,5 +103,33 @@ export default {
 
 .content {
   width: 85%;
+}
+.administrador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: white;
+}
+.tarjeta {
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color:#FCEEDA;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ruteo{
+  background-color: #ff9800;
+  color: white;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  width: 30%;
 }
 </style>
