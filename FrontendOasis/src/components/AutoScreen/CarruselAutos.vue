@@ -1,24 +1,21 @@
-
 <template>
   <div ref="carouselDom" class="carousel">
     <div ref="listItemDom" class="list">
-      <div class="item" v-for="(image, index) in images" :key="index">
-        <img :src="image.src" :alt="image.alt">
+      <div class="item" v-for="(image, index) in filteredImages" :key="index">
+        <img :src="image.src" :alt="image.alt" />
         <div class="content">
           <div class="author">{{ image.author }}</div>
           <div class="title">{{ image.title }}</div>
           <div class="topic">{{ image.topic }}</div>
           <div class="des">{{ image.des }}</div>
-          <div class="buttons">
-
-          </div>
+          <div class="buttons"></div>
         </div>
       </div>
     </div>
 
     <div ref="thumbnailDom" class="thumbnail">
-      <div class="item" v-for="(thumbnail, index) in thumbnails" :key="index">
-        <img :src="thumbnail.src" :alt="thumbnail.alt">
+      <div class="item" v-for="(thumbnail, index) in filteredImages" :key="index">
+        <img :src="thumbnail.src" :alt="thumbnail.alt" />
         <div class="content">
           <div class="title">{{ thumbnail.title }}</div>
           <div class="des">{{ thumbnail.des }}</div>
@@ -35,20 +32,62 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed } from "vue";
+import { useStore } from 'vuex';
+
+const store = useStore();
+const selectedCity = computed<string>(() => store.getters.selectedCity);
+
+// Define el mapeo de ID de ciudad a sus nombres
+const cityMap: Record<number, string> = {
+  1: 'La Paz',
+  2: 'Santa Cruz de la Sierra',
+  3: 'Cochabamba',
+  4: 'Sucre',
+  5: 'Oruro',
+  6: 'Potosí',
+  7: 'Tarija',
+  8: 'Beni',
+  9: 'Pando',
+};
 
 const images = [
-  { src: 'https://i.pinimg.com/originals/c9/b5/6e/c9b56e1c8c4a7199cd83b27e34be219f.jpg', alt: 'Auto1', author: 'OASIS', title: 'DESING SLIDER', topic: 'AUTOS', des: 'Autos para toda la ciudad' },
-  { src: 'https://wallpaper.forfun.com/fetch/90/90091e333f2aa9ee8e35642c93cf6752.jpeg', alt: 'Auto2', author: 'OASIS', title: 'DESING SLIDER', topic: 'AUTOS', des: 'Autos para camino peligrosos' },
-  { src: 'https://arblatinamerica.com/wp-content/uploads/2021/07/Salar-de-Uyuni-1.jpg', alt: 'Auto3', author: 'OASIS', title: 'DESING SLIDER', topic: 'AUTOS', des: 'Autos para acampar con tu familia' },
-  { src: 'https://www.chevrolet.com.ec/content/dam/chevrolet/south-america/ecuador/espanol/index/index-subcontent/mh-scroller/abril-2024/mhs/2024-masthead-home-trailblazer-xl.jpg?imwidth=960', alt: 'Auto4', author: 'OASIS', title: 'Autos para todo terreno', topic: 'Exclusivos', des: 'Lorem esta es una descripcion para hacer en slider' },
-];
-
-const thumbnails = [
-  { src: 'https://i.pinimg.com/originals/c9/b5/6e/c9b56e1c8c4a7199cd83b27e34be219f.jpg', alt: 'Thumb1', title: 'Nissan', des: 'Descripcion' },
-  { src: 'https://wallpaper.forfun.com/fetch/90/90091e333f2aa9ee8e35642c93cf6752.jpeg', alt: 'Thumb2', title: 'Toyota', des: 'Descripcion' },
-  { src: 'https://arblatinamerica.com/wp-content/uploads/2021/07/Salar-de-Uyuni-1.jpg', alt: 'Thumb3', title: 'Ford', des: 'Descripcion' },
-  { src: 'https://www.chevrolet.com.ec/content/dam/chevrolet/south-america/ecuador/espanol/index/index-subcontent/mh-scroller/abril-2024/mhs/2024-masthead-home-trailblazer-xl.jpg?imwidth=960', alt: 'Thumb4', title: 'Chevrolet', des: 'Descripcion' },
+  {
+    src: "https://i.pinimg.com/originals/c9/b5/6e/c9b56e1c8c4a7199cd83b27e34be219f.jpg",
+    alt: "Auto1",
+    author: "OASIS",
+    title: "DESING SLIDER",
+    topic: "AUTOS",
+    des: "Autos para toda la ciudad",
+    city: 1
+  },
+  {
+    src: "https://wallpaper.forfun.com/fetch/90/90091e333f2aa9ee8e35642c93cf6752.jpeg",
+    alt: "Auto2",
+    author: "OASIS",
+    title: "DESING SLIDER",
+    topic: "AUTOS",
+    des: "Autos para camino peligrosos",
+    city: 2
+  },
+  {
+    src: "https://arblatinamerica.com/wp-content/uploads/2021/07/Salar-de-Uyuni-1.jpg",
+    alt: "Auto3",
+    author: "OASIS",
+    title: "DESING SLIDER",
+    topic: "AUTOS",
+    des: "Autos para acampar con tu familia",
+    city: 3
+  },
+  {
+    src: "https://www.chevrolet.com.ec/content/dam/chevrolet/south-america/ecuador/espanol/index/index-subcontent/mh-scroller/abril-2024/mhs/2024-masthead-home-trailblazer-xl.jpg?imwidth=960",
+    alt: "Auto4",
+    author: "OASIS",
+    title: "Autos para todo terreno",
+    topic: "Exclusivos",
+    des: "Lorem esta es una descripcion para hacer en slider",
+    city: 4
+  },
 ];
 
 const nextDom = ref<HTMLButtonElement | null>(null);
@@ -62,27 +101,27 @@ const timeAutoNext = 9000;
 let runTimeOut: ReturnType<typeof setTimeout>;
 let runAutoRun: ReturnType<typeof setTimeout>;
 
-const showSlider = (type: 'next' | 'prev') => {
+const showSlider = (type: "next" | "prev") => {
   if (!listItemDom.value || !thumbnailDom.value || !carouselDom.value) return;
 
-  const itemSlider = listItemDom.value.querySelectorAll('.item');
-  const itemThumbnail = thumbnailDom.value.querySelectorAll('.item');
+  const itemSlider = listItemDom.value.querySelectorAll(".item");
+  const itemThumbnail = thumbnailDom.value.querySelectorAll(".item");
 
-  if (type === 'next') {
+  if (type === "next") {
     listItemDom.value.appendChild(itemSlider[0]);
     thumbnailDom.value.appendChild(itemThumbnail[0]);
-    carouselDom.value.classList.add('next');
+    carouselDom.value.classList.add("next");
   } else {
     const positionLastItem = itemSlider.length - 1;
     listItemDom.value.prepend(itemSlider[positionLastItem]);
     thumbnailDom.value.prepend(itemThumbnail[positionLastItem]);
-    carouselDom.value.classList.add('prev');
+    carouselDom.value.classList.add("prev");
   }
 
   clearTimeout(runTimeOut);
   runTimeOut = setTimeout(() => {
     if (carouselDom.value) {
-      carouselDom.value.classList.remove('next', 'prev');
+      carouselDom.value.classList.remove("next", "prev");
     }
   }, timeRunning);
 
@@ -91,6 +130,15 @@ const showSlider = (type: 'next' | 'prev') => {
     nextDom.value?.click();
   }, timeAutoNext);
 };
+
+const filteredImages = computed(() => {
+  if (selectedCity.value == "all"){ 
+    return images;
+  }
+  else{
+    return images.filter(image => cityMap[image.city] === selectedCity.value);
+  }
+});
 
 onMounted(() => {
   runAutoRun = setTimeout(() => {
@@ -141,7 +189,6 @@ onBeforeUnmount(() => {
   font-weight: bold;
   letter-spacing: 10px;
   margin-left: -100px;
-
 }
 
 .carousel .list .item .content .title,
@@ -169,8 +216,6 @@ onBeforeUnmount(() => {
   margin-top: 30px;
   margin-left: -100px;
 }
-
-
 
 .thumbnail {
   position: absolute;
@@ -207,7 +252,7 @@ onBeforeUnmount(() => {
   font-weight: bold;
   color: white;
 }
-.thumbnail .item .content .des{
+.thumbnail .item .content .des {
   color: white;
 }
 
@@ -232,7 +277,7 @@ onBeforeUnmount(() => {
   color: #fff;
   font-weight: bold;
   font-size: large;
-  transition: .5s;
+  transition: 0.5s;
   z-index: 100;
 }
 
@@ -300,53 +345,43 @@ onBeforeUnmount(() => {
   }
 }
 
-.carousel.next .thumbnail .item:nth-child(1){
-
+.carousel.next .thumbnail .item:nth-child(1) {
   width: 0;
   overflow: hidden;
-  animation: showThumbnail .5s linear 1 forwards;
-
+  animation: showThumbnail 0.5s linear 1 forwards;
 }
 
-@keyframes showThumbnail  {
-
-  to{
+@keyframes showThumbnail {
+  to {
     width: 150px;
-
   }
-
 }
 
-.carousel.next .thumbnail{
-  transform:translateX(150px);
-  animation: transformThumbnail .5s linear 1 forwards;
+.carousel.next .thumbnail {
+  transform: translateX(150px);
+  animation: transformThumbnail 0.5s linear 1 forwards;
 }
 
 @keyframes transformThumbnail {
-
-  to{
+  to {
     transform: translateX(0);
   }
-
 }
 
 /* efecto al hacer prevv*/
 
-.carousel.prev .list .item:nth-child(2){
+.carousel.prev .list .item:nth-child(2) {
   z-index: 2;
-
 }
 
-.carousel.prev .list .item:nth-child(2) img{
-
+.carousel.prev .list .item:nth-child(2) img {
   position: absolute;
   bottom: 0;
   left: 0;
   animation: outImage 0.5s linear 1 forwards;
-
 }
 @keyframes outImage {
-  to{
+  to {
     width: 150px;
     height: 220px;
     border-radius: 20px;
@@ -355,91 +390,73 @@ onBeforeUnmount(() => {
   }
 }
 
-.carousel.prev .thumbnail .item:nth-child(1){
-
+.carousel.prev .thumbnail .item:nth-child(1) {
   width: 0;
   overflow: hidden;
   opacity: 0;
   animation: showThumbnail 0.5s linear 1 forwards;
-
 }
 
 .carousel.prev .list .item:nth-child(2) .author,
 .carousel.prev .list .item:nth-child(2) .title,
 .carousel.prev .list .item:nth-child(2) .topic,
 .carousel.prev .list .item:nth-child(2) .des,
-.carousel.prev .list .item:nth-child(2) .buttons{
-
+.carousel.prev .list .item:nth-child(2) .buttons {
   animation: contentOut 1.5s linear 1 forwards;
-
 }
 
 @keyframes contentOut {
-
-  to{
+  to {
     transform: translateY(-150px);
     filter: blur(20px);
     opacity: 0;
   }
-
 }
 
 .carousel.next .arrows button,
-.carousel.prev .arrows button{
+.carousel.prev .arrows button {
   pointer-events: none;
-
 }
 
 /*para el tiempo de transicion de imagenes con las letras*/
 
-.time{
-  width: 0%;/*oara mostral la barra e tiempo arriba del navbar*/
+.time {
+  width: 0%; /*oara mostral la barra e tiempo arriba del navbar*/
   height: 3px;
   background-color: #676360;
   position: absolute;
   z-index: 100;
-  top:0;
+  top: 0;
   left: 0;
 }
 
 .carousel.next .time,
-.carousel.prev .time{
+.carousel.prev .time {
   width: 100%;
-  animation: timeRunning 2s linear 1 forwards;/*oara mostral la barra e tiempo arriba del navbar*/
-
+  animation: timeRunning 2s linear 1 forwards; /*oara mostral la barra e tiempo arriba del navbar*/
 }
 
 @keyframes timeRunning {
-
-  to{
+  to {
     width: 0;
-
   }
-
 }
 
 @media screen and (max-width: 670px) {
-
-  .carousel .list .item .content{
+  .carousel .list .item .content {
     padding-right: 0;
   }
-  .carousel .list .item .content .title{
+  .carousel .list .item .content .title {
     font-size: 30px;
   }
-
 }
 
-.buttons .nav-link{
+.buttons .nav-link {
   border: none;
   background-color: white;
   letter-spacing: 3px;
   font-family: Poppins;
   font-weight: 500;
   color: black;
-
-
-
 }
-
-
 </style>

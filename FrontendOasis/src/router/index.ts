@@ -1,7 +1,6 @@
 import { createRouter as createVueRouter, createWebHashHistory, Router } from "vue-router";
 import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
-import { createAuthGuard } from "@auth0/auth0-vue";
 import { App } from 'vue';
 import RegistroPersona from "../components/RegistroPersona.vue";
 import RegistroAdmin from "../components/RegistroAdmin.vue";
@@ -13,9 +12,7 @@ import Verificacion from "../views/Verificacion.vue";
 import TokenOlvido from "../views/TokenOlvido.vue";
 import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
 import HotelSeleccionado from "../components/Hoteles/HotelSeleccionado.vue";
-import Autos from "../views/Auto/Autos.vue";
-import PantallaOrdenar from "../views/Auto/PantallaOrdenar.vue";
-import PantalaExplorar from "../views/Auto/PantalaExplorar.vue";
+import Autos from "../views/Autos.vue";
 import Vuelos from "../views/Vuelos.vue";
 
 
@@ -96,19 +93,6 @@ export function createRouter(app: App): Router {
         component: HotelSeleccionado,
         meta: { showNavBar: true }
     },
-      {
-        path: "/Auto_Ordenar",
-        name: "AutoOrdenar",
-        component:PantallaOrdenar,
-        meta: { showNavBar: true }
-      },
-      {
-        path: "/Auto_Explorar",
-        name: "AutoExplorar",
-        component:PantalaExplorar,
-        meta: { showNavBar: true }
-
-      },
       {
         path: "/Vuelos",
         name: "Vuelos",

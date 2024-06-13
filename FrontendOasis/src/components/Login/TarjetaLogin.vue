@@ -230,11 +230,13 @@ export default defineComponent({
           password: this.password // Usa el valor de la contraseña del input
         });
 
-        const user = response.data.code;
-        if (user === '200-OK') {
+        const user = response.data;
+        
+        if (user.code === '200-OK') {
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit('setLoggedIn', true);
           this.$store.commit('setUser', user);
+          console.log(user);
           console.info("ID: ", response.data.result["idCliente"]);
           this.$store.commit('setId', response.data.result["idCliente"]);
           this.$store.commit('setRol', "Cliente");
@@ -403,8 +405,7 @@ Atentamente,
 Agencia de Viajes Oasis
 Max Pasten, Gerente de la agencia de viajes`,
       };
-      const response2 = await axios
-        .post(url, data)
+      const response2 = await axios.post(url, data)
         .then((response) => {
           this.$swal({
           toast: true,
@@ -416,7 +417,6 @@ Max Pasten, Gerente de la agencia de viajes`,
           title: "Proceso exitoso",
         text: "Se le envio un codigo de restablecimiento de contraseña",
       });
-      console.log(response.data);        
     })
         .catch((error) => {
           console.error("Hubo un problema al enviar el correo:", error);

@@ -1,12 +1,12 @@
 <template>
   <div class="product-details">
     <div class="product-image">
-      <img :src="hotelData.imagenes" class="hotel-image" alt="Hotel Image" />
+      <img :src="autoData.imagenes" class="auto-image" alt="Auto Image" />
     </div>
     <div class="product-info">
-      <div class="title">{{ hotelData.hotel }}</div>
+      <div class="title">{{ autoData.auto }}</div>
       <div class="price">
-        {{ hotelData.puntuacion }} Estrellas
+        {{ autoData.puntuacion }} Estrellas
         <div class="stars">
           <span v-for="star in filledStars" :key="star">&#9733;</span>
           <span v-for="star in emptyStars" :key="star" class="empty"
@@ -16,12 +16,12 @@
       </div>
       <div class="info">
         <div class="rental-details">
-          <h3>Datos de Hotel</h3>
+          <h3>Datos del Auto</h3>
           <div class="detail">
-            <strong>Habitaciones:</strong> {{ hotelData.totalHabitaciones }}
+            <strong>Habitaciones:</strong> {{ autoData.totalHabitaciones }}
           </div>
           <div class="detail">
-            <strong>Ubicación:</strong> {{ hotelData.ubicacion }}
+            <strong>Ubicación:</strong> {{ autoData.ubicacion }}
           </div>
         </div>
         <div class="popular-services">
@@ -36,32 +36,33 @@
               <span>{{ service.name }}</span>
             </div>
           </div>
-          </div>
-          </div>
-            <div class="add-to-cart">
-              <button @click="addToCartAction">Añadir al Carrito</button>
-            </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="product-description-grid">
     <div class="description">
-      <h2>Descripción de Hotel</h2>
-      <p>{{ hotelData.descripcion }}</p>
+      <h2>Descripción del auto</h2>
+      <p>{{ autoData.descripcion }}</p>
     </div>
   </div>
-  <FooterHotel />
+  <div class="add-to-cart">
+    <button @click="addToCartAction">Añadir al Carrito</button>
+  </div>
+
+  <FooterAutos />
 </template>
 
 <script>
 import axios from "axios";
-import FooterHotel from "./FooterHotel.vue";
+import FooterAuto from "./FooterAutos.vue";
 import { mapActions } from "vuex";
 import Swal from "sweetalert2";
 
 export default {
   data() {
     return {
-      hotelData: {},
+      autoData: {},
       popularServices: [
         { name: "Piscinas", icon: "fas fa-swimming-pool" },
         { name: "Parking gratis", icon: "fas fa-parking" },
@@ -76,33 +77,33 @@ export default {
     };
   },
   mounted() {
-    this.fetchHotelData();
+    this.fetchAutoData();
   },
   methods: {
     ...mapActions(["addToCart"]),
-    fetchHotelData() {
-      const hotelId = this.getHotelIdFromURL();
+    fetchAutoData() {
+      const AutoId = this.getAutoIdFromURL();
       axios
-        .get(`http://localhost:9999/api/v1/hotel/${hotelId}`)
+        .get(`http://localhost:9999/api/v1/auto/${autoId}`)
         .then((response) => {
-          this.hotelData = response.data.result;
+          this.autoData = response.data.result;
         })
         .catch((error) => {
-          console.error("Hubo un error al obtener los datos del hotel:", error);
+          console.error("Hubo un error al obtener los datos del Auto:", error);
         });
     },
-    getHotelIdFromURL() {
+    getAutoIdFromURL() {
       const url = window.location.href;
       const urlParts = url.split("/");
       return urlParts[urlParts.length - 1];
     },
     addToCartAction() {
       const item = {
-        title: this.hotelData.hotel,
-        description: this.hotelData.descripcion,
-        category: "Hotel",
-        location: this.hotelData.ubicacion,
-        image: this.hotelData.imagenes,
+        title: this.autoData.auto,
+        description: this.autoData.descripcion,
+        category: "Auto",
+        location: this.autoData.ubicacion,
+        image: this.autoData.imagenes,
       };
       if (this.isItemInCart(item)) {
         Swal.fire({
@@ -127,18 +128,18 @@ export default {
     },
   },
   components: {
-    FooterHotel,
+    FooterAuto,
   },
   computed: {
     filledStars() {
       return Array.from(
-        { length: this.hotelData.puntuacion },
+        { length: this.autoData.puntuacion },
         (_, index) => index
       );
     },
     emptyStars() {
       return Array.from(
-        { length: 5 - this.hotelData.puntuacion },
+        { length: 5 - this.autoData.puntuacion },
         (_, index) => index
       );
     },
@@ -258,22 +259,18 @@ export default {
 .add-to-cart {
   text-align: center;
   margin-top: 20px;
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 15px;
 }
 
 .add-to-cart button {
-  width: 100%;
-  background-color: #65fb8d;
-  color: black;
+  background-color: #007bff;
+  color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .add-to-cart button:hover {
-  background-color: #009e15;
+  background-color: #0056b3;
 }
 </style>
