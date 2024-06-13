@@ -39,6 +39,7 @@ import { decodeCredential } from "vue3-google-login";
 import CustomInput from "./CustomInput.vue";
 import { useRouter } from "vue-router";
 import axios from 'axios';
+import { User } from '@auth0/auth0-vue';
 
 
 
@@ -293,8 +294,8 @@ export default defineComponent({
           password: this.password // Usa el valor de la contraseña del input
         });
 
-        const user = response.data.code;
-        if (user === '200-OK') {
+        const user = response.data;
+        if (user.code === '200-OK') {
           // Si el inicio de sesión es exitoso, guarda el usuario en el store y redirige a la página principal
           this.$store.commit('setLoggedIn', true);
           this.$store.commit('setUser', user);
