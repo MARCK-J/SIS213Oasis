@@ -25,7 +25,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Comentario": "Comentario de prueba",
+  "comentario": "Comentario de prueba",
   "clienteidCliente": 1
 }
 
