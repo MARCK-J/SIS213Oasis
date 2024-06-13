@@ -253,18 +253,35 @@ export default {
     },
     // Función para validar la complejidad de la contraseña
     validatePassword(password) {
+      console.log(password);
       // Al menos 8 caracteres
-      if (password.length > 8)return false;
+      if (password.length < 8) {
+        console.log("Tamanio");
+        return false;
+      }
       // Al menos un número
-      if (!/\d/.test(password)) return false;
+      if (!/\d/.test(password)) {
+        console.log("un numero");
+        return false;
+      }
       // Al menos una letra minúscula
-      if (!/[a-z]/.test(password)) return false;
+      if (!/[a-z]/.test(password)) {
+        console.log("minu");
+        return false;
+      }
       // Al menos una letra mayúscula
-      if (!/[A-Z]/.test(password)) return false;
+      if (!/[A-Z]/.test(password)) {
+        console.log("mayu");
+        return false;
+      }
       // Al menos un carácter especial
-      if (!/[^a-zA-Z0-9]/.test(password)) return false;
+      if (!/[^a-zA-Z0-9]/.test(password)) {
+        console.log("espec");
+        return false;
+      }
       return true;
     },
+
     validaciones(password, passwordConf) {
       // Restablecer estados de validación
       this.icon_validacion0 = 'fluent:error-circle-20-regular';

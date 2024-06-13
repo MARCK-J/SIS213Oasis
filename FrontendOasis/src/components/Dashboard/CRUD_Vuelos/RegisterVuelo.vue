@@ -42,7 +42,7 @@
         </div>
         <div>
           <label for="price">Precio:</label>
-          <input type="number" id="price" v-model="vuelo.precio">
+          <input type="number" id="price" min="1" v-model="vuelo.precio">
         </div>
         <div>
           <label for="guests">Número de personas:</label>

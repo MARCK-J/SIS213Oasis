@@ -26,7 +26,7 @@
         </div>
         <div>
           <label for="price">Precio:</label>
-          <input type="number" id="price" v-model="alquiler.precio">
+          <input type="number" min="1" id="price" v-model="alquiler.precio">
         </div>
         <div>
           <label for="dias">Número de dias:</label>
