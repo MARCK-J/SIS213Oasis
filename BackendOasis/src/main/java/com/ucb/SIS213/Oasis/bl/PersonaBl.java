@@ -33,20 +33,24 @@ public class PersonaBl {
         return personaDao.save(persona);
     }
 
-    public Persona updatePersona(Persona persona) {
-        Persona personaExistente = personaDao.findById(persona.getIdPersona()).orElse(null);
-        if (personaExistente == null) {
+    public Persona updatePersona(Long id, Persona persona) {
+        Persona personaActual = personaDao.findById(id).orElse(null);
+        if (personaActual == null) {
             throw new RuntimeException("Persona does not exist");
         }
-        return personaDao.save(persona);
+        personaActual.setNombre(persona.getNombre());
+        personaActual.setApellidoP(persona.getApellidoP());
+        personaActual.setApellidoM(persona.getApellidoM());
+        personaActual.setTelefono(persona.getTelefono());
+        return personaDao.save(personaActual);
     }
 
     public void  deletePersona(Long id) {
-
-        if (personaDao.existsById(id)) {
+        Persona persona = personaDao.findById(id).orElse(null);
+        if (persona == null) {
             throw new RuntimeException("Persona does not exist");
         }
-        personaDao.deleteById(id);
+        personaDao.delete(persona);
     }
 
     public Long getLastIdPersona () {

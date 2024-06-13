@@ -5,28 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec5c5ff-c2cf-415f-bedc-e543ab4f0aa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ActividadDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/AtraccionDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ClienteDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dto/ReservaViajeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/ActivityList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/AttractionList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/ClientList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/EditViaje.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/InsuranceList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/TableViaje.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Actividad.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Actividad.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Atraccion.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Atraccion.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Cliente.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Cliente.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/http/Comentarios.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ComentariosAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ComentariosBl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/ComentariosDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/entity/Comentarios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/Factura.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/RegistroReserva.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Facturacion.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Facturacion.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/http/Viaje.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ActividadAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ActividadAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AtraccionAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/AtraccionAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ClienteAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/FacturacionAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/FacturacionAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ViajeAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/api/ViajeAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/FacturacionBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/FacturacionBl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ViajeBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/bl/ViajeBl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/FacturacionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/FacturacionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/ViajeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackendOasis/src/main/java/com/ucb/SIS213/Oasis/dao/ViajeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/Sidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/FormRegisterVue.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/QuoteModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/ReservaViaje/QuoteModal.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +53,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Max-Branch&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Ingenieria de Software/Proyecto/SIS213Oasis/FrontendOasis&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxpa/Desktop/Max Pasten/Ingenieria de sistemas/7mo Semestre/Internet de las cosas/Proyecto FInal/Asistencia_NFC_IoT&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -96,7 +92,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17890.13" />
       </set>
     </attachedChunks>
   </component>
@@ -128,6 +124,14 @@
       <workItem from="1717039984079" duration="4712000" />
       <workItem from="1717079239136" duration="1244000" />
       <workItem from="1717105535481" duration="2255000" />
+      <workItem from="1717419635984" duration="1059000" />
+      <workItem from="1717548207898" duration="608000" />
+      <workItem from="1718057414178" duration="16090000" />
+      <workItem from="1718110635375" duration="5377000" />
+      <workItem from="1718200086290" duration="657000" />
+      <workItem from="1718202795763" duration="136000" />
+      <workItem from="1718223455637" duration="3040000" />
+      <workItem from="1718228071468" duration="14136000" />
     </task>
     <servers />
   </component>

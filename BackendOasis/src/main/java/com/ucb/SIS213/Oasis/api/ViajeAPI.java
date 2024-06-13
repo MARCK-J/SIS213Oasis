@@ -157,4 +157,18 @@ public class ViajeAPI {
 
         return viajes;
     }
+
+    //Endpoint para obtener el último id de un viaje
+    @GetMapping("/lastId")
+    public ResponseDTO getLastInsertedViajeId() {
+        Long id;
+        try{
+            id = viajeBl.getLastIdViaje();
+            LOGGER.info("Id del último viaje encontrado");
+        } catch (RuntimeException e){
+            LOGGER.error("Error al obtener el id del último viaje");
+            return new ResponseDTO("TASK-1000", e.getMessage());
+        }
+        return new ResponseDTO(id);
+    }
 }

@@ -66,19 +66,24 @@ public class ClienteBl {
     }
     
 
-    public Cliente updateCliente(Cliente cliente) {
-        Cliente clienteExistente = clienteDao.findById(cliente.getIdCliente()).orElse(null);
-        if (clienteExistente == null) {
+    public Cliente updateCliente(Long id,Cliente cliente) {
+        Cliente clienteActual = clienteDao.findById(id).orElse(null);
+        if (clienteActual == null) {
             throw new RuntimeException("Cliente does not exist");
         }
-        return clienteDao.save(cliente);
+        clienteActual.setCorreo(cliente.getCorreo());
+        clienteActual.setPassword(cliente.getPassword());
+        clienteActual.setEstadoCuenta(cliente.getEstadoCuenta());
+        clienteActual.setIdPersona(cliente.getIdPersona());
+        return clienteDao.save(clienteActual);
     }
 
-    public void  deleteCliente(Long id) {
 
-        if (clienteDao.existsById(id)) {
+    public void deleteCliente (Long id) {
+        Cliente cliente = clienteDao.findById(id).orElse(null);
+        if (cliente == null) {
             throw new RuntimeException("Cliente does not exist");
         }
-        clienteDao.deleteById(id);
+        clienteDao.delete(cliente);
     }
 }

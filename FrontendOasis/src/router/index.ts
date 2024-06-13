@@ -14,6 +14,7 @@ import RestablecerContrasenia from "../views/RestablecerContrasenia.vue";
 import HotelSeleccionado from "../components/Hoteles/HotelSeleccionado.vue";
 import Autos from "../views/Autos.vue";
 import Vuelos from "../views/Vuelos.vue";
+import HotelSeleccionado1 from "../components/Hoteles/HotelSeleccionado1.vue";
 
 
 export function createRouter(app: App): Router {
@@ -88,8 +89,8 @@ export function createRouter(app: App): Router {
         meta: { showNavBar: true }
       },
             {
-        path: '/hotel/:id', // Utilizamos un parámetro dinámico para el ID del hotel
-        name: 'HotelDetails',
+        path: '/hotel/1', // Utilizamos un parámetro dinámico para el ID del hotel
+        name: 'HotelSeleccionado',
         component: HotelSeleccionado,
         meta: { showNavBar: true }
     },
