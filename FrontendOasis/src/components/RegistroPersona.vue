@@ -167,14 +167,7 @@ export default {
   methods: {
     async createPersona() {
       try {
-        // Validar contraseña
-        if (this.password !== this.passwordConf) {
-          console.error("Las contraseñas no coinciden");
-          // window.alert("Las contraseñas no coinciden");
-          this.mostrarError("Las contraseñas no coinciden", "error");
-          return;
-        }
-
+        
         // Validar complejidad de la contraseña
         if (!this.validatePassword(this.password)) {
           console.error("La contraseña no cumple con los requisitos mínimos");
@@ -184,6 +177,13 @@ export default {
             "La contraseña no debe conterner minimo 8 caracteres que incluya caracteres especiales, numericos, mayusculas y minusculas",
             "error"
           );
+          return;
+        }
+        // Validar contraseña
+        if (this.password !== this.passwordConf) {
+          console.error("Las contraseñas no coinciden");
+          // window.alert("Las contraseñas no coinciden");
+          this.mostrarError("Las contraseñas no coinciden", "error");
           return;
         }
 
@@ -207,7 +207,7 @@ export default {
         );
         const lastPersona = response2.data.result;
         console.log("Last persona", lastPersona);
-
+        
         // Enviar solicitud para crear una cuenta
         const response3 = await axios.post(
           "http://localhost:9999/api/v1/cliente/create",
