@@ -3,9 +3,6 @@ INSERT INTO Pais (pais)
 VALUES
     ('Bolivia');
 
-select * from pais;
-
-
 INSERT INTO Ciudad (ciudad, Pais_idPais)
 VALUES
     ('La Paz', 1),  -- Departamento: La Paz
@@ -18,17 +15,6 @@ VALUES
     ('Beni', 1),  -- Departamento: Beni
     ('Pando', 1);  -- Departamento: Pando
 
--- Eliminar todos los datos de la tabla Ciudad
-DELETE FROM Ciudad;
-
--- Reiniciar la secuencia asociada a la columna idCiudad
-ALTER SEQUENCE ciudad_idciudad_seq RESTART WITH 1;
-
-SELECT setval('idCiudad', 1, false);
-
-
-select * from Ciudad
-
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hostal');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel de lujo');
@@ -36,8 +22,6 @@ INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel de negocios');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel resort');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Hotel Familiar');
 INSERT INTO CategoriaHotel (categoria) VALUES ('Alojamiento');
-
-select * from CategoriaHotel
 
 INSERT INTO Hotel (hotel, puntuacion, Ciudad_idCiudad, CategoriaHotel_idCatHot, totalHabitaciones, descripcion, imagenes, ubicacion)
 VALUES
